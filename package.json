@@ -1,0 +1,13 @@
+{
+  "name": "uab-subdoma-330c",
+  "version": "0.1.0",
+  "private": true,
+  "description": "UAB Subdoma — Landing page (Empirra build)",
+  "scripts": {
+    "dev": "npx serve .",
+    "sync": "cp src/pages/index.html ./index.html && cp src/css/styles.css public/styles.css && echo 'Synced ✓'"
+  },
+  "engines": {
+    "node": ">=18"
+  }
+}
