@@ -73,7 +73,10 @@ uab-subdoma-330c/
 1. Skaityk klienta atsakymus → intake submission 0f220984-3481-49f6-b44c-c34cb60135be
 2. Edit src/pages/index.html (turinys iš `offer`, `target_audience` answer)
 3. Edit src/css/styles.css (brand colors #C6A96B + #0B0B0C)
-4. Sync: cp src/css/styles.css public/styles.css
+4. Sync:
+   cp src/pages/index.html ./index.html
+   cp src/css/styles.css public/styles.css
+   cp src/js/main.js public/main.js
 5. git add . && git commit -m "<msg>" && git push
 6. Verify Vercel deploy (auto-trigger po push)
 7. Klientui send'inti staging URL → approval

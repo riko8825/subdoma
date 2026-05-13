@@ -5,7 +5,7 @@
   "description": "UAB Subdoma — Landing page (Empirra build)",
   "scripts": {
     "dev": "npx serve .",
-    "sync": "cp src/pages/index.html ./index.html && cp src/css/styles.css public/styles.css && echo 'Synced ✓'"
+    "sync": "mkdir -p en ru && cp src/pages/index.html ./index.html && cp src/pages/en/index.html ./en/index.html && cp src/pages/ru/index.html ./ru/index.html && cp src/css/styles.css public/styles.css && cp src/js/main.js public/main.js && cp src/js/animations.js public/animations.js"
   },
   "engines": {
     "node": ">=18"

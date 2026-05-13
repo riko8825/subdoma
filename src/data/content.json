@@ -1,0 +1,714 @@
+{
+  "_meta": {
+    "source": "https://www.subdoma-projektai.lt/",
+    "fetched": "2026-05-13",
+    "languages": ["lt", "en", "ru"],
+    "primary_language": "lt",
+    "note": "EN/RU auto-translated from LT source. Review before production."
+  },
+
+  "nav": {
+    "lt": [
+      { "label": "Pradžia", "href": "/" },
+      { "label": "Paslaugos", "href": "#es-parama" },
+      { "label": "ES parama", "href": "#paramos-galimybes" },
+      { "label": "Kontaktai", "href": "/kontaktai-ir-privatumas" }
+    ],
+    "en": [
+      { "label": "Home", "href": "/" },
+      { "label": "Services", "href": "#es-parama" },
+      { "label": "EU funding", "href": "#paramos-galimybes" },
+      { "label": "Contacts", "href": "/kontaktai-ir-privatumas" }
+    ],
+    "ru": [
+      { "label": "Главная", "href": "/" },
+      { "label": "Услуги", "href": "#es-parama" },
+      { "label": "Помощь ЕС", "href": "#paramos-galimybes" },
+      { "label": "Контакты", "href": "/kontaktai-ir-privatumas" }
+    ]
+  },
+
+  "hero": {
+    "lt": {
+      "headline": "ES parama ūkiams ir verslui – aiškiai, strategiškai, iki rezultato",
+      "subheadline": "Konsultuojame ir rengiame ES paramos projektus ūkiams ir verslui – nuo tinkamumo įvertinimo ir strategijos iki paraiškos pateikimo bei finansavimo gavimo.",
+      "cta_primary": "Peržiūrėti ES paramos galimybes",
+      "cta_primary_href": "#paramos-galimybes",
+      "cta_secondary": "Registruotis konsultacijai",
+      "cta_secondary_href": "https://calendly.com/projektai/30min",
+      "cta_tertiary": "Gauti ES paramos naujienlaiškį",
+      "cta_tertiary_href": "https://preview.mailerlite.io/forms/1993875/174301544249820304/share",
+      "disclaimer": "Paspaudę „Registruotis konsultacijai\" arba „Gauti ES paramos naujienlaiškį\", būsite nukreipti į „Calendly\" arba „MailerLite\" platformas. Jūsų pateikti asmens duomenys bus tvarkomi pagal Privatumo ir slapukų politiką."
+    },
+    "en": {
+      "headline": "EU funding for farms and businesses – clear, strategic, results-driven",
+      "subheadline": "We consult and prepare EU funding projects for farms and businesses – from eligibility assessment and strategy to application submission and funding approval.",
+      "cta_primary": "View EU funding opportunities",
+      "cta_primary_href": "#paramos-galimybes",
+      "cta_secondary": "Book a consultation",
+      "cta_secondary_href": "https://calendly.com/projektai/30min",
+      "cta_tertiary": "Subscribe to EU funding newsletter",
+      "cta_tertiary_href": "https://preview.mailerlite.io/forms/1993875/174301544249820304/share",
+      "disclaimer": "By clicking 'Book a consultation' or 'Subscribe to EU funding newsletter', you will be redirected to 'Calendly' or 'MailerLite' platforms. Your personal data will be processed in accordance with the Privacy and Cookies Policy."
+    },
+    "ru": {
+      "headline": "Поддержка ЕС для хозяйств и бизнеса – ясно, стратегически, до результата",
+      "subheadline": "Консультируем и готовим проекты на поддержку ЕС для хозяйств и бизнеса – от оценки соответствия и стратегии до подачи заявки и получения финансирования.",
+      "cta_primary": "Посмотреть возможности поддержки ЕС",
+      "cta_primary_href": "#paramos-galimybes",
+      "cta_secondary": "Записаться на консультацию",
+      "cta_secondary_href": "https://calendly.com/projektai/30min",
+      "cta_tertiary": "Получать рассылку о поддержке ЕС",
+      "cta_tertiary_href": "https://preview.mailerlite.io/forms/1993875/174301544249820304/share",
+      "disclaimer": "Нажав «Записаться на консультацию» или «Получать рассылку о поддержке ЕС», вы будете перенаправлены на платформы «Calendly» или «MailerLite». Ваши персональные данные будут обрабатываться в соответствии с Политикой конфиденциальности и cookie."
+    }
+  },
+
+  "intro_block": {
+    "lt": {
+      "title": "Kaip galime padėti gauti ES paramą",
+      "description": "Dirbame su ūkininkais ir verslais visoje Lietuvoje – nuo idėjos patikrinimo iki paraiškos pateikimo ir projekto įgyvendinimo. Aiškiai, struktūruotai ir orientuotai į rezultatą.",
+      "features": [
+        {
+          "title": "Tinkamumo įvertinimas",
+          "text": "Įvertiname jūsų ūkį ar verslą, parenkame tinkamas priemones ir realias galimybes gauti finansavimą."
+        },
+        {
+          "title": "Paraiškų ir verslo planų rengimas",
+          "text": "Rengiame paraiškas, verslo planus ir visus reikalingus dokumentus pagal kvietimų reikalavimus."
+        },
+        {
+          "title": "Projektų įgyvendinimo pagalba, apskaita",
+          "text": "Konsultuojame viso projekto metu – nuo sutarties iki ataskaitų ir išmokėjimų. Tvarkome ūkininkų dvejybinę apskaitą."
+        }
+      ]
+    },
+    "en": {
+      "title": "How we help you secure EU funding",
+      "description": "We work with farmers and businesses across Lithuania – from idea validation to application submission and project implementation. Clearly, structured, and results-oriented.",
+      "features": [
+        {
+          "title": "Eligibility assessment",
+          "text": "We evaluate your farm or business, select suitable measures and realistic funding opportunities."
+        },
+        {
+          "title": "Applications and business plans",
+          "text": "We prepare applications, business plans and all required documents according to call requirements."
+        },
+        {
+          "title": "Project implementation & accounting",
+          "text": "We consult throughout the entire project – from contract to reports and payouts. We handle farmers' double-entry accounting."
+        }
+      ]
+    },
+    "ru": {
+      "title": "Как мы помогаем получить поддержку ЕС",
+      "description": "Работаем с фермерами и бизнесом по всей Литве – от проверки идеи до подачи заявки и реализации проекта. Ясно, структурно и ориентированно на результат.",
+      "features": [
+        {
+          "title": "Оценка соответствия",
+          "text": "Оцениваем ваше хозяйство или бизнес, подбираем подходящие меры и реальные возможности получить финансирование."
+        },
+        {
+          "title": "Подготовка заявок и бизнес-планов",
+          "text": "Готовим заявки, бизнес-планы и все необходимые документы в соответствии с требованиями конкурсов."
+        },
+        {
+          "title": "Реализация проектов и бухгалтерия",
+          "text": "Консультируем на протяжении всего проекта – от договора до отчётов и выплат. Ведём двойную бухгалтерию фермеров."
+        }
+      ]
+    }
+  },
+
+  "stats": {
+    "lt": [
+      { "value": "100+", "label": "Parengtų ES projektų" },
+      { "value": "90%+", "label": "Sėkmingai finansuotų paraiškų" },
+      { "value": "€500 000+", "label": "Pritraukta ES paramos" },
+      { "value": "LT", "label": "Dirbame visoje Lietuvoje" }
+    ],
+    "en": [
+      { "value": "100+", "label": "EU projects prepared" },
+      { "value": "90%+", "label": "Successfully funded applications" },
+      { "value": "€500,000+", "label": "EU funding secured" },
+      { "value": "LT", "label": "Operating across Lithuania" }
+    ],
+    "ru": [
+      { "value": "100+", "label": "Подготовленных проектов ЕС" },
+      { "value": "90%+", "label": "Успешно профинансированных заявок" },
+      { "value": "€500 000+", "label": "Привлечено поддержки ЕС" },
+      { "value": "LT", "label": "Работаем по всей Литве" }
+    ]
+  },
+
+  "process": {
+    "lt": {
+      "title": "Kaip dirbame su ES parama",
+      "description": "Kiekvienas projektas skirtingas – todėl dirbame etapais, aiškiai ir orientuotai į rezultatą.",
+      "steps": [
+        {
+          "title": "Tinkamumo įvertinimas",
+          "text": "Greitai įsivertinkite savo galimybes gauti ES paramą – užpildykite trumpą nemokamą mini anketą.",
+          "cta": "Atlikti nemokamą įsivertinimą",
+          "cta_href": "#mini-anketa"
+        },
+        {
+          "title": "Paraiškų ir verslo planų rengimas",
+          "text": "Rengiame paraiškas, verslo planus ir visus privalomus dokumentus pagal konkretaus kvietimo reikalavimus.",
+          "cta": "Peržiūrėti paslaugas",
+          "cta_href": "#es-parama"
+        },
+        {
+          "title": "Projekto įgyvendinimas",
+          "text": "Konsultuojame viso projekto metu – nuo sutarties pasirašymo iki ataskaitų ir išmokėjimų.",
+          "cta": "Sužinoti daugiau",
+          "cta_href": "#rezultatai"
+        }
+      ]
+    },
+    "en": {
+      "title": "How we work with EU funding",
+      "description": "Every project is different – so we work in stages, clearly and results-driven.",
+      "steps": [
+        {
+          "title": "Eligibility assessment",
+          "text": "Quickly assess your chances of receiving EU funding – fill out a short free mini-questionnaire.",
+          "cta": "Take free self-assessment",
+          "cta_href": "#mini-anketa"
+        },
+        {
+          "title": "Applications and business plans",
+          "text": "We prepare applications, business plans and all required documents according to specific call requirements.",
+          "cta": "View services",
+          "cta_href": "#es-parama"
+        },
+        {
+          "title": "Project implementation",
+          "text": "We consult throughout the project – from contract signing to reports and payouts.",
+          "cta": "Learn more",
+          "cta_href": "#rezultatai"
+        }
+      ]
+    },
+    "ru": {
+      "title": "Как мы работаем с поддержкой ЕС",
+      "description": "Каждый проект уникален – поэтому работаем поэтапно, ясно и с ориентацией на результат.",
+      "steps": [
+        {
+          "title": "Оценка соответствия",
+          "text": "Быстро оцените свои возможности получить поддержку ЕС – заполните короткую бесплатную мини-анкету.",
+          "cta": "Пройти бесплатную самооценку",
+          "cta_href": "#mini-anketa"
+        },
+        {
+          "title": "Подготовка заявок и бизнес-планов",
+          "text": "Готовим заявки, бизнес-планы и все обязательные документы по требованиям конкретного конкурса.",
+          "cta": "Посмотреть услуги",
+          "cta_href": "#es-parama"
+        },
+        {
+          "title": "Реализация проекта",
+          "text": "Консультируем на протяжении всего проекта – от подписания договора до отчётов и выплат.",
+          "cta": "Узнать больше",
+          "cta_href": "#rezultatai"
+        }
+      ]
+    }
+  },
+
+  "mini_quiz": {
+    "lt": {
+      "title": "Nemokamas tinkamumo įsivertinimas",
+      "description": "Atsakykite į kelis trumpus klausimus Telegram mini anketoje ir gausite aiškų atsakymą dėl jūsų galimybių gauti ES paramą ūkiui.",
+      "cta": "Pildyti Telegram mini anketą",
+      "cta_href": "https://t.me/subdoma_requests_bot"
+    },
+    "en": {
+      "title": "Free eligibility self-assessment",
+      "description": "Answer a few short questions in our Telegram mini-questionnaire and get a clear answer about your chances of receiving EU funding for your farm.",
+      "cta": "Fill out Telegram mini-questionnaire",
+      "cta_href": "https://t.me/subdoma_requests_bot"
+    },
+    "ru": {
+      "title": "Бесплатная оценка соответствия",
+      "description": "Ответьте на несколько коротких вопросов в Telegram мини-анкете и получите чёткий ответ о ваших возможностях получить поддержку ЕС для хозяйства.",
+      "cta": "Заполнить Telegram мини-анкету",
+      "cta_href": "https://t.me/subdoma_requests_bot"
+    }
+  },
+
+  "services_intro": {
+    "lt": {
+      "title": "ES paramos galimybės ūkiams ir verslui",
+      "description": "Rengiame ir administruojame ES paramos projektus pagal šiuo metu galiojančius kvietimus. Padėsime įvertinti, kuri priemonė jums tinkamiausia ir palydėsime iki finansavimo gavimo."
+    },
+    "en": {
+      "title": "EU funding opportunities for farms and businesses",
+      "description": "We prepare and administer EU funding projects according to currently active calls. We help assess which measure suits you best and guide you through to funding approval."
+    },
+    "ru": {
+      "title": "Возможности поддержки ЕС для хозяйств и бизнеса",
+      "description": "Готовим и администрируем проекты поддержки ЕС по действующим конкурсам. Поможем оценить, какая мера подходит вам, и проведём до получения финансирования."
+    }
+  },
+
+  "services": [
+    {
+      "id": "jaunieji-ukininkai",
+      "lt": {
+        "title": "Jaunųjų ūkininkų įsikūrimas",
+        "summary": "Parama jauniems ūkininkams veiklos pradžiai: technika, pastatai, žemės ūkio paskirties žemės pirkimas, infrastruktūra, tvartai, angarai, daugiamečiai augalai, sodiniai, gyvuliai, įranga.",
+        "what_is": "Priemonė skirta jauniems ūkininkams pradėti ar plėtoti savarankišką žemės ūkio veiklą – tiek dotacijai, tiek lengvatinei paskolai gauti.",
+        "for_whom": "Gali kreiptis fiziniai ar juridiniai asmenys, kuriems ne daugiau kaip 40 metų, kurie yra įregistravę žemės ūkio valdą ir ūkininko ūkį, ir kurie planuoja pradėti ūkininko veiklą pirmą kartą (ūkis ir valda registruoti ne daugiau nei 2 metus). Nuo 0,0 VED iki 70000,00 Eur. Remiami visi sektoriai.",
+        "what_funded": "Paramos lėšos gali būti skirtos žemės ūkio produktų gamybai ar perdirbimui, žemės ūkio paskirties žemei įsigyti, ūkiniams statiniams ir angarams, tvartams statyti, daugiamečių augalų įsigijimui, ūkinių gyvūnų, paukščių pirkimui, įrangai ir technikai, pastatams, infrastruktūrai, ūkininkavimo veiklai pradėti ar plėtoti. Investicijos gali būti perkamos naujos arba naudotos. Jeigu pareiškėjas nėra PVM mokėtojas - parama apmoka ir PVM, jeigu pareiškėjas yra PVM mokėtojas - PVM pareiškėjas apmoka nuosavom lėšom.",
+        "payment": "Dotacija – iki 60000,00 Eur, mokama dviem dalimis: pirmoji – po sprendimo skirti paramą (80 proc, t.y. 48000,00 Eur), antroji (20 proc., t.y. 12000,00 Eur) – po verslo plano įgyvendinimo. Avansas mokamas 80 proc (vėliau išmokamas 20 proc likutis). Papildomai galima prie dotacijos prašyti lengvatinės paskolos iki 40000,00 Eur. Priemonėje galima kreiptis ir tik dėl lengvatinės paskolos – iki 100000,00 Eur (kai dotacijos neprašoma). Svarbu: paramos suma (dotacija+paskola) negali viršyti 100000,00 Eur bendrai.",
+        "intensity": "Paramos intensyvumas 100 proc."
+      },
+      "en": {
+        "title": "Young farmers' establishment",
+        "summary": "Support for young farmers starting out: machinery, buildings, agricultural land purchase, infrastructure, barns, hangars, perennial plants, seedlings, livestock, equipment.",
+        "what_is": "A measure for young farmers to start or develop independent agricultural activity – available as both grant and preferential loan.",
+        "for_whom": "Open to individuals or legal entities up to 40 years old, who have registered an agricultural holding and farm, and who plan to start farming for the first time (farm and holding registered for no more than 2 years). From 0.0 EDV up to €70,000. All sectors supported.",
+        "what_funded": "Funds may be used for agricultural production or processing, agricultural land acquisition, farm buildings and hangars, barn construction, perennial plant acquisition, livestock and poultry purchase, equipment and machinery, buildings, infrastructure, starting or developing farming activity. Investments may be new or used. If the applicant is not a VAT payer – the grant covers VAT; if the applicant is a VAT payer – they cover VAT with own funds.",
+        "payment": "Grant up to €60,000, paid in two parts: first – after the funding decision (80%, i.e. €48,000), second (20%, i.e. €12,000) – after business plan implementation. Advance of 80% paid (remaining 20% paid later). Additionally, a preferential loan up to €40,000 can be requested. Within the measure, only a preferential loan can be requested – up to €100,000 (when no grant is requested). Important: total funding (grant + loan) cannot exceed €100,000.",
+        "intensity": "Funding intensity 100%."
+      },
+      "ru": {
+        "title": "Становление молодых фермеров",
+        "summary": "Поддержка молодых фермеров для начала деятельности: техника, постройки, покупка сельхозземли, инфраструктура, хлева, ангары, многолетние растения, саженцы, скот, оборудование.",
+        "what_is": "Мера для молодых фермеров для начала или развития самостоятельной сельскохозяйственной деятельности – как грант, так и льготный кредит.",
+        "for_whom": "Могут обращаться физические или юридические лица до 40 лет, зарегистрировавшие сельхозвладение и фермерское хозяйство, и планирующие начать фермерскую деятельность впервые (хозяйство и владение зарегистрированы не более 2 лет). От 0,0 ЭДВ до 70 000,00 евро. Поддерживаются все секторы.",
+        "what_funded": "Средства могут быть направлены на производство или переработку сельхозпродукции, приобретение сельхозземли, строительство хозпостроек и ангаров, хлевов, приобретение многолетних растений, покупку скота и птицы, оборудование и технику, здания, инфраструктуру, начало или развитие фермерской деятельности. Инвестиции могут быть новыми или подержанными. Если заявитель не плательщик НДС – грант покрывает НДС, если плательщик НДС – НДС оплачивает заявитель из собственных средств.",
+        "payment": "Грант – до 60 000,00 евро, выплачивается двумя частями: первая – после решения о выделении (80%, т.е. 48 000,00 евро), вторая (20%, т.е. 12 000,00 евро) – после реализации бизнес-плана. Аванс 80% (остаток 20% позже). Дополнительно к гранту можно запросить льготный кредит до 40 000,00 евро. В мере можно подавать только на льготный кредит – до 100 000,00 евро (когда грант не запрашивается). Важно: общая сумма (грант+кредит) не может превышать 100 000,00 евро.",
+        "intensity": "Интенсивность поддержки 100%."
+      }
+    },
+    {
+      "id": "labai-smulkus-ukiai",
+      "lt": {
+        "title": "Labai smulkių ūkių plėtra",
+        "summary": "Parama ūkių modernizavimui: technika, įranga, pastatai, daugiamečiai augalai, sodiniai, atsinaujinanti energetika, tvartai, sandėliai, angarai, infrastruktūra, atsinaujinanti energija.",
+        "what_is": "Parama skirta labai smulkiems ūkiams, kurie siekia pagerinti savo veiklos efektyvumą ir padidinti konkurencingumą kaimo vietovėse.",
+        "for_whom": "Ūkininkams, kurių ūkio apimtis vis dar nedidelė, bet yra pasirengę investuoti į ilgalaikį augimą. Jeigu dalyvauja vienas pareiškėjas: 8000-16000 VED. Jeigu dalyvauja daugiau nei vienas pareiškėjas: 4000-16000 VED. Galima dalyvauti su partneriais, šeimos nariais. Remiami visi sektoriai.",
+        "what_funded": "Paramos lėšos gali būti skirtos žemės ūkio produktų gamybai ar perdirbimui, ūkiniams statiniams ir angarams, tvartams statyti, daugiamečių augalų įsigijimui, laistymo sistemoms, atsinaujinančiai energijai, inovacijoms, skaitmeninimui, įrangai ir technikai, pastatams, infrastruktūrai, ūkininkavimo veiklai plėtoti. Investicijos gali būti perkamos tik naujos. Jeigu pareiškėjas nėra PVM mokėtojas arba yra PVM mokėtojas - bet kuriuo atveju - PVM pareiškėjas apmoka nuosavom lėšom.",
+        "payment": "Dotacija – iki 25000,00 Eur vienam pareiškėjui. Jeigu dalyvauji keli pareiškėjai – už kiekvieną asmenį suma prisideda 25000,00 Eur + 25000,00 Eur + .. = daugiausia 100000,00 Eur. Avansas nemokamas. Pasirenkamas išmokėjimo būdas: sąskaitų apmokėjimas arba kompensavimas.",
+        "intensity": "Paramos intensyvumas 85 proc. (15 proc. nuosavos arba skolintos lėšos)."
+      },
+      "en": {
+        "title": "Very small farms development",
+        "summary": "Support for farm modernization: machinery, equipment, buildings, perennial plants, seedlings, renewable energy, barns, warehouses, hangars, infrastructure.",
+        "what_is": "Support for very small farms seeking to improve operational efficiency and increase competitiveness in rural areas.",
+        "for_whom": "Farmers with still small operations who are ready to invest in long-term growth. Single applicant: 8000–16000 EDV. Multiple applicants: 4000–16000 EDV. Can participate with partners or family members. All sectors supported.",
+        "what_funded": "Funds may be used for agricultural production or processing, farm buildings and hangars, barn construction, perennial plant acquisition, irrigation systems, renewable energy, innovation, digitalization, equipment and machinery, buildings, infrastructure, farming activity development. Only new investments. VAT covered by applicant's own funds in all cases.",
+        "payment": "Grant up to €25,000 per applicant. With multiple applicants – €25,000 added per person, up to €100,000 maximum. No advance. Payment options: invoice payment or reimbursement.",
+        "intensity": "Funding intensity 85% (15% own or borrowed funds)."
+      },
+      "ru": {
+        "title": "Развитие очень малых хозяйств",
+        "summary": "Поддержка модернизации хозяйств: техника, оборудование, постройки, многолетние растения, саженцы, возобновляемая энергетика, хлева, склады, ангары, инфраструктура.",
+        "what_is": "Поддержка для очень малых хозяйств, стремящихся повысить эффективность деятельности и конкурентоспособность в сельских районах.",
+        "for_whom": "Фермерам с пока небольшим хозяйством, готовым инвестировать в долгосрочный рост. Один заявитель: 8000–16000 ЭДВ. Несколько заявителей: 4000–16000 ЭДВ. Можно участвовать с партнёрами, членами семьи. Поддерживаются все секторы.",
+        "what_funded": "Средства могут быть направлены на производство или переработку сельхозпродукции, хозпостройки и ангары, строительство хлевов, многолетние растения, системы полива, возобновляемую энергетику, инновации, цифровизацию, оборудование и технику, здания, инфраструктуру, развитие фермерской деятельности. Только новые инвестиции. НДС заявитель оплачивает из собственных средств в любом случае.",
+        "payment": "Грант – до 25 000,00 евро на заявителя. При нескольких заявителях – по 25 000 на каждого, максимум 100 000,00 евро. Аванс не выплачивается. Способ выплаты: оплата счетов или компенсация.",
+        "intensity": "Интенсивность поддержки 85% (15% собственные или заёмные средства)."
+      }
+    },
+    {
+      "id": "verslas-regionuose",
+      "lt": {
+        "title": "Parama verslui regionuose",
+        "summary": "ES ir VVG, UŽT parama smulkiajam ir vidutiniam verslui regionuose – gamybai, paslaugoms, plėtrai, naujiems verslams pradėti arba turimų plėtrai.",
+        "what_is": "Parama skirta mažam ir vidutiniam verslui regionuose, ne žemės ūkio, bet susijusiose, arba ne, paslaugų ar gamybos srityse.",
+        "for_whom": "Verslams, norintiems plėsti veiklą regionuose, didinti pridėtinę vertę ir naudoti vietos išteklius. Galima dalyvauti su individualia veikla, MB, UAB, VšĮ, NVO. Remiami įvairūs sektoriai (tikslintis pagal kvietimą individualiai).",
+        "what_funded": "Technologijos, technikos, transportas, įranga, patalpų įrengimas, naujų statyba, skaitmeninimas, inovacijos, veiklos kūrimas ar plėtra, naujų darbo vietų kūrimas. Investicijos gali būti perkamos tik naujos. PVM pareiškėjas apmoka nuosavom lėšom.",
+        "payment": "Dotacija – iki 200000,00 Eur vienam pareiškėjui. Avansas mokamas iki 40 proc. Kiekvienas rajonas turi savo atskirus kvietimus, balus ir sąlygas, tad suma ir intensyvumas gali skirtis – tikslinti reikia pagal paskelbtą kvietimą ir rajoną.",
+        "intensity": "Paramos intensyvumas 65–100 proc. (0–35 proc. nuosavos arba skolintos lėšos). Kiekvienas rajonas turi savo atskirus kvietimus, balus ir sąlygas."
+      },
+      "en": {
+        "title": "Regional business support",
+        "summary": "EU and LAG (VVG, UŽT) support for small and medium businesses in regions – production, services, expansion, new business start-up or existing business growth.",
+        "what_is": "Support for small and medium businesses in regions, in non-agricultural (or related) services or production sectors.",
+        "for_whom": "Businesses wishing to expand activity in regions, increase added value and use local resources. Can participate as sole trader, SmallCompany, Ltd, NGO, NPO. Various sectors supported (specify per call individually).",
+        "what_funded": "Technologies, machinery, transport, equipment, premises fit-out, new construction, digitalization, innovation, activity creation or expansion, new job creation. Only new investments. VAT covered by applicant.",
+        "payment": "Grant up to €200,000 per applicant. Advance up to 40%. Each district has its own separate calls, scoring and conditions, so amounts and intensity may vary – check per published call and district.",
+        "intensity": "Funding intensity 65–100% (0–35% own or borrowed funds). Each district has its own separate calls, scoring and conditions."
+      },
+      "ru": {
+        "title": "Поддержка бизнеса в регионах",
+        "summary": "Поддержка ЕС и LAG (VVG, UŽT) для малого и среднего бизнеса в регионах – производство, услуги, развитие, открытие новых бизнесов или развитие существующих.",
+        "what_is": "Поддержка для малого и среднего бизнеса в регионах, в несельскохозяйственных (или смежных) сферах услуг или производства.",
+        "for_whom": "Бизнесам, желающим расширить деятельность в регионах, повысить добавленную стоимость и использовать местные ресурсы. Можно участвовать как ИП, MB, UAB, VšĮ, НКО. Поддерживаются различные секторы (уточнять по конкурсу индивидуально).",
+        "what_funded": "Технологии, техника, транспорт, оборудование, обустройство помещений, новое строительство, цифровизация, инновации, создание или расширение деятельности, создание новых рабочих мест. Только новые инвестиции. НДС оплачивает заявитель.",
+        "payment": "Грант – до 200 000,00 евро на заявителя. Аванс до 40%. Каждый район имеет свои конкурсы, баллы и условия, сумма и интенсивность могут различаться – уточнять по объявленному конкурсу и району.",
+        "intensity": "Интенсивность поддержки 65–100% (0–35% собственные или заёмные средства). Каждый район имеет свои конкурсы, баллы и условия."
+      }
+    },
+    {
+      "id": "smulkus-vidutinis",
+      "lt": {
+        "title": "Smulkų vidutinių ūkių plėtra (+ supaprastinta)",
+        "summary": "Parama ūkių modernizavimui: technika, įranga, pastatai, atsinaujinanti energetika, inovacijos, skaitmeninimas.",
+        "what_is": "Paramos priemonė smulkiems ir vidutiniams ūkiams, norintiems modernizuoti savo gamybos procesus ir kurti tvaresnę ir efektyvesnę veiklą.",
+        "for_whom": "Ūkiams, turintiems patirties, stabilų verslo planą ir norintiems investuoti į ateitį. Nuo 16001-30000 VED. Galima dalyvauti su partneriais, šeimos nariais (suma negali viršyti priemonės sumos). Remiami visi sektoriai.",
+        "what_funded": "Paramos lėšos gali būti skirtos žemės ūkio produktų gamybai ar perdirbimui, ūkiniams statiniams ir angarams, tvartams statyti, daugiamečių augalų įsigijimui, laistymo sistemoms, atsinaujinančiai energijai, inovacijoms, skaitmeninimui, įrangai ir technikai, pastatams, infrastruktūrai, ūkininkavimo veiklai plėtoti. Investicijos gali būti perkamos tik naujos. PVM pareiškėjas apmoka nuosavom lėšom.",
+        "payment": "Dotacija – iki 200000,00 Eur vienam pareiškėjui (kai supaprastinta 80000,00 Eur). Avansas nemokamas. Pasirenkamas išmokėjimo būdas: sąskaitų apmokėjimas arba kompensavimas.",
+        "intensity": "Paramos intensyvumas visiems 65 proc. (35 proc. nuosavos arba skolintos lėšos). Paramos intensyvumas, jeigu pareiškėjas jaunasis ūkininkas (iki 40 m ir ūkis registruotas ne daugiau 5 m.) 80 proc. (20 proc. nuosavos arba skolintos lėšos)."
+      },
+      "en": {
+        "title": "Small and medium farms development (+ simplified)",
+        "summary": "Support for farm modernization: machinery, equipment, buildings, renewable energy, innovation, digitalization.",
+        "what_is": "A support measure for small and medium farms wishing to modernize their production processes and create more sustainable and efficient activity.",
+        "for_whom": "Farms with experience, a stable business plan and wanting to invest in the future. From 16001–30000 EDV. Can participate with partners, family members (amount cannot exceed measure amount). All sectors supported.",
+        "what_funded": "Funds may be used for agricultural production or processing, farm buildings and hangars, barn construction, perennial plants, irrigation systems, renewable energy, innovation, digitalization, equipment and machinery, buildings, infrastructure, farming activity development. Only new investments. VAT covered by applicant.",
+        "payment": "Grant up to €200,000 per applicant (€80,000 for simplified version). No advance. Payment options: invoice payment or reimbursement.",
+        "intensity": "Funding intensity 65% for all (35% own or borrowed funds). For young farmer applicants (under 40, farm registered for max 5 years) – 80% (20% own or borrowed funds)."
+      },
+      "ru": {
+        "title": "Развитие малых и средних хозяйств (+ упрощённая)",
+        "summary": "Поддержка модернизации хозяйств: техника, оборудование, постройки, возобновляемая энергетика, инновации, цифровизация.",
+        "what_is": "Мера поддержки для малых и средних хозяйств, желающих модернизировать производственные процессы и создать более устойчивую и эффективную деятельность.",
+        "for_whom": "Хозяйствам с опытом, стабильным бизнес-планом и желающим инвестировать в будущее. От 16001–30000 ЭДВ. Можно участвовать с партнёрами, членами семьи (сумма не может превышать сумму меры). Поддерживаются все секторы.",
+        "what_funded": "Средства могут быть направлены на производство или переработку сельхозпродукции, хозпостройки и ангары, строительство хлевов, многолетние растения, системы полива, возобновляемую энергетику, инновации, цифровизацию, оборудование и технику, здания, инфраструктуру, развитие фермерской деятельности. Только новые инвестиции. НДС оплачивает заявитель.",
+        "payment": "Грант – до 200 000,00 евро на заявителя (упрощённая – 80 000,00 евро). Аванс не выплачивается. Способ выплаты: оплата счетов или компенсация.",
+        "intensity": "Интенсивность поддержки для всех 65% (35% собственные или заёмные средства). Для молодых фермеров (до 40 лет, хозяйство зарегистрировано не более 5 лет) – 80% (20% собственные или заёмные средства)."
+      }
+    },
+    {
+      "id": "tvarios-investicijos",
+      "lt": {
+        "title": "Tvarios investicijos į žemės ūkio valdas",
+        "summary": "Parama ūkių modernizavimui: technika, įranga, pastatai, atsinaujinanti energetika, tvartai, mėšlidės, infrastruktūra.",
+        "what_is": "Parama skirta tik gyvulininkystės ūkiams, kurie siekia pereiti prie aplinkai draugiškesnių ir tvaresnių sprendimų.",
+        "for_whom": "Ūkininkams, orientuotiems į ilgalaikį tvarumą, mažesnes sąnaudas ir gamtos išteklių tausojimą (tik gyvulininkystės ūkiams). Nuo 30000 VED. Padidina ūkių konkurencingumą ir prisideda prie žaliojo kurso tikslų pasiekimo. Remiami visi sektoriai.",
+        "what_funded": "Investicijos į atsinaujinančią energiją, energijos taupymą, ekologinius sprendimus ir infrastruktūrą, mažinančią poveikį aplinkai, tvartų statyba, remontas, restauracija, mėšlidžių įrengimas ir tvarkymas, betonuotos aikštelės, įrangos susijusios su tvarumu, mėšlidžių tvarkymu, azoto mažinimu. Investicijos gali būti perkamos tik naujos. PVM pareiškėjas apmoka nuosavom lėšom.",
+        "payment": "Dotacija – iki 1500000,00 Eur vienam pareiškėjui. Avansas nemokamas. Pasirenkamas išmokėjimo būdas: sąskaitų apmokėjimas arba kompensavimas.",
+        "intensity": "Paramos intensyvumas visiems 65 proc. (35 proc. nuosavos arba skolintos lėšos). Paramos intensyvumas, jeigu pareiškėjas jaunasis ūkininkas (iki 40 m ir ūkis registruotas ne daugiau 5 m.) 80 proc. (20 proc. nuosavos arba skolintos lėšos)."
+      },
+      "en": {
+        "title": "Sustainable investments in agricultural holdings",
+        "summary": "Support for farm modernization: machinery, equipment, buildings, renewable energy, barns, manure storage, infrastructure.",
+        "what_is": "Support targeted only at livestock farms seeking to transition to more environmentally friendly and sustainable solutions.",
+        "for_whom": "Farmers oriented toward long-term sustainability, lower costs and preserving natural resources (livestock farms only). From 30000 EDV. Increases farm competitiveness and contributes to Green Deal goals. All sectors supported.",
+        "what_funded": "Investments in renewable energy, energy savings, ecological solutions and infrastructure reducing environmental impact, barn construction, repair, restoration, manure storage installation and management, concrete platforms, equipment related to sustainability, manure management, nitrogen reduction. Only new investments. VAT covered by applicant.",
+        "payment": "Grant up to €1,500,000 per applicant. No advance. Payment options: invoice payment or reimbursement.",
+        "intensity": "Funding intensity 65% for all (35% own or borrowed funds). For young farmer applicants (under 40, farm registered for max 5 years) – 80% (20% own or borrowed funds)."
+      },
+      "ru": {
+        "title": "Устойчивые инвестиции в сельхозвладения",
+        "summary": "Поддержка модернизации хозяйств: техника, оборудование, постройки, возобновляемая энергетика, хлева, навозохранилища, инфраструктура.",
+        "what_is": "Поддержка направлена только на животноводческие хозяйства, стремящиеся перейти к более экологичным и устойчивым решениям.",
+        "for_whom": "Фермерам, ориентированным на долгосрочную устойчивость, снижение затрат и сохранение природных ресурсов (только животноводческие хозяйства). От 30000 ЭДВ. Повышает конкурентоспособность хозяйств и способствует достижению целей Зелёного курса. Поддерживаются все секторы.",
+        "what_funded": "Инвестиции в возобновляемую энергию, энергосбережение, экологические решения и инфраструктуру, снижающую воздействие на окружающую среду, строительство, ремонт, реставрация хлевов, установка и обслуживание навозохранилищ, бетонные площадки, оборудование, связанное с устойчивостью, обращением с навозом, снижением азота. Только новые инвестиции. НДС оплачивает заявитель.",
+        "payment": "Грант – до 1 500 000,00 евро на заявителя. Аванс не выплачивается. Способ выплаты: оплата счетов или компенсация.",
+        "intensity": "Интенсивность поддержки для всех 65% (35% собственные или заёмные средства). Для молодых фермеров (до 40 лет, хозяйство зарегистрировано не более 5 лет) – 80% (20% собственные или заёмные средства)."
+      }
+    },
+    {
+      "id": "apsaugos-priemones",
+      "lt": {
+        "title": "Apsaugos priemonės nuo plėšrūnų",
+        "summary": "Parama apsaugos priemonėms: veisliniai aviganiai, tvoros, el. piemenys, aptvarai, generatoriai.",
+        "what_is": "Parama ūkininkams, susiduriantiems su laukinių gyvūnų daroma žala (apsaugai nuo vilkų).",
+        "for_whom": "Gyvūnus auginantiems ūkiams (turintys avių, ožkų, galvijų iki 2 metų, mėsinių ir mėsinių-pieninių veislių karvių žindenių, laikomų kartu su prieaugliu iki 6 mėnesių amžiaus toje pačioje bandoje), kuriems būtina apsauga nuo lokių, vilkų, šernų ar kitų laukinių gyvūnų. Parama skatina mažinti nuostolius, padidinti gyvulių gerovę ir saugumą, leidžia ūkiui veikti stabiliai. Nuo 0 VED. Nuo 1 SG.",
+        "what_funded": "Elektriniai piemenys, aptvarai, tvoros, apsauginiai įrenginiai, veisliniai šunys (tik aviganiai - Podhalės arba Vidurio Azijos), generatoriai, kt. elektros energiją palaikantys įrenginiai, vieliniai ir elektriniai aptvarai, juostos. Investicijos gali būti perkamos tik naujos. Negalima tverti ir yra neremiama: namų valdos, sodybos, miško paskirties sklypai. Remiama: tik pievos, ganyklos, ten kur laikomi gyvuliai (tikrinama pagal deklaruotus plotus, RC išrašus). PVM pareiškėjas apmoka nuosavom lėšom.",
+        "payment": "Dotacija – iki 10000,00 Eur vienam pareiškėjui (jeigu papildomai perkami 2 aviganiai +2000,00 Eur). Avansas nemokamas. Paramos išmokėjimo būdas: kompensavimas.",
+        "intensity": "Paramos intensyvumas visiems 90 proc. (10 proc. nuosavos arba skolintos lėšos)."
+      },
+      "en": {
+        "title": "Protection measures against predators",
+        "summary": "Support for protection measures: breeding shepherd dogs, fences, electric shepherds, enclosures, generators.",
+        "what_is": "Support for farmers facing damage caused by wild animals (protection against wolves).",
+        "for_whom": "Farms raising animals (sheep, goats, cattle up to 2 years, meat and meat-dairy breed nursing cows kept with offspring up to 6 months in the same herd), requiring protection against bears, wolves, boars or other wildlife. Support encourages reducing losses, improving animal welfare and safety, enables stable farm operation. From 0 EDV. From 1 LU.",
+        "what_funded": "Electric shepherds, enclosures, fences, protective devices, breeding dogs (only shepherd – Podhale or Central Asian), generators, other electricity-supporting devices, wire and electric enclosures, tapes. Only new investments. Not eligible: residential properties, homesteads, forest plots. Eligible: only meadows, pastures where livestock is kept (verified against declared areas, Registry Centre extracts). VAT covered by applicant.",
+        "payment": "Grant up to €10,000 per applicant (if 2 additional shepherd dogs are purchased +€2,000). No advance. Payment method: reimbursement.",
+        "intensity": "Funding intensity 90% for all (10% own or borrowed funds)."
+      },
+      "ru": {
+        "title": "Меры защиты от хищников",
+        "summary": "Поддержка мер защиты: племенные овчарки, ограждения, электропастухи, загоны, генераторы.",
+        "what_is": "Поддержка фермерам, сталкивающимся с ущербом от диких животных (защита от волков).",
+        "for_whom": "Хозяйствам, разводящим животных (овец, коз, крупного рогатого скота до 2 лет, мясных и мясо-молочных пород коров-кормилиц с приплодом до 6 месяцев в одном стаде), которым необходима защита от медведей, волков, кабанов или других диких животных. Поддержка помогает снизить потери, повысить благополучие и безопасность скота, позволяет хозяйству работать стабильно. От 0 ЭДВ. От 1 УГ.",
+        "what_funded": "Электропастухи, загоны, ограждения, защитные устройства, племенные собаки (только овчарки – подгальская или среднеазиатская), генераторы, другие устройства, поддерживающие электропитание, проволочные и электрические ограждения, ленты. Только новые инвестиции. Не финансируется: жилые владения, усадьбы, лесные участки. Финансируется: только луга, пастбища, где содержится скот (проверяется по декларированным площадям, выпискам РЦ). НДС оплачивает заявитель.",
+        "payment": "Грант – до 10 000,00 евро на заявителя (при дополнительной покупке 2 овчарок +2000,00 евро). Аванс не выплачивается. Способ выплаты: компенсация.",
+        "intensity": "Интенсивность поддержки для всех 90% (10% собственные или заёмные средства)."
+      }
+    }
+  ],
+
+  "contacts": {
+    "lt": {
+      "title": "Kontaktinė informacija",
+      "company": "UAB Subdoma",
+      "address": "Girulių g. 10, Vilnius, Lietuva",
+      "phones": [
+        { "number": "+370 520 89 199", "type": "mobile" },
+        { "number": "+370 675 08 128", "type": "whatsapp/viber" }
+      ],
+      "email": "info.projekturengimas@gmail.com",
+      "youtube": "https://www.youtube.com/@subdoma",
+      "instagram": "https://www.instagram.com/_es_projektu_rengimas_/",
+      "calendly": "https://calendly.com/projektai/30min",
+      "telegram_bot": "https://t.me/subdoma_requests_bot"
+    },
+    "en": {
+      "title": "Contact information",
+      "company": "UAB Subdoma",
+      "address": "Girulių str. 10, Vilnius, Lithuania",
+      "phones": [
+        { "number": "+370 520 89 199", "type": "mobile" },
+        { "number": "+370 675 08 128", "type": "whatsapp/viber" }
+      ],
+      "email": "info.projekturengimas@gmail.com",
+      "youtube": "https://www.youtube.com/@subdoma",
+      "instagram": "https://www.instagram.com/_es_projektu_rengimas_/",
+      "calendly": "https://calendly.com/projektai/30min",
+      "telegram_bot": "https://t.me/subdoma_requests_bot"
+    },
+    "ru": {
+      "title": "Контактная информация",
+      "company": "UAB Subdoma",
+      "address": "ул. Girulių 10, Вильнюс, Литва",
+      "phones": [
+        { "number": "+370 520 89 199", "type": "mobile" },
+        { "number": "+370 675 08 128", "type": "whatsapp/viber" }
+      ],
+      "email": "info.projekturengimas@gmail.com",
+      "youtube": "https://www.youtube.com/@subdoma",
+      "instagram": "https://www.instagram.com/_es_projektu_rengimas_/",
+      "calendly": "https://calendly.com/projektai/30min",
+      "telegram_bot": "https://t.me/subdoma_requests_bot"
+    }
+  },
+
+  "privacy": {
+    "lt": {
+      "title": "Privatumo politika",
+      "sections": [
+        {
+          "heading": "1. Bendroji informacija",
+          "body": "Ši privatumo politika paaiškina, kaip UAB Subdoma tvarko asmens duomenis, kai lankotės mūsų interneto svetainėje, registruojatės konsultacijai ar susisiekiate su mumis, ar užsakote naujienlaiškius. Mes gerbiame jūsų privatumą ir įsipareigojame saugoti jūsų asmens duomenis laikantis galiojančių teisės aktų."
+        },
+        {
+          "heading": "2. Duomenų valdytojas",
+          "body": "Duomenų valdytojas: UAB Subdoma, Girulių g. 10, Vilnius, Lietuva. Mob: +370 520 89 199, +370 675 08 128 (whatsapp/viber). El. paštas: info.projekturengimas@gmail.com"
+        },
+        {
+          "heading": "3. Kokius asmens duomenis renkame?",
+          "body": "Mes galime rinkti šiuos jūsų pateiktus asmens duomenis: vardą; el. pašto adresą; telefono numerį; informaciją apie jus dominančią ES paramos priemonę; pasirinktą konsultacijos datą ir laiką; kitą informaciją, kurią pateikiate registruodamiesi konsultacijai ar susisiekdami."
+        },
+        {
+          "heading": "4. Kaip renkami duomenys?",
+          "body": "Asmens duomenys renkami, kai jūs: registruojatės konsultacijai per Calendly platformą; savanoriškai susisiekiate telefonu ar el. paštu; naudojatės svetaine ir pateikiate informaciją savo iniciatyva; pildote Telegram mini anketą per mūsų oficialią Telegram paskyrą/botą."
+        },
+        {
+          "heading": "5. Asmens duomenų tvarkymo tikslai",
+          "body": "Jūsų asmens duomenys tvarkomi šiais tikslais: konsultacijų organizavimui ir vykdymui; komunikacijai su jumis dėl ES paramos galimybių; atsakymui į jūsų užklausas; paslaugų teikimui ir administravimui; naujienlaiškių ir informacinės komunikacijos siuntimui, gavus atskirą vartotojo sutikimą."
+        },
+        {
+          "heading": "6. Teisinis duomenų tvarkymo pagrindas",
+          "body": "Asmens duomenys tvarkomi remiantis: jūsų sutikimu (BDAR 6 str. 1 d. a p.); veiksmų atlikimu prieš sudarant sutartį (BDAR 6 str. 1 d. b p.); teisėtu duomenų valdytojo interesu – užtikrinti komunikaciją ir paslaugų teikimą (BDAR 6 str. 1 d. f p.)."
+        },
+        {
+          "heading": "7. Asmens duomenų saugojimo laikotarpis",
+          "body": "Asmens duomenys saugomi ne ilgiau, nei tai būtina tikslams, kuriems jie buvo surinkti. Konsultacijų ir užklausų duomenys saugomi iki 3 metų. Rinkodaros (naujienlaiškių) duomenys saugomi iki asmens sutikimo atšaukimo."
+        },
+        {
+          "heading": "8. Asmens duomenų gavėjai ir tvarkytojai",
+          "body": "Jūsų asmens duomenys gali būti perduodami tik tiems duomenų tvarkytojams, kurie būtini paslaugų teikimui: Calendly LLC – konsultacijų registracijos administravimui; Meta Platforms Inc. (Facebook, Instagram); TikTok Technology Limited; LinkedIn Corporation – komunikacijos ir rinkodaros tikslais; Webflow Inc. – svetainės talpinimui (hostingui); MailerLite Limited – naujienlaiškių siuntimui; Google LLC (Gmail) – el. pašto komunikacijai; Telegram Messenger LLP – komunikacijos ir mini anketos administravimo tikslais."
+        },
+        {
+          "heading": "9. Duomenų perdavimas už Europos Sąjungos ribų",
+          "body": "Kai kurie paslaugų teikėjai (pvz., Calendly, Meta, TikTok, LinkedIn, Telegram) gali tvarkyti duomenis už Europos Sąjungos ribų. Tokiu atveju duomenys perduodami laikantis Europos Komisijos patvirtintų apsaugos priemonių (standartinių sutarčių sąlygų)."
+        },
+        {
+          "heading": "10. Jūsų teisės",
+          "body": "Jūs turite teisę: gauti informaciją apie savo tvarkomus asmens duomenis; reikalauti ištaisyti netikslius duomenis; reikalauti ištrinti duomenis („teisė būti pamirštam\"); apriboti duomenų tvarkymą; atšaukti sutikimą bet kuriuo metu; pateikti skundą Valstybinei duomenų apsaugos inspekcijai."
+        },
+        {
+          "heading": "11. Duomenų saugumas",
+          "body": "Kai kurios paslaugos gali tvarkyti duomenis už Europos Sąjungos ribų. Tokiais atvejais užtikrinama, kad duomenų perdavimas atitiktų GDPR reikalavimus. Taikome tinkamas technines ir organizacines priemones, siekdami apsaugoti asmens duomenis nuo neteisėto naudojimo, praradimo ar atskleidimo."
+        },
+        {
+          "heading": "12. Slapukų valdymas",
+          "body": "Lankytojai gali bet kada pakeisti arba atšaukti savo slapukų sutikimą per slapukų nustatymus svetainėje arba naršyklės nustatymuose."
+        },
+        {
+          "heading": "13. Kontaktai dėl privatumo",
+          "body": "Visais klausimais, susijusiais su asmens duomenų tvarkymu, galite kreiptis: info.projekturengimas@gmail.com, +370 520 89 199, +370 675 08 128 (whatsapp/viber)."
+        }
+      ],
+      "cookies_title": "Slapukų politika",
+      "cookies_body": "Svetainė gali naudoti techninius slapukus, reikalingus tinkamam svetainės veikimui. Slapukų sutikimą galite bet kada pakeisti arba atšaukti savo naršyklės nustatymuose arba per slapukų juostą svetainėje. Analitiniai ar rinkodaros slapukai naudojami tik tuo atveju, jei lankytojas tam duoda sutikimą.",
+      "terms_title": "Naudojimosi sąlygos",
+      "terms_body": "Visa šioje svetainėje pateikta informacija yra informacinio pobūdžio ir nėra laikoma oficialiu pasiūlymu. Svetainės turinys negali būti kopijuojamas ar naudojamas be savininko sutikimo. Svetainėje pateikiama informacija yra bendro pobūdžio ir negali būti laikoma individualia konsultacija ar garantija dėl finansavimo gavimo. Galutiniai sprendimai priklauso nuo vertinančių institucijų."
+    },
+    "en": {
+      "title": "Privacy Policy",
+      "sections": [
+        {
+          "heading": "1. General information",
+          "body": "This privacy policy explains how UAB Subdoma processes personal data when you visit our website, register for a consultation or contact us, or subscribe to newsletters. We respect your privacy and commit to protecting your personal data in accordance with applicable legislation."
+        },
+        {
+          "heading": "2. Data controller",
+          "body": "Data controller: UAB Subdoma, Girulių str. 10, Vilnius, Lithuania. Mob: +370 520 89 199, +370 675 08 128 (whatsapp/viber). Email: info.projekturengimas@gmail.com"
+        },
+        {
+          "heading": "3. What personal data do we collect?",
+          "body": "We may collect the following personal data you provide: name; email address; phone number; information about the EU funding measure of interest to you; selected consultation date and time; other information you provide when registering for a consultation or contacting us."
+        },
+        {
+          "heading": "4. How is data collected?",
+          "body": "Personal data is collected when you: register for a consultation via the Calendly platform; voluntarily contact us by phone or email; use the website and provide information on your own initiative; fill out the Telegram mini-questionnaire via our official Telegram account/bot."
+        },
+        {
+          "heading": "5. Purposes of personal data processing",
+          "body": "Your personal data is processed for the following purposes: organizing and conducting consultations; communicating with you regarding EU funding opportunities; responding to your inquiries; service provision and administration; sending newsletters and informational communication, with separate user consent."
+        },
+        {
+          "heading": "6. Legal basis for data processing",
+          "body": "Personal data is processed based on: your consent (GDPR Art. 6(1)(a)); performance of pre-contractual actions (GDPR Art. 6(1)(b)); legitimate interest of the data controller – ensuring communication and service provision (GDPR Art. 6(1)(f))."
+        },
+        {
+          "heading": "7. Personal data retention period",
+          "body": "Personal data is stored no longer than necessary for the purposes for which it was collected. Consultation and inquiry data is stored for up to 3 years. Marketing (newsletter) data is stored until consent is withdrawn."
+        },
+        {
+          "heading": "8. Recipients and processors of personal data",
+          "body": "Your personal data may be transferred only to processors necessary for service provision: Calendly LLC – consultation registration administration; Meta Platforms Inc. (Facebook, Instagram); TikTok Technology Limited; LinkedIn Corporation – communication and marketing purposes; Webflow Inc. – website hosting; MailerLite Limited – newsletter sending; Google LLC (Gmail) – email communication; Telegram Messenger LLP – communication and mini-questionnaire administration."
+        },
+        {
+          "heading": "9. Data transfer outside the European Union",
+          "body": "Some service providers (e.g. Calendly, Meta, TikTok, LinkedIn, Telegram) may process data outside the European Union. In such cases, data is transferred in accordance with European Commission-approved safeguards (standard contractual clauses)."
+        },
+        {
+          "heading": "10. Your rights",
+          "body": "You have the right to: receive information about your processed personal data; request correction of inaccurate data; request deletion of data ('right to be forgotten'); restrict data processing; withdraw consent at any time; lodge a complaint with the State Data Protection Inspectorate."
+        },
+        {
+          "heading": "11. Data security",
+          "body": "Some services may process data outside the European Union. In such cases, data transfer is ensured to comply with GDPR requirements. We apply appropriate technical and organizational measures to protect personal data from unauthorized use, loss or disclosure."
+        },
+        {
+          "heading": "12. Cookie management",
+          "body": "Visitors can change or withdraw their cookie consent at any time through cookie settings on the website or browser settings."
+        },
+        {
+          "heading": "13. Privacy contacts",
+          "body": "For all matters related to personal data processing, you can contact: info.projekturengimas@gmail.com, +370 520 89 199, +370 675 08 128 (whatsapp/viber)."
+        }
+      ],
+      "cookies_title": "Cookie Policy",
+      "cookies_body": "The website may use technical cookies required for proper website operation. You can change or withdraw your cookie consent at any time through your browser settings or via the cookie bar on the website. Analytical or marketing cookies are used only if the visitor gives consent.",
+      "terms_title": "Terms of Use",
+      "terms_body": "All information provided on this website is for informational purposes and is not considered an official offer. Website content may not be copied or used without the owner's consent. Information provided on the website is general and cannot be considered individual consultation or a guarantee of funding. Final decisions depend on evaluating institutions."
+    },
+    "ru": {
+      "title": "Политика конфиденциальности",
+      "sections": [
+        {
+          "heading": "1. Общая информация",
+          "body": "Настоящая политика конфиденциальности объясняет, как UAB Subdoma обрабатывает персональные данные, когда вы посещаете наш сайт, записываетесь на консультацию или связываетесь с нами, или подписываетесь на рассылку. Мы уважаем вашу конфиденциальность и обязуемся защищать ваши персональные данные в соответствии с действующим законодательством."
+        },
+        {
+          "heading": "2. Контролёр данных",
+          "body": "Контролёр данных: UAB Subdoma, ул. Girulių 10, Вильнюс, Литва. Моб: +370 520 89 199, +370 675 08 128 (whatsapp/viber). Эл. почта: info.projekturengimas@gmail.com"
+        },
+        {
+          "heading": "3. Какие персональные данные мы собираем?",
+          "body": "Мы можем собирать следующие предоставленные вами персональные данные: имя; адрес эл. почты; номер телефона; информацию об интересующей вас мере поддержки ЕС; выбранную дату и время консультации; другую информацию, которую вы предоставляете при записи на консультацию или связи."
+        },
+        {
+          "heading": "4. Как собираются данные?",
+          "body": "Персональные данные собираются, когда вы: записываетесь на консультацию через платформу Calendly; добровольно связываетесь по телефону или эл. почте; пользуетесь сайтом и предоставляете информацию по собственной инициативе; заполняете Telegram мини-анкету через наш официальный Telegram аккаунт/бот."
+        },
+        {
+          "heading": "5. Цели обработки персональных данных",
+          "body": "Ваши персональные данные обрабатываются в следующих целях: организация и проведение консультаций; коммуникация с вами по возможностям поддержки ЕС; ответ на ваши запросы; предоставление и администрирование услуг; отправка рассылок и информационных сообщений с отдельным согласием пользователя."
+        },
+        {
+          "heading": "6. Правовая основа обработки данных",
+          "body": "Персональные данные обрабатываются на основании: вашего согласия (GDPR ст. 6(1)(a)); выполнения преддоговорных действий (GDPR ст. 6(1)(b)); законного интереса контролёра данных – обеспечение коммуникации и предоставления услуг (GDPR ст. 6(1)(f))."
+        },
+        {
+          "heading": "7. Срок хранения персональных данных",
+          "body": "Персональные данные хранятся не дольше, чем это необходимо для целей, для которых они были собраны. Данные консультаций и запросов хранятся до 3 лет. Маркетинговые (рассылки) данные хранятся до отзыва согласия."
+        },
+        {
+          "heading": "8. Получатели и обработчики персональных данных",
+          "body": "Ваши персональные данные могут передаваться только тем обработчикам, которые необходимы для предоставления услуг: Calendly LLC – администрирование записи на консультации; Meta Platforms Inc. (Facebook, Instagram); TikTok Technology Limited; LinkedIn Corporation – цели коммуникации и маркетинга; Webflow Inc. – хостинг сайта; MailerLite Limited – отправка рассылок; Google LLC (Gmail) – коммуникация по эл. почте; Telegram Messenger LLP – коммуникация и администрирование мини-анкеты."
+        },
+        {
+          "heading": "9. Передача данных за пределы Европейского Союза",
+          "body": "Некоторые поставщики услуг (например, Calendly, Meta, TikTok, LinkedIn, Telegram) могут обрабатывать данные за пределами Европейского Союза. В таком случае данные передаются в соответствии с утверждёнными Европейской комиссией мерами защиты (стандартными договорными положениями)."
+        },
+        {
+          "heading": "10. Ваши права",
+          "body": "Вы имеете право: получать информацию о ваших обрабатываемых персональных данных; требовать исправления неточных данных; требовать удаления данных («право быть забытым»); ограничить обработку данных; отозвать согласие в любое время; подать жалобу в Государственную инспекцию по защите данных."
+        },
+        {
+          "heading": "11. Безопасность данных",
+          "body": "Некоторые услуги могут обрабатывать данные за пределами Европейского Союза. В таких случаях обеспечивается соответствие передачи данных требованиям GDPR. Мы применяем соответствующие технические и организационные меры для защиты персональных данных от несанкционированного использования, потери или раскрытия."
+        },
+        {
+          "heading": "12. Управление cookie",
+          "body": "Посетители могут в любое время изменить или отозвать согласие на cookie через настройки cookie на сайте или настройки браузера."
+        },
+        {
+          "heading": "13. Контакты по вопросам конфиденциальности",
+          "body": "По всем вопросам, связанным с обработкой персональных данных, вы можете обратиться: info.projekturengimas@gmail.com, +370 520 89 199, +370 675 08 128 (whatsapp/viber)."
+        }
+      ],
+      "cookies_title": "Политика cookie",
+      "cookies_body": "Сайт может использовать технические cookie, необходимые для правильной работы сайта. Согласие на cookie можно в любое время изменить или отозвать через настройки браузера или через cookie-панель на сайте. Аналитические или маркетинговые cookie используются только при согласии посетителя.",
+      "terms_title": "Условия использования",
+      "terms_body": "Вся информация, представленная на этом сайте, носит информационный характер и не является официальным предложением. Содержание сайта не может копироваться или использоваться без согласия владельца. Информация на сайте носит общий характер и не может считаться индивидуальной консультацией или гарантией получения финансирования. Окончательные решения принимают оценивающие учреждения."
+    }
+  },
+
+  "cookie_bar": {
+    "lt": {
+      "text": "Ši svetainė naudoja techninius slapukus ir trečiųjų šalių paslaugas (MailerLite, Calendly), reikalingas tinkamam svetainės veikimui. Analitiniai ar rinkodaros slapukai naudojami tik gavus jūsų sutikimą.",
+      "accept": "Sutinku",
+      "reject": "Atmesti",
+      "link": "Privatumo ir slapukų politika"
+    },
+    "en": {
+      "text": "This website uses technical cookies and third-party services (MailerLite, Calendly) necessary for proper website operation. Analytical or marketing cookies are used only with your consent.",
+      "accept": "Accept",
+      "reject": "Reject",
+      "link": "Privacy and cookies policy"
+    },
+    "ru": {
+      "text": "Этот сайт использует технические cookie и услуги третьих сторон (MailerLite, Calendly), необходимые для правильной работы сайта. Аналитические или маркетинговые cookie используются только с вашего согласия.",
+      "accept": "Согласен",
+      "reject": "Отклонить",
+      "link": "Политика конфиденциальности и cookie"
+    }
+  },
+
+  "footer": {
+    "lt": {
+      "copyright": "© 2026 UAB Subdoma. Visos teisės saugomos.",
+      "links": [
+        { "label": "Privatumo ir slapukų politika", "href": "/kontaktai-ir-privatumas" },
+        { "label": "Kontaktai", "href": "/kontaktai-ir-privatumas" }
+      ]
+    },
+    "en": {
+      "copyright": "© 2026 UAB Subdoma. All rights reserved.",
+      "links": [
+        { "label": "Privacy and cookies policy", "href": "/kontaktai-ir-privatumas" },
+        { "label": "Contacts", "href": "/kontaktai-ir-privatumas" }
+      ]
+    },
+    "ru": {
+      "copyright": "© 2026 UAB Subdoma. Все права защищены.",
+      "links": [
+        { "label": "Политика конфиденциальности и cookie", "href": "/kontaktai-ir-privatumas" },
+        { "label": "Контакты", "href": "/kontaktai-ir-privatumas" }
+      ]
+    }
+  }
+}
