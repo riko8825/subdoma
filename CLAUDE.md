@@ -83,6 +83,31 @@ uab-subdoma-330c/
 8. Production deploy + DNS swap (jei custom domain)
 ```
 
+## EMPIRRA FEEDBACK INTEGRATION
+
+**Client ID:** `31f5d3de-a0a7-4969-8a1d-13859171e3ff`
+**API:** https://empirra-feedback.vercel.app
+**Widget admin:** https://empirra-feedback.vercel.app/admin
+
+Widget įdiegtas visuose 6 HTML failuose (LT/EN/RU × root+src) prieš `</body>`.
+Klientas live svetainėje per floating mygtuką (apačioje dešinėje) palieka pastabas + screenshot.
+
+Kai vartotojas paleidžia `/feedback UAB Subdoma` — Claude pull'ina pending items
+iš `GET /api/agent?action=pending&client_id=31f5d3de-...` ir taiso šio repo failus.
+
+**Commit format (PRIVALOMA):** kiekvienas fix'as commit'inamas su footer'iu:
+
+```
+fix: <comment summary>
+
+feedback-id: <UUID>
+```
+
+Po `git push` — `/feedback UAB Subdoma` automatiškai paskambina
+`POST /api/agent?action=batch-resolve` ir item statusą atnaujina į `resolved`.
+
+**Skill reads:** `~/.claude/skills/feedback/clients.json` (key = `"UAB Subdoma"`).
+
 ## CONTACT
 - Empirra: hello@empirra.com
 - Klientas: info.projekturengimas@gmail.com
