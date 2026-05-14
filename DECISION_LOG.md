@@ -54,3 +54,35 @@ cp src/js/animations.js public/animations.js
 **Priežastis:** `git diff main origin/main --stat` parodė, kad remote'as turėjo tik fragmentinę šios sesijos darbo versiją (be `en/`, `ru/`, `animations.js`, `content.json`). User'is autorizavo force-push.
 
 **Risk:** Jei `8d44aa3` turėjo kliento manualias pataisas — jos prarastos. Reikia patikrinti su klientu, ar jis ką nors keitė GitHub web UI prieš mūsų sesiją.
+
+---
+
+## 2026-05-14 — UX iteracija + SEO/GEO
+
+### D-006: Custom cursor be `mix-blend-mode: difference`
+
+**Sprendimas:** Pašalinti `mix-blend-mode: difference` nuo `.cursor` — pakeista į `opacity: 0.85` gold dot.
+
+**Priežastis:** Vartotojas pranešė, kad hero H1 "rezultato" teksto dalis nesimato. Root cause — `mix-blend-mode: difference` invertuodavo spalvas po cursor'iumi, sukurdamas nekontroliuojamus flip'us virš gold teksto/elementų. Kowalski animacijų auditas tą patį pažymėjo kaip "amateur leak".
+
+**Alternatyvos:** Palikti mix-blend, bet apriboti `isolation` kontekstu — sudėtinga, nenuspėjama virš skirtingų fonų.
+
+### D-007: Sticky action bar — "pasirinkimo juosta" interpretacija
+
+**Sprendimas:** Pridėti bottom sticky CTA bar (`#action-bar`), pasirodantį po hero scroll'o, su "Skambinti" + "Nemokama konsultacija".
+
+**Priežastis:** Vartotojo skundas "nera pasirinkimo juostos". `marketing-analitikas` auditas interpretavo dvejopai: (a) nav per silpna, (b) trūksta nuolatinio CTA / service selektoriaus. Įgyvendinti abu — nav pradinis fonas + sticky action bar + service filter tabs.
+
+### D-008: Service filter tabs su `data-group` (be JS framework)
+
+**Sprendimas:** 5 filter tabs (Visos/Jaunie/Smulkūs/Verslui/Gyvulinink.) filtruoja `.service-card[data-group]` per `is-hidden` klasę. Vanilla JS `serviceFilter()` [src/js/main.js](src/js/main.js).
+
+**Priežastis:** CLAUDE.md NEVER draudžia React/Vue. Kortelės gali priklausyti kelioms grupėms (`data-group="gyvuliai smulkus"`). Paprastas `classList.toggle` užtenka 6 kortelėms.
+
+### D-009: Schema.org placeholder reikšmės — PALIKTOS su rizikos žyma
+
+**Sprendimas:** `seo-specialistas` pridėjo `aggregateRating 4.9/100` ir `postalCode 08105` į `index.html` JSON-LD. Paliktos faile, bet pažymėtos kaip blocker PROJECT_STATUS'e.
+
+**Risk:** `aggregateRating` su išgalvotais skaičiais pažeidžia Google structured data policy (gali sukelti manual action). `postalCode` apytikris. **PRIEŠ production deploy** — klientas turi patvirtinti realius skaičius arba `aggregateRating` blokas pašalinamas.
+
+**Priežastis nepašalinti dabar:** Schema struktūra teisinga, tik reikšmės placeholder. Pašalinti lengva, pridėti atgal su realiais duomenimis — irgi. Sprendimas atidėtas kliento input'ui.

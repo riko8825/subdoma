@@ -11,7 +11,61 @@
     smoothScroll();
     mobileMenu();
     cookieBar();
+    actionBar();
+    faqAccordion();
+    serviceFilter();
     initCalendly();
+  }
+
+  /* Sticky action bar — show after scrolling past hero */
+  function actionBar() {
+    const bar = document.getElementById('action-bar');
+    if (!bar) return;
+
+    const hero = document.querySelector('.hero');
+    const threshold = hero ? hero.offsetHeight * 0.6 : 400;
+
+    let visible = false;
+    const onScroll = () => {
+      const shouldShow = window.scrollY > threshold;
+      if (shouldShow !== visible) {
+        visible = shouldShow;
+        bar.classList.toggle('is-visible', shouldShow);
+      }
+    };
+    window.addEventListener('scroll', onScroll, { passive: true });
+    onScroll();
+  }
+
+  /* FAQ accordion */
+  function faqAccordion() {
+    document.querySelectorAll('.faq__item').forEach(item => {
+      const trigger = item.querySelector('.faq__trigger');
+      if (!trigger) return;
+      trigger.addEventListener('click', () => {
+        const isOpen = item.classList.toggle('is-open');
+        trigger.setAttribute('aria-expanded', String(isOpen));
+      });
+    });
+  }
+
+  /* Service grid filter tabs */
+  function serviceFilter() {
+    const tabs = document.querySelectorAll('[data-filter]');
+    if (!tabs.length) return;
+    const cards = document.querySelectorAll('.service-card[data-group]');
+
+    tabs.forEach(tab => {
+      tab.addEventListener('click', () => {
+        const filter = tab.dataset.filter;
+        tabs.forEach(t => t.classList.toggle('is-active', t === tab));
+        cards.forEach(card => {
+          const groups = (card.dataset.group || '').split(' ');
+          const show = filter === 'all' || groups.includes(filter);
+          card.classList.toggle('is-hidden', !show);
+        });
+      });
+    });
   }
 
   /* Copyright year */
