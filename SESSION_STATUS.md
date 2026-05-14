@@ -1,8 +1,40 @@
 # SESSION_STATUS — UAB Subdoma
 
-## Paskutinė sesija: 2026-05-14 #02
+## Paskutinė sesija: 2026-05-14 #03
 
 ### Ką padarėme
+
+**Empirra Feedback OS integracija — naujas klientas onboard'intas:**
+- Klientas užregistruotas Feedback OS Supabase (`add-client` script) — `client_id: 31f5d3de-a0a7-4969-8a1d-13859171e3ff`
+- Widget `<script>` embed įdiegtas visuose 6 HTML failuose (LT/EN/RU × root+src) prieš `</body>` — commit `ebea487`
+- `~/.claude/skills/feedback/clients.json` — pridėtas `"UAB Subdoma"` įrašas
+- Projekto `CLAUDE.md` — pridėta "EMPIRRA FEEDBACK INTEGRATION" sekcija (client_id, commit format, skill instrukcijos)
+
+**Sesijos #02 darbas commit'intas:**
+- Commit `18bba00` — 11 failų, +1644 / -330 (kodas + docs, buvo uncommitted nuo #02)
+
+**Vercel deploy sutvarkytas (carry-over blocker iš #01/#02 išspręstas):**
+- Nustatyta: `uab-subdoma-330c.vercel.app` niekada neegzistavo — tikrasis Vercel projektas = `subdoma`, live URL = `https://subdoma.vercel.app`
+- Repo linkuotas prie Vercel projekto per CLI (`vercel link`), deploy'inta į production
+- **Root cause fix** — `vercel.json` pridėtas `"outputDirectory": "."`. Be jo Vercel laikė `public/` output root'u (nes katalogas egzistuoja) → `index.html` + `en/` + `ru/` grąžino 404. Commit `01a2dd4`
+- `.gitignore` — pridėtas `.vercel` (Vercel CLI artifact)
+
+**DB domain mismatch fix:**
+- `add-client` įvedė `domain: uab-subdoma-330c.vercel.app`, faktinis URL = `subdoma.vercel.app` → Origin check fail
+- Supabase `feedback_clients.domain` atnaujintas → `subdoma.vercel.app` (inline Node script per empirra-feedback env)
+
+**E2E verify:**
+- Visi puslapiai LT/EN/RU + assets → HTTP 200 (curl)
+- Test submit per `Origin: https://subdoma.vercel.app` → HTTP 201 (item `a1fbe566-...`)
+- `/feedback` skill `pending.mjs` → matė test item
+- `resolve.mjs` → test item resolved (commit_sha `01a2dd4`), backlog švarus
+
+**Memory:**
+- Sukurtas `project_feedback_os.md` + pointer'is MEMORY.md indekse
+
+---
+
+### Istorinė: sesija #02 (2026-05-14)
 
 **3 paraleliniai auditai (frontend + animations + UX):**
 - `frontend-revizorius` — nav matomumas, spacing, empty space audit (top 10 problemų)
@@ -87,23 +119,23 @@
 
 ### Kas liko / nepatvirtinta
 
-- **EN/RU NESINCHRONIZUOTI su LT** — VISI šios sesijos pakeitimai (sticky action bar, FAQ accordion, service filter tabs, hero panel, SEO meta, schema FAQPage/GeoCoordinates, animacijų fix'ai) pritaikyti tik LT `index.html`. `en/index.html` (584) ir `ru/index.html` (582) liko sena versija — kalbų variantai dabar nesutampa. **Aukščiausias prioritetas.**
-- **Browser test po iter 2 neatliktas** — "rezultato" teksto fix (split-word overflow:visible) ir lag fix (cursor mix-blend, scrub removal) NEpatvirtinti vizualiai. Vartotojas atidarė naršyklę, bet nepatvirtino, ar problema dingo.
-- **`aggregateRating 4.9/100` + `postalCode 08105`** — placeholder reikšmės schema.org JSON-LD `index.html`. Fake rating gali pažeisti Google structured data policy. Reikia kliento patvirtinimo arba pašalinti prieš production.
-- **Vercel live URL nepatikrintas** — `https://uab-subdoma-330c.vercel.app/` deploy state nepatvirtintas (carry-over iš #01)
-- **`og-image.jpg` (1200×630) NĖRA** — visi 3 HTML rodo į `/public/og-image.jpg`, social tinklai gaus 404
-- **`/privatumas/` puslapis NĖRA** — footer + cookie bar linkai veda į 404
-- **`apple-touch-icon.png` NĖRA** — HTML referencas yra, failas trūksta
-- **EN/RU vertimai mano rankiniai** — be native speaker review
-- **Inline `style` atributai** keliose vietose pažeidžia CLAUDE.md NEVER (eyebrow centered, section-head margin-inline:auto)
+- **Widget submit per NARŠYKLĘ ant `subdoma.vercel.app` nepatikrintas** — E2E verify atliktas tik per curl (Origin header rankiniu būdu). Vartotojo screenshot rodė tik localhost (`127.0.0.1:5500`), kuris by design fail'ina Origin check. Faktinis floating mygtukas → klikas → submit per live domeną dar nepatvirtintas vizualiai.
+- **EN/RU NESINCHRONIZUOTI su LT** — #02 pakeitimai (sticky action bar, FAQ, service filter, hero panel, SEO meta, schema) tik LT. Widget įdiegtas ir į EN/RU, bet patys puslapiai vis tiek desync. **Aukščiausias prioritetas.**
+- **Browser test po iter 2 neatliktas** — "rezultato" teksto fix + lag fix NEpatvirtinti vizualiai (carry-over #02).
+- **`aggregateRating 4.9/100` + `postalCode 08105`** — placeholder reikšmės schema.org JSON-LD. Fake rating = Google policy rizika. Reikia kliento input.
+- **`og-image.jpg` (1200×630) NĖRA** — visi 3 HTML rodo į `/public/og-image.jpg`, social 404.
+- **`/privatumas/` puslapis NĖRA** — footer + cookie bar linkai veda į 404.
+- **`apple-touch-icon.png` NĖRA** — HTML referencas yra, failas trūksta.
+- **EN/RU vertimai mano rankiniai** — be native speaker review.
+- **Inline `style` atributai** keliose vietose pažeidžia CLAUDE.md NEVER.
 
 ### Kitas žingsnis
 
-1. **Sinchronizuoti EN/RU su LT** — perkelti sticky action bar, FAQ accordion, service filter tabs, hero panel, SEO meta tags, schema papildymus (su EN/RU vertimais) į `en/index.html` ir `ru/index.html`. CSS/JS jau bendri (public/), tik HTML reikia.
-2. **Patvirtinti iter 2 fix'us naršyklėje** — "rezultato" tekstas pilnai matomas, lag dingo. Jei lag liko — pridėti RAF throttling service-card tilt + magnetic mousemove.
-3. **Schema placeholder sprendimas** — klientas patvirtina `postalCode` + ar yra realūs reviews `aggregateRating`'ui, arba pašalinti `aggregateRating` bloką.
-4. **Patikrinti Vercel deploy state** — `https://uab-subdoma-330c.vercel.app/` + 3 lang variantai.
-5. **Sukurti `/privatumas/` + og-image.jpg** (content.json `privacy.*` jau paruoštas).
+1. **Patvirtinti widget submit per naršyklę** — atidaryti `https://subdoma.vercel.app` (incognito), spausti floating mygtuką → elementą → įvesti test pastabą → Send. Patikrinti ar 201 (ne "Network issue"). Tada `/feedback UAB Subdoma` turi parodyti item.
+2. **Sinchronizuoti EN/RU su LT** — perkelti sticky action bar, FAQ, service filter, hero panel, SEO meta, schema papildymus (su EN/RU vertimais) į `en/index.html` ir `ru/index.html`.
+3. **Patvirtinti iter 2 fix'us naršyklėje** — "rezultato" matomas, lag dingo. Jei lag liko — RAF throttling tilt + magnetic.
+4. **Schema placeholder sprendimas** — klientas patvirtina `postalCode` + `aggregateRating`, arba pašalinti rating bloką.
+5. **Sukurti `/privatumas/` + og-image.jpg** (content.json `privacy.*` paruoštas).
 
 ## Istorija
 
@@ -111,3 +143,4 @@
 |---|------|--------|-------|-------------|
 | 01 | 2026-05-13 | Scaffold mapping + content extraction + premium landing rebuild (LT/EN/RU) + SEO + deploy | 7/10 | 70% |
 | 02 | 2026-05-14 | 3 auditai (frontend/animations/UX) + spacing fix + sticky CTA bar + FAQ + service filter + hero panel + cursor/lag bug fix + SEO/GEO (21 pakeitimas) — tik LT | 7/10 | 62% |
+| 03 | 2026-05-14 | Feedback OS integracija (client onboard + widget embed 6 HTML) + #02 darbo commit + Vercel deploy fix (outputDirectory) + DB domain mismatch fix + E2E verify (curl) | 8/10 | 60% |

@@ -86,3 +86,21 @@ cp src/js/animations.js public/animations.js
 **Risk:** `aggregateRating` su išgalvotais skaičiais pažeidžia Google structured data policy (gali sukelti manual action). `postalCode` apytikris. **PRIEŠ production deploy** — klientas turi patvirtinti realius skaičius arba `aggregateRating` blokas pašalinamas.
 
 **Priežastis nepašalinti dabar:** Schema struktūra teisinga, tik reikšmės placeholder. Pašalinti lengva, pridėti atgal su realiais duomenimis — irgi. Sprendimas atidėtas kliento input'ui.
+
+## 2026-05-14 — Feedback OS integracija + Vercel deploy
+
+### D-010: Vercel `outputDirectory: "."` — eksplicitiškai repo root
+
+**Sprendimas:** `vercel.json` pridėtas `"outputDirectory": "."`.
+
+**Priežastis:** Vercel default'as ("`public` if it exists, or `.`") palaikė `public/` katalogą deploy output root'u, nes jis egzistuoja. Bet šiame projekte `public/` = CSS/JS sync target'ai (kopijos iš `src/`), NE deploy output. Rezultatas — `index.html` + `en/` + `ru/` nebuvo publikuojami, visi puslapiai grąžino 404 (tik `/en/`, `/ru/` redirectai 308, nes katalogai egzistavo, bet failai ne). `vercel.json` jau turėjo `/public/(.*)` header rule — patvirtina, kad `public/` turi būti servinamas kaip svetainės dalis, ne kaip root.
+
+**Alternatyvos:** (a) pervadinti `public/` → `assets/` — palietų sync workflow, package.json script, CLAUDE.md, visus HTML referencus. (b) Pašalinti `public/` ir servinti tiesiai iš `src/` — laužo esamą sync architektūrą. Eksplicitinis `outputDirectory` — vienos eilutės fix be struktūrinių pakeitimų.
+
+### D-011: Feedback OS klientas — vienas client_id, domenas po deploy
+
+**Sprendimas:** UAB Subdoma registruotas Feedback OS su vienu `client_id`. `add-client` įvedė `domain: uab-subdoma-330c.vercel.app`, vėliau pataisyta į faktinį `subdoma.vercel.app` (Supabase row update).
+
+**Priežastis:** `cors.ts domainMatches()` lygina request Origin host su DB `feedback_clients.domain`. Mismatch → 403 `origin_not_allowed` → widget "Network issue". Pamoka: **registruoti klientą TIK po to, kai žinomas tikrasis deploy URL** — kitaip reikia DB update ciklo. Arisa pavyzdys naudoja 2 client_id (canonical + Vercel preview) multi-domain atvejui; UAB Subdoma kol kas turi tik vieną Vercel domeną, todėl vienas client_id pakanka.
+
+**Alternatyvos:** Multi-domain setup (2 client_id) — nereikalingas, kol klientas neturi custom domeno. Pridėti, kai bus DNS swap.
