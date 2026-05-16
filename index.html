@@ -44,7 +44,7 @@
 
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet"/>
 
-<link rel="stylesheet" href="/public/styles.css?v=5"/>
+<link rel="stylesheet" href="/public/styles.css?v=11"/>
 
 <script type="application/ld+json">
 {
@@ -143,7 +143,9 @@
           { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Parama verslui regionuose" } },
           { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Smulkių ir vidutinių ūkių plėtra" } },
           { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Tvarios investicijos į žemės ūkio valdas" } },
-          { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Apsaugos priemonės nuo plėšrūnų" } }
+          { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Apsaugos priemonės nuo plėšrūnų" } },
+          { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Trumposios grandinės parama" } },
+          { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Investicijos į žemės ūkio valdas" } }
         ]
       }
     },
@@ -262,8 +264,6 @@
 
 <div class="scroll-progress" aria-hidden="true"></div>
 
-<div class="cursor" aria-hidden="true"></div>
-<div class="cursor cursor--ring" aria-hidden="true"></div>
 
 <a href="#main" class="visually-hidden" style="position:absolute;left:-9999px;">Praleisti į turinį</a>
 
@@ -271,8 +271,8 @@
   <div class="container">
     <div class="nav__inner">
       <a href="/" class="nav__brand" aria-label="UAB Subdoma">
-        <span class="nav__brand-mark">S</span>
-        <span>UAB Subdoma</span>
+        <img class="nav__brand-mark" src="/public/logo-mark.png" alt="" width="36" height="36" loading="eager" decoding="async"/>
+        <span>Subdoma</span>
       </a>
 
       <nav class="nav__menu" role="navigation" aria-label="Pagrindinė navigacija">
@@ -627,6 +627,30 @@
         </div>
       </a>
 
+      <a href="#trumposios-grandines" class="service-card" data-group="verslas smulkus">
+        <span class="service-card__num">07 — Grandinėms</span>
+        <h3>Trumposios grandinės parama</h3>
+        <p class="service-card__summary">Parama logistikai, gamybai, perdirbimui, prekybos vietų ir mugių kūrimui. Reikalingas bent vienas partneris. Nuo 4 000 VED, visi sektoriai.</p>
+        <div class="service-card__more">
+          <span>Iki 1 500 000 € · 60–100%</span>
+          <svg width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true">
+            <path d="M11.72 15L16.35 10.36c.43-.43.43-1.12 0-1.55L11.72 4.17 10.18 5.72 12.94 8.49H4.17v2.19h8.77l-2.76 2.76L11.72 15z" fill="currentColor"/>
+          </svg>
+        </div>
+      </a>
+
+      <a href="#investicijos-valdas" class="service-card" data-group="verslas smulkus">
+        <span class="service-card__num">08 — Investicijoms</span>
+        <h3>Investicijos į žemės ūkio valdas</h3>
+        <p class="service-card__summary">Parama investicijoms į logistiką, gamybą, perdirbimą — ūkiniai statiniai, įranga, technika, pastatai, infrastruktūra. Nuo 30 000 VED, visi sektoriai.</p>
+        <div class="service-card__more">
+          <span>Iki 1 000 000 € · 40–70%</span>
+          <svg width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true">
+            <path d="M11.72 15L16.35 10.36c.43-.43.43-1.12 0-1.55L11.72 4.17 10.18 5.72 12.94 8.49H4.17v2.19h8.77l-2.76 2.76L11.72 15z" fill="currentColor"/>
+          </svg>
+        </div>
+      </a>
+
     </div>
   </div>
 </section>
@@ -880,6 +904,88 @@
   </div>
 </section>
 
+<section class="service-detail" id="trumposios-grandines">
+  <div class="container">
+    <div class="service-detail__inner">
+      <aside class="service-detail__aside" data-reveal>
+        <div class="service-detail__num">PRIEMONĖ · 07</div>
+        <h2 class="service-detail__title">Trumposios grandinės parama</h2>
+        <p class="service-detail__summary">Parama logistikai, gamybai, perdirbimui, prekybos vietoms ir mugių kūrimui — siekiant sutrumpinti atstumą nuo gamintojo iki vartotojo. Reikalingas bent vienas partneris.</p>
+        <div class="service-detail__chips">
+          <span class="chip">Dotacija iki 1 500 000 €</span>
+          <span class="chip">60–100% intensyvumas</span>
+          <span class="chip">Nuo 4 000 VED</span>
+          <span class="chip">Avansas iki 40%</span>
+        </div>
+        <a href="https://calendly.com/projektai/30min" target="_blank" rel="noopener" class="btn btn--primary">Konsultacija</a>
+      </aside>
+
+      <div class="service-detail__content" data-stagger>
+        <div class="detail-block">
+          <h4>Kam skirta</h4>
+          <p>Fiziniams ar juridiniams asmenims, kurie yra įregistravę žemės ūkio valdą ir ūkininko ūkį, ir vykdo veiklą. Ūkis ir valda turi būti registruoti daugiau nei <strong>1 metus</strong> (fiziniams asmenims), o įmonėms — <strong>pagal veiklos registravimo datą</strong>. Nuo <strong>4 000 VED</strong>. Remiami <strong>visi sektoriai</strong>. <strong>Privalomas bent vienas partneris</strong> (fizinis arba juridinis — atitinkantis pareiškėjo sąlygas).</p>
+        </div>
+        <div class="detail-block">
+          <h4>Ką finansuoja</h4>
+          <p>Investicijos į žemės ūkio produktų logistiką, gamybą ar perdirbimą: ūkiniai statiniai, įranga ir technika, pastatai, infrastruktūra. Ūkininkavimo ir logistikos plėtra, <strong>prekybos vietų ir mugių kūrimo veikla</strong>. Investicijos perkamos <strong>tik naujos</strong>.</p>
+        </div>
+        <div class="detail-block">
+          <h4>Kaip mokama</h4>
+          <p>Trys finansavimo modeliai (visais atvejais PVM nedengiamas):</p>
+          <ul class="detail-list">
+            <li><strong>1 modelis</strong> — iki <strong>150 000 €</strong> be PVM</li>
+            <li><strong>2 modelis</strong> — iki <strong>250 000 €</strong> be PVM</li>
+            <li><strong>3 modelis</strong> — iki <strong>1 500 000 €</strong> be PVM</li>
+          </ul>
+          <p><strong>Avansas</strong> — gali būti prašomas iki <strong>40%</strong> maksimaliai.</p>
+        </div>
+        <div class="detail-block">
+          <h4>Intensyvumas</h4>
+          <p><strong>60–100%</strong> paramos intensyvumas (priklauso nuo pareiškėjo kategorijos, partnerystės struktūros ir investicijų tipo). <strong>PVM</strong> nedengiamas paramos lėšomis.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="service-detail" id="investicijos-valdas">
+  <div class="container">
+    <div class="service-detail__inner">
+      <aside class="service-detail__aside" data-reveal>
+        <div class="service-detail__num">PRIEMONĖ · 08</div>
+        <h2 class="service-detail__title">Investicijos į žemės ūkio valdas</h2>
+        <p class="service-detail__summary">Parama žemės ūkio produktų logistikai, gamybai, perdirbimui — ūkiniai statiniai, įranga, technika, pastatai, infrastruktūra. Remiami visi sektoriai.</p>
+        <div class="service-detail__chips">
+          <span class="chip">Dotacija iki 1 000 000 €</span>
+          <span class="chip">40–70% intensyvumas</span>
+          <span class="chip">Nuo 30 000 VED</span>
+          <span class="chip">Visi sektoriai</span>
+        </div>
+        <a href="https://calendly.com/projektai/30min" target="_blank" rel="noopener" class="btn btn--primary">Konsultacija</a>
+      </aside>
+
+      <div class="service-detail__content" data-stagger>
+        <div class="detail-block">
+          <h4>Kam skirta</h4>
+          <p>Fiziniams ar juridiniams asmenims, kurie yra įregistravę žemės ūkio valdą ir ūkininko ūkį, ir vykdo veiklą. Ūkis ir valda turi būti registruoti daugiau nei <strong>1 metus</strong> (fiziniams asmenims), o įmonėms — <strong>pagal veiklos registravimo datą</strong>. Nuo <strong>30 000 VED</strong>. Remiami <strong>visi sektoriai</strong>.</p>
+        </div>
+        <div class="detail-block">
+          <h4>Ką finansuoja</h4>
+          <p>Investicijos į žemės ūkio produktų logistiką, gamybą ar perdirbimą: ūkiniai statiniai, įranga ir technika, pastatai, infrastruktūra. Investicijos perkamos <strong>tik naujos</strong>.</p>
+        </div>
+        <div class="detail-block">
+          <h4>Kaip mokama</h4>
+          <p>Dotacija — iki <strong>1 000 000 €</strong> vienam pareiškėjui (visiems, išskyrus augalininkystę). Supaprastintos versijos atveju — <strong>80 000 €</strong> (tik augalininkystei). Avansas nemokamas. Pasirenkamas išmokėjimo būdas — sąskaitų apmokėjimas arba kompensavimas.</p>
+        </div>
+        <div class="detail-block">
+          <h4>Intensyvumas</h4>
+          <p><strong>40–70%</strong> paramos intensyvumas (priklauso nuo pareiškėjo kategorijos ir investicijų tipo). <strong>PVM</strong> nedengiamas paramos lėšomis.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
 <!-- ==================== FAQ ==================== -->
 <section class="faq" id="faq" aria-labelledby="faq-title">
   <div class="container container--narrow">
@@ -1077,7 +1183,7 @@
 <!-- ==================== SCRIPTS ==================== -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js" defer></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js" defer></script>
-<script src="/public/animations.js?v=3" defer></script>
+<script src="/public/animations.js?v=4" defer></script>
 <script src="/public/main.js?v=3" defer></script>
 
 <!-- Empirra Feedback Widget -->

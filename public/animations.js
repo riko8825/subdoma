@@ -31,7 +31,6 @@
     parallaxHero();
     serviceCardsStagger();
     scrollProgressBar();
-    if (isDesktop) customCursor();
     magneticButtons();
     navScrollState();
   }
@@ -278,34 +277,6 @@
         end: 'bottom bottom',
         scrub: 0.3
       }
-    });
-  }
-
-  /* ---------- Custom cursor ---------- */
-  function customCursor() {
-    const dot = document.querySelector('.cursor');
-    const ring = document.querySelector('.cursor--ring');
-    if (!dot || !ring) return;
-
-    const xDot = gsap.quickTo(dot, 'x', { duration: 0.12, ease: 'power3.out' });
-    const yDot = gsap.quickTo(dot, 'y', { duration: 0.12, ease: 'power3.out' });
-    const xRing = gsap.quickTo(ring, 'x', { duration: 0.35, ease: 'power3.out' });
-    const yRing = gsap.quickTo(ring, 'y', { duration: 0.35, ease: 'power3.out' });
-
-    window.addEventListener('mousemove', (e) => {
-      xDot(e.clientX); yDot(e.clientY);
-      xRing(e.clientX); yRing(e.clientY);
-    });
-
-    document.querySelectorAll('a, button, [role="button"], .service-card, .step, .feature-card').forEach(el => {
-      el.addEventListener('mouseenter', () => {
-        dot.classList.add('is-hover');
-        ring.classList.add('is-hover');
-      });
-      el.addEventListener('mouseleave', () => {
-        dot.classList.remove('is-hover');
-        ring.classList.remove('is-hover');
-      });
     });
   }
 

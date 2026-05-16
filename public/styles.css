@@ -391,15 +391,14 @@ section {
 .nav__brand-mark {
   width: 36px;
   height: 36px;
-  border-radius: 50%;
-  background: linear-gradient(135deg, var(--gold-bright), var(--gold-deep));
-  display: grid;
-  place-items: center;
-  color: var(--bg);
-  font-weight: 600;
-  font-size: 14px;
-  font-family: var(--font-body);
-  box-shadow: 0 0 0 1px var(--gold-line), 0 4px 12px -4px var(--gold-glow);
+  display: block;
+  object-fit: contain;
+  filter: brightness(0) saturate(100%) invert(72%) sepia(35%) saturate(450%) hue-rotate(5deg) brightness(92%) contrast(88%) drop-shadow(0 2px 8px var(--gold-glow));
+  transition: filter 200ms ease, transform 200ms ease;
+}
+
+.nav__brand:hover .nav__brand-mark {
+  transform: rotate(-6deg) scale(1.05);
 }
 
 .nav__menu {
@@ -1277,6 +1276,34 @@ section {
 
 .detail-block strong { color: var(--text); }
 
+.detail-list {
+  list-style: none;
+  padding: 0;
+  margin: var(--s-3) 0;
+  display: flex;
+  flex-direction: column;
+  gap: var(--s-2);
+}
+
+.detail-list li {
+  font-size: var(--fs-base);
+  line-height: 1.6;
+  color: var(--text-soft);
+  padding-left: var(--s-4);
+  position: relative;
+}
+
+.detail-list li::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0.7em;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--gold);
+}
+
 /* ---------- 13. MINI QUIZ CTA ---------- */
 .quiz {
   padding-block: var(--s-7);
@@ -1669,43 +1696,7 @@ section {
   box-shadow: 0 0 60px var(--gold-glow);
 }
 
-/* Custom cursor (desktop only) */
-@media (hover: hover) and (pointer: fine) {
-  body { cursor: none; }
-  a, button, [role="button"], input, textarea, select { cursor: none; }
-
-  .cursor {
-    position: fixed;
-    top: 0; left: 0;
-    width: 6px;
-    height: 6px;
-    background: var(--gold);
-    border-radius: 50%;
-    pointer-events: none;
-    z-index: 9999;
-    transform: translate(-50%, -50%);
-    transition: width 0.25s var(--ease-out), height 0.25s var(--ease-out), opacity 0.2s var(--ease-out);
-    opacity: 0.85;
-  }
-
-  .cursor--ring {
-    position: fixed;
-    top: 0; left: 0;
-    width: 32px;
-    height: 32px;
-    border: 1px solid rgba(198, 169, 107, 0.5);
-    border-radius: 50%;
-    pointer-events: none;
-    z-index: 9998;
-    transform: translate(-50%, -50%);
-    transition: width 0.35s var(--ease-out), height 0.35s var(--ease-out), border-color 0.25s var(--ease-out), opacity 0.2s var(--ease-out);
-  }
-
-  .cursor.is-hover { width: 0; height: 0; opacity: 0; }
-  .cursor--ring.is-hover { width: 56px; height: 56px; border-color: var(--gold-bright); }
-}
-
 /* Print */
 @media print {
-  .nav, .cookie-bar, .cursor, .cursor--ring, .scroll-progress, .loader { display: none !important; }
+  .nav, .cookie-bar, .scroll-progress, .loader { display: none !important; }
 }
