@@ -1,5 +1,67 @@
 # DECISION_LOG — UAB Subdoma
 
+## 2026-05-16 — Sesija #04: logo, cursor, priemonės 07/08, widget bug fix
+
+### D-008: Logo įdiegimas per PNG + Python crop, ne SVG perpiešimas
+
+**Sprendimas:** Naudoti klientų pateiktą PNG kaip `<img>` su CSS filter (juodas → gold), o ne perpiešti į SVG.
+
+**Konteksis:**
+- Klientas atsiuntė 500×500 PNG (juodas hexagon mark + "SUBDOMA" wordmark, balta fone)
+- Bandžiau perpiešti SVG hexagon + inner pattern — geometrija per 2 iteracijas buvo bloga (vartotojas: "neatitinka logo ka turime")
+
+**Alternatyvos:**
+- SVG perpiešimas — geriausia kokybė + auto-rekoloravimas per `currentColor`, BET reikia tikslios geometrijos arba SVG/AI/PDF originalo (kurio nebuvo)
+- PNG `<img>` su CSS filter — naudoja TIKRĄ klientų geometriją, bet:
+  - PNG turi baltą foną → filter pavers visa kvadratu (bug pirmoje iteracijoje)
+  - Wordmark "SUBDOMA" yra PNG viduje → dvigubas tekstas šalia HTML wordmark
+
+**Pagrindimas:** Python script (`scripts/process_logo.py`, Pillow) automatizavo PNG apdorojimą:
+1. Iškirpo tik hexagon mark (top portion bbox detection)
+2. Baltus pixel'ius pakeitė į transparent
+3. Įcentravo į kvadratą
+4. Output: `public/logo-mark.png` (126×126, transparent bg)
+
+CSS filter chain juodą paverčia į gold `#C6A96B`. Veikia ant tamsaus nav fono. Filter chain ne 100% tikslus gold atspalvis, bet skirtumas mažas.
+
+**Reusable:** Klientas gali atsiųsti naują logo versiją ateityje, ir scriptas vėl iškirps tik mark dalį.
+
+---
+
+### D-009: Empirra Feedback widget screenshot capture fix
+
+**Sprendimas:** `empirra-feedback/public/widget.js` html2canvas params perdaryti — `document.documentElement` target + `scrollX/scrollY` (su minusu) vietoj `document.body` + `x/y` crop.
+
+**Konteksis:** Bug — feedback screenshot visada rodė hero, ne tikrą vartotojo scroll poziciją. Klientas (UAB Subdoma) ir kiti widget naudotojai negaudavo tikslo screenshot konteksto.
+
+**Root cause:** `html2canvas(document.body, { windowWidth, windowHeight, x: scrollX, y: scrollY, width: innerWidth, height: innerHeight })` — html2canvas šituos params su `document.body` target'u interpretuoja taip, kad rendering visada pradedamas nuo y=0 dokumento, ignoruojant `x/y` (kurie yra crop iš ready canvas, ne render offset).
+
+**Alternatyvos atmestos:**
+- Native browser `getDisplayMedia()` — reikalauja vartotojo permission, blogas UX
+- Server-side puppeteer screenshot — reikia keisti widget į pranešimą serveriui, ne client-side capture
+- Patikslinti `document.body` ir paduoti `scrollX/scrollY` — ištestuota, neveikia (body element nepriima šių params kaip render offset)
+
+**Pagrindimas:** `documentElement` target + `scrollX: -window.scrollX, scrollY: -window.scrollY` yra html2canvas oficialiai dokumentuotas būdas viewport-only screenshot'ams. Pridėtas auto-detect page background color (buvo hardcoded `#ffffff`, lūždavo ant dark theme svetainių kaip Subdoma).
+
+**Testavimas:** Sukurtas E2E testas (`scripts/test-widget-screenshot.mjs` su puppeteer-core, naudoja sistemos Chrome). Pixel-compared light theme + dark theme — abu PASS. Deployed į `empirra-feedback main` (commit `976e319`).
+
+---
+
+### D-010: Custom cursor pašalintas pagal kliento prašymą
+
+**Sprendimas:** Pašalinti pilnai (HTML divs + CSS @media block + JS funkcija), grąžinti default OS cursor.
+
+**Konteksis:** Klientas: "nuo peles ta auskini burbula nuimk. kad paprastai butu".
+
+**Alternatyvos:**
+- Palikti, bet su switch'u (klientas vėliau gali norėti) — overengineering, klientas aiškiai pasakė "paprastai"
+- Tik išjungti per `display: none` — visi resursai vis tiek užsikrauna, JS vis tiek registruoja event listener'ius
+- Pilnas removal — švarus, mažesnis JS bundle (28 eil. mažiau), mažiau event listener'ių, default cursor patikimas
+
+**Pagrindimas:** Custom cursor'ai dažnai sukelia problemas (accessibility, hover state confusion, performance). Klientas turėjo aiškią opiniją. Geriausia praktika — gerbti kliento sprendimą be ginčo.
+
+---
+
 ## 2026-05-13 — Premium tier rebuild architektūra
 
 ### D-001: Animacijų biblioteka = GSAP 3.12 + ScrollTrigger

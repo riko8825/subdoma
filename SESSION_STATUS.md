@@ -1,8 +1,71 @@
 # SESSION_STATUS — UAB Subdoma
 
-## Paskutinė sesija: 2026-05-14 #03
+## Paskutinė sesija: 2026-05-16 #04
 
 ### Ką padarėme
+
+**Logo integracija (klientų tikras logo):**
+- Klientas atsiuntė PNG (500×500, juodas hexagon mark + "SUBDOMA" wordmark, balta fone)
+- Python script `scripts/process_logo.py` (Pillow) iškirpo tik hexagon mark, baltus pixel'ius pakeitė į transparent → `public/logo-mark.png` (126×126, transparent bg)
+- Nav `S` raidė pakeista į `<img src="/public/logo-mark.png">` visuose 6 HTML (LT/EN/RU × src + root)
+- CSS filter chain juodą logo paverčia į gold `#C6A96B` + drop-shadow + hover rotate -6° + scale 1.05
+- Wordmark "UAB Subdoma" → "Subdoma" (vizualiai; `aria-label` palikta pilna)
+- Pradinė SVG rekonstrukcija buvo bloga (mano spėjimas) — 2 iteracijos prieš teisingą sprendimą
+
+**Custom cursor pašalintas pilnai (klientas: "kad paprastai būtų"):**
+- HTML: 2 `<div class="cursor">` ištrinti iš 3 HTML × src + root = 6 failų
+- CSS: visas `@media (hover: hover) and (pointer: fine)` block'as (35 eil.) + cursor referencijos `@media print`
+- JS: `customCursor()` funkcija (28 eil.) + jos call'as
+- Grąžintas default OS cursor
+
+**Pridėtos 2 naujos ES paramos priemonės (tik LT, EN/RU lieka desync):**
+- **07 Trumposios grandinės parama** — service-card + service-detail blokas + Schema.org Offer
+  - Nauja `.detail-list` CSS klasė bullet list'ui (gold dot) — 3 finansavimo modeliai (150K/250K/1.5M €)
+  - Privalomas bent vienas partneris, avansas iki 40%, 60–100% intensyvumas
+- **08 Investicijos į žemės ūkio valdas** — service-card + service-detail blokas + Schema.org Offer
+  - Dotacija iki 1M € (visiems, išskyrus augalininkystę), supaprastinta versija augalininkystei 80K €
+  - 40–70% intensyvumas, nuo 30 000 VED
+
+**Empirra Feedback widget bug fix (cross-project work):**
+- Bug: feedback screenshot visada rodė hero, ne tikrą vartotojo scroll poziciją
+- Root cause `empirra-feedback/public/widget.js:450` — `html2canvas(document.body, { x, y })` parametrai nesuderinami; rendering visada nuo y=0
+- Fix: `html2canvas(document.documentElement, { scrollX: -window.scrollX, scrollY: -window.scrollY })` + auto-detect page background color (buvo hardcoded `#ffffff`, lūždavo ant tamsių klientų svetainių)
+- E2E testas sukurtas: `scripts/test-widget-screenshot.mjs` su puppeteer-core (Chrome via `C:\Program Files\Google\Chrome\Application\chrome.exe`)
+- Verifikacija: pixel-compared light theme (test.html) + dark theme (test-dark.html — Subdoma stiliumi) — abu PASS
+- Deployed: commit `976e319` push'inta į `empirra-feedback main` → Vercel auto-deploy + 5 min CDN cache TTL → UAB Subdoma automatiškai gauna fix
+
+**Cache-buster bumps:**
+- styles.css: v=5 → v=11 (per sesiją 6 bump'ai)
+- animations.js: v=3 → v=4 (cursor removal)
+
+**Deploy:**
+- Subdoma commit `cfc1637` — 13 failų, +381 / -184, push origin/main
+- Empirra Feedback commit `976e319` — 6 failų, +795 / -4, push origin/main
+
+### Kas liko / nepatvirtinta
+
+- **EN/RU desync auga** — #02 pakeitimai (sticky action bar, FAQ, service filter, hero panel, SEO meta, schema) + #04 priemonės 07/08 + logo wordmark dabar **5 LT-only funkcijos**. Aukščiausias prioritetas. EN/RU funkciškai atsilieka.
+- **Widget submit per naršyklę nepatikrintas (iš #03)** — bet dabar widget screenshot bug ištaisytas (#04), reikia re-test su nauja widget versija per `https://subdoma.vercel.app`. Per ~5 min nuo deploy CDN cache atsinaujins.
+- **Browser test po logo + cursor + 07/08 neatliktas** — sesija #04 darbas patikrintas tik per `curl` + dev server statiniu rendering. Faktinis vizualinis QA per `https://subdoma.vercel.app` po deploy nepadarytas.
+- **`aggregateRating 4.9/100` + `postalCode 08105`** (carry-over #02) — placeholder reikšmės schema.org JSON-LD. Fake rating = Google policy rizika. Reikia kliento input.
+- **`og-image.jpg` (1200×630) NĖRA** (carry-over #02) — visi 3 HTML rodo į `/public/og-image.jpg`, social 404. **Galimas šaltinis:** klientas atsiuntė `public/logo.png` (500×500), reikia perscale + pridėti wordmark/tagline tekstą.
+- **`/privatumas/` puslapis NĖRA** (carry-over #02) — footer + cookie bar linkai veda į 404.
+- **`apple-touch-icon.png` NĖRA** (carry-over #02).
+- **EN/RU vertimai mano rankiniai** (carry-over) — be native speaker review.
+- **Inline `style` atributai** keliose vietose pažeidžia CLAUDE.md NEVER (carry-over #02).
+- **Favicon dar senas** — `public/favicon.svg` rodo gold circle + `S` raidę (ne naują hexagon mark). Logo įdiegtas tik nav, favicon ne.
+
+### Kitas žingsnis
+
+1. **Re-test widget screenshot per `https://subdoma.vercel.app`** — incognito, scroll žemyn į priemones, paspausti feedback, palikti komentarą. Admin'e screenshot turi rodyti scroll vietą (ne hero).
+2. **Sinchronizuoti EN/RU su LT** (BLOCKER — 5+ funkcijos atsilieka) — perkelti #02 + #04 darbą (FAQ, sticky CTA bar, service filter, hero panel, SEO meta, schema, priemonės 07/08, logo wordmark) į `en/index.html` ir `ru/index.html` su vertimais.
+3. **Vizualinis QA per `https://subdoma.vercel.app`** — patikrinti logo gold spalvą, cursor pašalinimą, priemonių 07/08 atvaizdavimą realiame ekrane.
+4. **Favicon atnaujinimas** — perdaryti `public/favicon.svg` su nauja hexagon geometrija (gold ant juodo).
+5. **Schema placeholder sprendimas** — klientas patvirtina `postalCode` + `aggregateRating`, arba pašalinti rating bloką.
+
+---
+
+### Istorinė: sesija #03 (2026-05-14)
 
 **Empirra Feedback OS integracija — naujas klientas onboard'intas:**
 - Klientas užregistruotas Feedback OS Supabase (`add-client` script) — `client_id: 31f5d3de-a0a7-4969-8a1d-13859171e3ff`
@@ -35,6 +98,7 @@
 ---
 
 ### Istorinė: sesija #02 (2026-05-14)
+> _(Sesija #03 dabar yra istorinė — žr. aukščiau)_
 
 **3 paraleliniai auditai (frontend + animations + UX):**
 - `frontend-revizorius` — nav matomumas, spacing, empty space audit (top 10 problemų)
@@ -117,26 +181,6 @@
 **Memory:**
 - Sukurti 5 memory failai: MEMORY.md (index), project_state.md, project_sync_workflow.md, project_open_questions.md, reference_intake_submission.md, feedback_public_sync_header.md
 
-### Kas liko / nepatvirtinta
-
-- **Widget submit per NARŠYKLĘ ant `subdoma.vercel.app` nepatikrintas** — E2E verify atliktas tik per curl (Origin header rankiniu būdu). Vartotojo screenshot rodė tik localhost (`127.0.0.1:5500`), kuris by design fail'ina Origin check. Faktinis floating mygtukas → klikas → submit per live domeną dar nepatvirtintas vizualiai.
-- **EN/RU NESINCHRONIZUOTI su LT** — #02 pakeitimai (sticky action bar, FAQ, service filter, hero panel, SEO meta, schema) tik LT. Widget įdiegtas ir į EN/RU, bet patys puslapiai vis tiek desync. **Aukščiausias prioritetas.**
-- **Browser test po iter 2 neatliktas** — "rezultato" teksto fix + lag fix NEpatvirtinti vizualiai (carry-over #02).
-- **`aggregateRating 4.9/100` + `postalCode 08105`** — placeholder reikšmės schema.org JSON-LD. Fake rating = Google policy rizika. Reikia kliento input.
-- **`og-image.jpg` (1200×630) NĖRA** — visi 3 HTML rodo į `/public/og-image.jpg`, social 404.
-- **`/privatumas/` puslapis NĖRA** — footer + cookie bar linkai veda į 404.
-- **`apple-touch-icon.png` NĖRA** — HTML referencas yra, failas trūksta.
-- **EN/RU vertimai mano rankiniai** — be native speaker review.
-- **Inline `style` atributai** keliose vietose pažeidžia CLAUDE.md NEVER.
-
-### Kitas žingsnis
-
-1. **Patvirtinti widget submit per naršyklę** — atidaryti `https://subdoma.vercel.app` (incognito), spausti floating mygtuką → elementą → įvesti test pastabą → Send. Patikrinti ar 201 (ne "Network issue"). Tada `/feedback UAB Subdoma` turi parodyti item.
-2. **Sinchronizuoti EN/RU su LT** — perkelti sticky action bar, FAQ, service filter, hero panel, SEO meta, schema papildymus (su EN/RU vertimais) į `en/index.html` ir `ru/index.html`.
-3. **Patvirtinti iter 2 fix'us naršyklėje** — "rezultato" matomas, lag dingo. Jei lag liko — RAF throttling tilt + magnetic.
-4. **Schema placeholder sprendimas** — klientas patvirtina `postalCode` + `aggregateRating`, arba pašalinti rating bloką.
-5. **Sukurti `/privatumas/` + og-image.jpg** (content.json `privacy.*` paruoštas).
-
 ## Istorija
 
 | # | Data | Sesija | Score | Pabaigtumas |
@@ -144,3 +188,4 @@
 | 01 | 2026-05-13 | Scaffold mapping + content extraction + premium landing rebuild (LT/EN/RU) + SEO + deploy | 7/10 | 70% |
 | 02 | 2026-05-14 | 3 auditai (frontend/animations/UX) + spacing fix + sticky CTA bar + FAQ + service filter + hero panel + cursor/lag bug fix + SEO/GEO (21 pakeitimas) — tik LT | 7/10 | 62% |
 | 03 | 2026-05-14 | Feedback OS integracija (client onboard + widget embed 6 HTML) + #02 darbo commit + Vercel deploy fix (outputDirectory) + DB domain mismatch fix + E2E verify (curl) | 8/10 | 60% |
+| 04 | 2026-05-16 | Logo įdiegimas (PNG crop per Python + gold filter) + custom cursor pašalinimas + 2 priemonės (07 Trumposios grandinės + 08 Investicijos į valdas, tik LT) + cross-project bug fix (Empirra Feedback widget screenshot scroll position + E2E test su puppeteer-core) | 7/10 | 63% |
