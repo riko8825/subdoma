@@ -1495,6 +1495,43 @@ section {
   color: var(--text-mute);
 }
 
+.footer__social {
+  display: flex;
+  gap: var(--s-3);
+  align-items: center;
+}
+.footer__social-link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  border: 1px solid var(--gold-line);
+  color: var(--gold);
+  background: transparent;
+  transition: color var(--dur) var(--ease-out),
+              border-color var(--dur) var(--ease-out),
+              background-color var(--dur) var(--ease-out);
+}
+.footer__social-link:hover,
+.footer__social-link:focus-visible {
+  color: var(--gold-bright);
+  border-color: var(--gold-bright);
+  background-color: var(--gold-glow);
+}
+.footer__social-link svg {
+  width: 18px;
+  height: 18px;
+  fill: currentColor;
+}
+
+@media (max-width: 600px) {
+  .footer__inner { justify-content: center; text-align: center; }
+  .footer__links { justify-content: center; }
+  .footer__social { justify-content: center; }
+}
+
 /* ---------- 16. COOKIE BAR ---------- */
 /* ---------- FAQ Accordion ---------- */
 .faq__list {
