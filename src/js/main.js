@@ -66,9 +66,14 @@
 
   /* FAQ accordion */
   function faqAccordion() {
-    document.querySelectorAll('.faq__item').forEach(item => {
+    document.querySelectorAll('.faq__item').forEach((item, idx) => {
       const trigger = item.querySelector('.faq__trigger');
-      if (!trigger) return;
+      const answer = item.querySelector('.faq__answer');
+      if (!trigger || !answer) return;
+      const answerId = answer.id || `faq-answer-${idx + 1}`;
+      answer.id = answerId;
+      answer.setAttribute('role', 'region');
+      trigger.setAttribute('aria-controls', answerId);
       trigger.addEventListener('click', () => {
         const isOpen = item.classList.toggle('is-open');
         trigger.setAttribute('aria-expanded', String(isOpen));
@@ -85,7 +90,13 @@
     tabs.forEach(tab => {
       tab.addEventListener('click', () => {
         const filter = tab.dataset.filter;
-        tabs.forEach(t => t.classList.toggle('is-active', t === tab));
+        tabs.forEach(t => {
+          const isActive = t === tab;
+          t.classList.toggle('is-active', isActive);
+          if (t.getAttribute('role') === 'tab') {
+            t.setAttribute('aria-selected', String(isActive));
+          }
+        });
         cards.forEach(card => {
           const groups = (card.dataset.group || '').split(' ');
           const show = filter === 'all' || groups.includes(filter);

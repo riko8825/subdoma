@@ -35,6 +35,8 @@
 <meta name="twitter:image" content="https://uab-subdoma-330c.vercel.app/public/og-image.jpg"/>
 
 <link rel="icon" type="image/svg+xml" href="/public/favicon.svg"/>
+<link rel="apple-touch-icon" href="/public/apple-touch-icon.png"/>
+<link rel="preload" as="image" href="/public/logo-mark.png" fetchpriority="high"/>
 
 <link rel="preconnect" href="https://fonts.googleapis.com"/>
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
@@ -43,7 +45,7 @@
 
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet"/>
 
-<link rel="stylesheet" href="/public/styles.css?v=16"/>
+<link rel="stylesheet" href="/public/styles.css?v=17"/>
 
 <!-- Silktide Consent Manager CSS (preloaded, non-blocking) -->
 <link rel="preload" href="/public/silktide-consent-manager.css" as="style" onload="this.onload=null;this.rel='stylesheet'"/>
@@ -97,13 +99,15 @@ gtag('consent', 'default', {
 </head>
 <body>
 
+<a href="#main" class="visually-hidden">Перейти к содержимому</a>
+
 <div class="loader" aria-hidden="true">
   <div class="loader__mark">S</div>
 </div>
 
 <div class="scroll-progress" aria-hidden="true"></div>
 
-<header class="nav" role="banner">
+<header class="nav">
   <div class="container">
     <div class="nav__inner">
       <a href="/ru/" class="nav__brand" aria-label="UAB Subdoma">
@@ -111,7 +115,7 @@ gtag('consent', 'default', {
         <span>Subdoma</span>
       </a>
 
-      <nav class="nav__menu" role="navigation" aria-label="Главная навигация">
+      <nav class="nav__menu" aria-label="Главная навигация">
         <a href="#services" class="nav__link">Услуги</a>
         <a href="#process" class="nav__link">Как работаем</a>
         <a href="#funding" class="nav__link">Поддержка ЕС</a>
@@ -285,10 +289,10 @@ gtag('consent', 'default', {
 
 <section class="process" id="process">
   <div class="container">
-    <div class="section-head" data-reveal style="margin-inline:auto;text-align:center;">
-      <span class="eyebrow" style="justify-content:center;">Наш процесс</span>
+    <div class="section-head section-head--center" data-reveal>
+      <span class="eyebrow eyebrow--center">Наш процесс</span>
       <h2>Как мы работаем с поддержкой ЕС</h2>
-      <p class="lead" style="margin-inline:auto;">Каждый проект уникален — поэтому работаем поэтапно, ясно и с ориентацией на результат.</p>
+      <p class="lead">Каждый проект уникален — поэтому работаем поэтапно, ясно и с ориентацией на результат.</p>
     </div>
     <div class="process__steps">
       <article class="step" data-reveal>
@@ -407,7 +411,7 @@ gtag('consent', 'default', {
 <section class="quiz" id="quiz">
   <div class="container container--narrow">
     <div class="quiz__card" data-reveal="scale">
-      <span class="eyebrow" style="justify-content:center;margin-bottom:24px;">Бесплатная мини-анкета</span>
+      <span class="eyebrow eyebrow--center eyebrow--mb-lg">Бесплатная мини-анкета</span>
       <h2>Проверьте соответствие за 5 минут</h2>
       <p>Ответьте на несколько коротких вопросов в Telegram мини-анкете и получите чёткий ответ о ваших возможностях получить поддержку ЕС для хозяйства или бизнеса.</p>
       <a href="https://t.me/subdoma_requests_bot" target="_blank" rel="noopener" class="btn btn--primary btn--lg" data-magnetic>Заполнить Telegram мини-анкету
@@ -770,7 +774,7 @@ gtag('consent', 'default', {
     <div class="footer__inner">
       <div class="footer__copy">© <span data-year>2026</span> UAB Subdoma · Все права защищены</div>
       <div class="footer__links">
-        <a href="/privatumas/" class="footer__link">Политика конфиденциальности</a>
+        <a href="/privatumas/" class="footer__link" hreflang="lt" lang="lt" title="Доступно на литовском">Политика конфиденциальности</a>
         <a href="/privatumas/#slapukai" class="footer__link">Cookies</a>
         <a href="#contact" class="footer__link">Контакты</a>
       </div>
@@ -801,8 +805,8 @@ gtag('consent', 'default', {
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js" defer></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js" defer></script>
-<script src="/public/animations.js" defer></script>
-<script src="/public/main.js?v=6" defer></script>
+<script src="/public/animations.js?v=4" defer></script>
+<script src="/public/main.js?v=7" defer></script>
 
 <!-- Silktide Consent Manager -->
 <script defer src="/public/silktide-consent-manager.js"></script>

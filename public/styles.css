@@ -257,9 +257,40 @@ section {
   max-width: 760px;
   margin-bottom: var(--s-6);
 }
+.section-head--center {
+  margin-inline: auto;
+  text-align: center;
+}
+.section-head--center .lead { margin-inline: auto; }
 .section-head .eyebrow { margin-bottom: var(--s-4); }
 .section-head h2 { margin-bottom: var(--s-4); }
 .section-head .lead { margin-top: var(--s-4); }
+
+.eyebrow--center { justify-content: center; }
+.eyebrow--mb-lg { margin-bottom: var(--s-5); }
+
+.visually-hidden {
+  position: absolute !important;
+  width: 1px; height: 1px;
+  padding: 0; margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+.visually-hidden:focus,
+.visually-hidden:focus-visible {
+  position: fixed !important;
+  top: var(--s-3); left: var(--s-3);
+  width: auto; height: auto;
+  padding: var(--s-3) var(--s-4);
+  clip: auto;
+  background: var(--gold);
+  color: var(--bg);
+  border-radius: var(--r);
+  z-index: 9999;
+  font-weight: 600;
+}
 
 /* Decorative divider */
 .divider {
