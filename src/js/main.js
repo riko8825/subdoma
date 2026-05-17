@@ -1,6 +1,7 @@
 /* ============================================================
    UAB Subdoma — Main interactions
-   Nav, mobile menu, cookies, smooth scroll, year, Calendly
+   Nav, mobile menu, smooth scroll, year, Calendly
+   Cookies handled by Silktide Consent Manager (consent-init.js)
    ============================================================ */
 
 (function () {
@@ -10,18 +11,43 @@
     setYear();
     smoothScroll();
     mobileMenu();
-    cookieBar();
     actionBar();
     faqAccordion();
     serviceFilter();
     initCalendly();
+    consentReopen();
   }
 
-  /* Sticky action bar — show after scrolling past hero */
+  /* Open Silktide preferences modal from [data-open-consent] buttons (e.g. privacy page).
+     Silktide v2 doesn't expose a public showPreferences(); we trigger the cookie icon click. */
+  function consentReopen() {
+    const buttons = document.querySelectorAll('[data-open-consent]');
+    if (!buttons.length) return;
+
+    buttons.forEach((btn) => {
+      btn.addEventListener('click', (e) => {
+        e.preventDefault();
+        const icon = document.querySelector('.silktide-cookie-icon, #silktide-cookie-icon-button, [class*="cookie-icon"]');
+        if (icon) {
+          icon.click();
+        } else if (window.silktideConsentManager && typeof window.silktideConsentManager.getInstance === 'function') {
+          const inst = window.silktideConsentManager.getInstance();
+          if (inst && typeof inst.toggleModal === 'function') {
+            if (!inst.preferences) inst.createModal();
+            inst.toggleModal(true);
+          }
+        }
+      });
+    });
+  }
+
+  /* Sticky action bar — show after scrolling past hero.
+     Also lifts WhatsApp FAB so it doesn't overlap the bar. */
   function actionBar() {
     const bar = document.getElementById('action-bar');
     if (!bar) return;
 
+    const fab = document.querySelector('.wa-fab');
     const hero = document.querySelector('.hero');
     const threshold = hero ? hero.offsetHeight * 0.6 : 400;
 
@@ -31,6 +57,7 @@
       if (shouldShow !== visible) {
         visible = shouldShow;
         bar.classList.toggle('is-visible', shouldShow);
+        if (fab) fab.classList.toggle('is-lifted', shouldShow);
       }
     };
     window.addEventListener('scroll', onScroll, { passive: true });
@@ -115,31 +142,6 @@
       burger?.setAttribute('aria-expanded', 'false');
       document.body.style.overflow = '';
     }
-  }
-
-  /* Cookie bar */
-  function cookieBar() {
-    const bar = document.querySelector('.cookie-bar');
-    if (!bar) return;
-
-    const KEY = 'subdoma-cookie-consent';
-    const consent = localStorage.getItem(KEY);
-
-    if (!consent) {
-      setTimeout(() => bar.classList.add('is-visible'), 1800);
-    }
-
-    bar.querySelector('[data-cookie="accept"]')?.addEventListener('click', (e) => {
-      e.preventDefault();
-      localStorage.setItem(KEY, 'accepted');
-      bar.classList.remove('is-visible');
-    });
-
-    bar.querySelector('[data-cookie="reject"]')?.addEventListener('click', (e) => {
-      e.preventDefault();
-      localStorage.setItem(KEY, 'rejected');
-      bar.classList.remove('is-visible');
-    });
   }
 
   /* Calendly inline embed — lazy load on first scroll near contacts */

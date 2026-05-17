@@ -43,7 +43,28 @@
 
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet"/>
 
-<link rel="stylesheet" href="/public/styles.css?v=10"/>
+<link rel="stylesheet" href="/public/styles.css?v=15"/>
+
+<!-- Silktide Consent Manager CSS (preloaded, non-blocking) -->
+<link rel="preload" href="/public/silktide-consent-manager.css" as="style" onload="this.onload=null;this.rel='stylesheet'"/>
+<noscript><link rel="stylesheet" href="/public/silktide-consent-manager.css"/></noscript>
+
+<!-- Google Consent Mode V2 — default deny (GA4 ID įdiegti vėliau) -->
+<script>
+window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('consent', 'default', {
+  analytics_storage: 'denied',
+  ad_storage: 'denied',
+  ad_user_data: 'denied',
+  ad_personalization: 'denied',
+  wait_for_update: 500
+});
+</script>
+<!-- TODO: pridėti GA4, kai klientas duos Measurement ID:
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
+<script>gtag('js', new Date());gtag('config', 'G-XXXXXXXXXX');</script>
+-->
 
 <script type="application/ld+json">
 {
@@ -554,29 +575,32 @@
 <footer class="footer">
   <div class="container">
     <div class="footer__inner">
-      <div class="footer__copy">© <span data-year>2026</span> UAB Subdoma · All rights reserved</div>
+      <div class="footer__copy">© <span data-year>2026</span> UAB Subdoma · All rights reserved · Made by <a href="https://empirra.com" class="footer__credit" target="_blank" rel="noopener">Empirra</a></div>
       <div class="footer__links">
         <a href="/privatumas/" class="footer__link">Privacy policy</a>
-        <a href="/privatumas/#cookies" class="footer__link">Cookies</a>
+        <a href="/privatumas/#slapukai" class="footer__link">Cookies</a>
         <a href="#contact" class="footer__link">Contact</a>
       </div>
     </div>
   </div>
 </footer>
 
-<div class="cookie-bar" role="dialog" aria-label="Cookie notice" aria-live="polite">
-  <p>This website uses technical cookies and third-party services (Calendly) necessary for proper website operation. Analytical or marketing cookies are used only with your consent.</p>
-  <div class="cookie-bar__actions">
-    <a href="#" class="btn btn--primary" data-cookie="accept">Accept</a>
-    <a href="#" class="btn btn--ghost" data-cookie="reject">Reject</a>
-    <a href="/privatumas/" class="link-underline" style="align-self:center;font-size:13px;">Privacy policy</a>
-  </div>
-</div>
-
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js" defer></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js" defer></script>
 <script src="/public/animations.js" defer></script>
-<script src="/public/main.js" defer></script>
+<script src="/public/main.js?v=6" defer></script>
+
+<!-- Silktide Consent Manager -->
+<script defer src="/public/silktide-consent-manager.js"></script>
+<script defer src="/public/consent-init.js"></script>
+
+<!-- WhatsApp FAB -->
+<a href="https://wa.me/37067508128" class="wa-fab" target="_blank" rel="noopener" aria-label="Chat with us on WhatsApp">
+  <span class="wa-fab__pulse" aria-hidden="true"></span>
+  <svg class="wa-fab__icon" viewBox="0 0 32 32" aria-hidden="true" focusable="false">
+    <path d="M16.002 3.2c-7.07 0-12.8 5.73-12.8 12.798 0 2.254.59 4.45 1.71 6.388L3.2 28.8l6.59-1.69a12.78 12.78 0 0 0 6.211 1.586h.006c7.066 0 12.8-5.731 12.8-12.8 0-3.42-1.331-6.633-3.748-9.05A12.71 12.71 0 0 0 16.002 3.2zm0 23.04h-.005a10.63 10.63 0 0 1-5.418-1.484l-.388-.23-4.012 1.03 1.07-3.91-.253-.402a10.62 10.62 0 0 1-1.629-5.66c0-5.87 4.778-10.646 10.646-10.646 2.844 0 5.516 1.108 7.526 3.12a10.57 10.57 0 0 1 3.117 7.531c-.002 5.87-4.78 10.65-10.654 10.65zm5.838-7.974c-.32-.16-1.893-.934-2.187-1.04-.293-.107-.506-.16-.72.16-.213.32-.826 1.04-1.013 1.253-.187.213-.373.24-.693.08-.32-.16-1.352-.498-2.577-1.587-.952-.85-1.595-1.898-1.783-2.218-.187-.32-.02-.493.14-.652.144-.143.32-.373.48-.56.16-.187.213-.32.32-.533.107-.213.053-.4-.027-.56-.08-.16-.72-1.733-.987-2.374-.26-.624-.524-.54-.72-.55l-.613-.011a1.18 1.18 0 0 0-.853.4c-.293.32-1.12 1.094-1.12 2.667 0 1.574 1.146 3.095 1.306 3.308.16.213 2.255 3.443 5.466 4.83.764.33 1.36.527 1.825.674.766.244 1.464.21 2.016.127.615-.092 1.893-.774 2.16-1.52.267-.747.267-1.387.187-1.52-.08-.133-.293-.213-.613-.373z"/>
+  </svg>
+</a>
 
 <!-- Empirra Feedback Widget -->
 <script src="https://empirra-feedback.vercel.app/widget.js" data-client="31f5d3de-a0a7-4969-8a1d-13859171e3ff" defer></script>
