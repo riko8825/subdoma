@@ -1683,12 +1683,15 @@ section {
   .action-bar__ctas .btn--ghost { display: none; }
   .action-bar { padding: var(--s-2) 0; }
 }
+@media (max-width: 480px) {
+  .action-bar__msg { display: none; }
+}
 
 /* ---------- WhatsApp FAB ---------- */
 .wa-fab {
   position: fixed;
   right: 20px;
-  bottom: calc(90px + env(safe-area-inset-bottom, 0px));
+  bottom: calc(60px + env(safe-area-inset-bottom, 0px));
   z-index: 90;
   width: 56px;
   height: 56px;
@@ -1748,19 +1751,19 @@ section {
 }
 
 .wa-fab.is-lifted {
-  bottom: calc(160px + env(safe-area-inset-bottom, 0px));
+  bottom: calc(130px + env(safe-area-inset-bottom, 0px));
 }
 
 @media (max-width: 768px) {
   .wa-fab {
     right: 16px;
-    bottom: calc(80px + env(safe-area-inset-bottom, 0px));
+    bottom: calc(50px + env(safe-area-inset-bottom, 0px));
     width: 52px;
     height: 52px;
   }
   .wa-fab__icon { width: 24px; height: 24px; }
   .wa-fab.is-lifted {
-    bottom: calc(140px + env(safe-area-inset-bottom, 0px));
+    bottom: calc(110px + env(safe-area-inset-bottom, 0px));
   }
 }
 
