@@ -2,4 +2,4 @@ User-agent: *
 Allow: /
 Disallow: /src/
 
-Sitemap: https://uab-subdoma-330c.vercel.app/sitemap.xml
+Sitemap: https://www.subdoma-projektai.lt/sitemap.xml

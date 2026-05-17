@@ -266,13 +266,13 @@ Klientas pateikė 4 socialinių tinklų URL:
 - Commit `18bba00` — 11 failų, +1644 / -330 (kodas + docs, buvo uncommitted nuo #02)
 
 **Vercel deploy sutvarkytas (carry-over blocker iš #01/#02 išspręstas):**
-- Nustatyta: `uab-subdoma-330c.vercel.app` niekada neegzistavo — tikrasis Vercel projektas = `subdoma`, live URL = `https://subdoma.vercel.app`
+- Nustatyta: `www.subdoma-projektai.lt` niekada neegzistavo — tikrasis Vercel projektas = `subdoma`, live URL = `https://subdoma.vercel.app`
 - Repo linkuotas prie Vercel projekto per CLI (`vercel link`), deploy'inta į production
 - **Root cause fix** — `vercel.json` pridėtas `"outputDirectory": "."`. Be jo Vercel laikė `public/` output root'u (nes katalogas egzistuoja) → `index.html` + `en/` + `ru/` grąžino 404. Commit `01a2dd4`
 - `.gitignore` — pridėtas `.vercel` (Vercel CLI artifact)
 
 **DB domain mismatch fix:**
-- `add-client` įvedė `domain: uab-subdoma-330c.vercel.app`, faktinis URL = `subdoma.vercel.app` → Origin check fail
+- `add-client` įvedė `domain: www.subdoma-projektai.lt`, faktinis URL = `subdoma.vercel.app` → Origin check fail
 - Supabase `feedback_clients.domain` atnaujintas → `subdoma.vercel.app` (inline Node script per empirra-feedback env)
 
 **E2E verify:**

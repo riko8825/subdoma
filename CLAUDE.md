@@ -60,7 +60,7 @@ uab-subdoma-330c/
 3. Framework Preset: **Other** (static HTML)
 4. Build command: (palik tuščia)
 5. Output dir: (palik tuščia — root)
-6. Deploy → gausi `uab-subdoma-330c.vercel.app`
+6. Deploy → gausi `www.subdoma-projektai.lt`
 
 ### Custom domain (jei klientas turi)
 1. Vercel → Project → Settings → Domains → Add

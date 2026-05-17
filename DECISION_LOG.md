@@ -212,7 +212,7 @@ cp src/js/animations.js public/animations.js
 
 ### D-011: Feedback OS klientas — vienas client_id, domenas po deploy
 
-**Sprendimas:** UAB Subdoma registruotas Feedback OS su vienu `client_id`. `add-client` įvedė `domain: uab-subdoma-330c.vercel.app`, vėliau pataisyta į faktinį `subdoma.vercel.app` (Supabase row update).
+**Sprendimas:** UAB Subdoma registruotas Feedback OS su vienu `client_id`. `add-client` įvedė `domain: www.subdoma-projektai.lt`, vėliau pataisyta į faktinį `subdoma.vercel.app` (Supabase row update).
 
 **Priežastis:** `cors.ts domainMatches()` lygina request Origin host su DB `feedback_clients.domain`. Mismatch → 403 `origin_not_allowed` → widget "Network issue". Pamoka: **registruoti klientą TIK po to, kai žinomas tikrasis deploy URL** — kitaip reikia DB update ciklo. Arisa pavyzdys naudoja 2 client_id (canonical + Vercel preview) multi-domain atvejui; UAB Subdoma kol kas turi tik vieną Vercel domeną, todėl vienas client_id pakanka.
 
