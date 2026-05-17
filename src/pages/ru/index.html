@@ -43,7 +43,7 @@
 
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet"/>
 
-<link rel="stylesheet" href="/public/styles.css?v=15"/>
+<link rel="stylesheet" href="/public/styles.css?v=16"/>
 
 <!-- Silktide Consent Manager CSS (preloaded, non-blocking) -->
 <link rel="preload" href="/public/silktide-consent-manager.css" as="style" onload="this.onload=null;this.rel='stylesheet'"/>
@@ -173,20 +173,45 @@ gtag('consent', 'default', {
         </div>
       </div>
 
-      <div class="hero__visual" aria-hidden="true">
-        <div class="hero__visual-grid"></div>
-        <div class="hero__visual-badge hero__visual-badge--top">
+      <div class="hero__visual" aria-label="Примеры мер ЕС">
+        <div class="hero__visual-grid" aria-hidden="true"></div>
+
+        <div class="hero__panel">
+          <div class="hero__panel-head">
+            <span class="hero__panel-eyebrow">МЕРЫ ЕС</span>
+            <span class="hero__panel-status">Актуальны 2026</span>
+          </div>
+
+          <ul class="hero__panel-list" role="list">
+            <li class="hero__panel-row">
+              <span class="hero__panel-name">Молодые фермеры</span>
+              <span class="hero__panel-sum">до €60K</span>
+            </li>
+            <li class="hero__panel-row">
+              <span class="hero__panel-name">Малые хозяйства</span>
+              <span class="hero__panel-sum">до €25K</span>
+            </li>
+            <li class="hero__panel-row">
+              <span class="hero__panel-name">Модернизация</span>
+              <span class="hero__panel-sum">до €200K</span>
+            </li>
+            <li class="hero__panel-row">
+              <span class="hero__panel-name">Развитие бизнеса</span>
+              <span class="hero__panel-sum">до €500K</span>
+            </li>
+          </ul>
+
+          <a href="#quiz" class="hero__panel-cta">
+            Проверить соответствие
+            <svg viewBox="0 0 20 20" fill="none" aria-hidden="true" width="14" height="14"><path d="M11.72 15L16.35 10.36c.43-.43.43-1.12 0-1.55L11.72 4.17 10.18 5.72 12.94 8.49H4.17v2.19h8.77l-2.76 2.76L11.72 15z" fill="currentColor"/></svg>
+          </a>
+        </div>
+
+        <div class="hero__visual-badge hero__visual-badge--top" aria-hidden="true">
           <div class="hero__visual-badge-icon">✓</div>
           <div class="hero__visual-badge-text">
-            <strong>Соответствие подтверждено</strong>
-            <span>за 24 часа</span>
-          </div>
-        </div>
-        <div class="hero__visual-badge hero__visual-badge--bottom">
-          <div class="hero__visual-badge-icon">€</div>
-          <div class="hero__visual-badge-text">
-            <strong>Грант выплачен</strong>
-            <span>срок 3 месяца</span>
+            <strong>Ответ за 24 ч.</strong>
+            <span>Бесплатная оценка</span>
           </div>
         </div>
       </div>
@@ -299,11 +324,19 @@ gtag('consent', 'default', {
     <div class="section-head" data-reveal>
       <span class="eyebrow">Меры поддержки</span>
       <h2>Меры поддержки ЕС для хозяйств и бизнеса</h2>
-      <p class="lead">Готовим и администрируем проекты поддержки ЕС по действующим конкурсам. Поможем оценить, какая мера подходит вам, и проведём до получения финансирования.</p>
+      <p class="lead">Готовим и администрируем проекты поддержки ЕС по действующим конкурсам. Выберите подходящую группу — покажем актуальные меры.</p>
+    </div>
+
+    <div class="filter-bar" role="tablist" aria-label="Фильтр по группе">
+      <button class="filter-tab is-active" type="button" role="tab" data-filter="all" aria-selected="true">Все меры</button>
+      <button class="filter-tab" type="button" role="tab" data-filter="jauni" aria-selected="false">Молодым</button>
+      <button class="filter-tab" type="button" role="tab" data-filter="smulkus" aria-selected="false">Малым хозяйствам</button>
+      <button class="filter-tab" type="button" role="tab" data-filter="verslas" aria-selected="false">Бизнесу</button>
+      <button class="filter-tab" type="button" role="tab" data-filter="gyvuliai" aria-selected="false">Животноводству</button>
     </div>
 
     <div class="services-grid">
-      <a href="#young-farmers" class="service-card">
+      <a href="#young-farmers" class="service-card" data-group="jauni">
         <span class="service-card__num">01 — Молодым</span>
         <h3>Становление молодых фермеров</h3>
         <p class="service-card__summary">Поддержка молодых фермеров для начала деятельности: техника, постройки, покупка земли, инфраструктура, хлева, многолетние растения, скот, оборудование.</p>
@@ -311,7 +344,7 @@ gtag('consent', 'default', {
           <svg width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M11.72 15L16.35 10.36c.43-.43.43-1.12 0-1.55L11.72 4.17 10.18 5.72 12.94 8.49H4.17v2.19h8.77l-2.76 2.76L11.72 15z" fill="currentColor"/></svg>
         </div>
       </a>
-      <a href="#small-farms" class="service-card">
+      <a href="#small-farms" class="service-card" data-group="smulkus">
         <span class="service-card__num">02 — Малым</span>
         <h3>Развитие очень малых хозяйств</h3>
         <p class="service-card__summary">Модернизация хозяйств: техника, оборудование, постройки, многолетние растения, возобновляемая энергетика, хлева, склады, инфраструктура.</p>
@@ -319,7 +352,7 @@ gtag('consent', 'default', {
           <svg width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M11.72 15L16.35 10.36c.43-.43.43-1.12 0-1.55L11.72 4.17 10.18 5.72 12.94 8.49H4.17v2.19h8.77l-2.76 2.76L11.72 15z" fill="currentColor"/></svg>
         </div>
       </a>
-      <a href="#regional-business" class="service-card">
+      <a href="#regional-business" class="service-card" data-group="verslas">
         <span class="service-card__num">03 — Бизнесу</span>
         <h3>Поддержка бизнеса в регионах</h3>
         <p class="service-card__summary">ЕС, LAG и UŽT поддержка малого и среднего бизнеса в регионах — производство, услуги, развитие, открытие новых бизнесов.</p>
@@ -327,7 +360,7 @@ gtag('consent', 'default', {
           <svg width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M11.72 15L16.35 10.36c.43-.43.43-1.12 0-1.55L11.72 4.17 10.18 5.72 12.94 8.49H4.17v2.19h8.77l-2.76 2.76L11.72 15z" fill="currentColor"/></svg>
         </div>
       </a>
-      <a href="#medium-farms" class="service-card">
+      <a href="#medium-farms" class="service-card" data-group="smulkus">
         <span class="service-card__num">04 — Средним</span>
         <h3>Развитие малых и средних хозяйств</h3>
         <p class="service-card__summary">Модернизация хозяйств: техника, оборудование, постройки, возобновляемая энергетика, инновации, цифровизация. Есть упрощённая версия.</p>
@@ -335,7 +368,7 @@ gtag('consent', 'default', {
           <svg width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M11.72 15L16.35 10.36c.43-.43.43-1.12 0-1.55L11.72 4.17 10.18 5.72 12.94 8.49H4.17v2.19h8.77l-2.76 2.76L11.72 15z" fill="currentColor"/></svg>
         </div>
       </a>
-      <a href="#sustainable" class="service-card">
+      <a href="#sustainable" class="service-card" data-group="gyvuliai smulkus">
         <span class="service-card__num">05 — Устойчивости</span>
         <h3>Устойчивые инвестиции в хозяйства</h3>
         <p class="service-card__summary">Поддержка животноводческих хозяйств: хлева, навозохранилища, возобновляемая энергетика, экологические решения, инфраструктура.</p>
@@ -343,11 +376,27 @@ gtag('consent', 'default', {
           <svg width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M11.72 15L16.35 10.36c.43-.43.43-1.12 0-1.55L11.72 4.17 10.18 5.72 12.94 8.49H4.17v2.19h8.77l-2.76 2.76L11.72 15z" fill="currentColor"/></svg>
         </div>
       </a>
-      <a href="#predator-protection" class="service-card">
+      <a href="#predator-protection" class="service-card" data-group="gyvuliai">
         <span class="service-card__num">06 — Защите</span>
         <h3>Меры защиты от хищников</h3>
         <p class="service-card__summary">Защита от волков, медведей, кабанов: племенные овчарки, ограждения, электропастухи, загоны, генераторы.</p>
         <div class="service-card__more"><span>До 12 000 € · 90%</span>
+          <svg width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M11.72 15L16.35 10.36c.43-.43.43-1.12 0-1.55L11.72 4.17 10.18 5.72 12.94 8.49H4.17v2.19h8.77l-2.76 2.76L11.72 15z" fill="currentColor"/></svg>
+        </div>
+      </a>
+      <a href="#short-chains" class="service-card" data-group="verslas smulkus">
+        <span class="service-card__num">07 — Цепям</span>
+        <h3>Поддержка коротких цепей</h3>
+        <p class="service-card__summary">Поддержка логистики, производства, переработки, торговых точек и ярмарок. Требуется хотя бы один партнёр. От 4 000 VED, все сектора.</p>
+        <div class="service-card__more"><span>До 1 500 000 € · 60–100%</span>
+          <svg width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M11.72 15L16.35 10.36c.43-.43.43-1.12 0-1.55L11.72 4.17 10.18 5.72 12.94 8.49H4.17v2.19h8.77l-2.76 2.76L11.72 15z" fill="currentColor"/></svg>
+        </div>
+      </a>
+      <a href="#holdings-investment" class="service-card" data-group="verslas smulkus">
+        <span class="service-card__num">08 — Инвестициям</span>
+        <h3>Инвестиции в сельхозхозяйства</h3>
+        <p class="service-card__summary">Поддержка инвестиций в логистику, производство, переработку — постройки, оборудование, техника, инфраструктура. От 30 000 VED, все сектора.</p>
+        <div class="service-card__more"><span>До 1 000 000 € · 40–70%</span>
           <svg width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M11.72 15L16.35 10.36c.43-.43.43-1.12 0-1.55L11.72 4.17 10.18 5.72 12.94 8.49H4.17v2.19h8.77l-2.76 2.76L11.72 15z" fill="currentColor"/></svg>
         </div>
       </a>
@@ -518,6 +567,152 @@ gtag('consent', 'default', {
   </div>
 </section>
 
+<section class="service-detail" id="short-chains">
+  <div class="container">
+    <div class="service-detail__inner">
+      <aside class="service-detail__aside" data-reveal>
+        <div class="service-detail__num">МЕРА · 07</div>
+        <h2 class="service-detail__title">Поддержка коротких цепей поставок</h2>
+        <p class="service-detail__summary">Поддержка логистики, производства, переработки, торговых точек и ярмарок — сокращение пути от производителя до потребителя. Требуется хотя бы один партнёр.</p>
+        <div class="service-detail__chips">
+          <span class="chip">Грант до 1 500 000 €</span>
+          <span class="chip">60–100% интенсивность</span>
+          <span class="chip">От 4 000 VED</span>
+          <span class="chip">Аванс до 40%</span>
+        </div>
+        <a href="https://calendly.com/projektai/30min" target="_blank" rel="noopener" class="btn btn--primary">Консультация</a>
+      </aside>
+      <div class="service-detail__content" data-stagger>
+        <div class="detail-block">
+          <h4>Для кого</h4>
+          <p>Физическим или юридическим лицам, зарегистрировавшим сельскохозяйственное владение и фермерское хозяйство с действующей деятельностью. Хозяйство и владение должны быть зарегистрированы более <strong>1 года</strong> (физические лица), или по дате регистрации для компаний. От <strong>4 000 VED</strong>. <strong>Все сектора</strong>. <strong>Обязателен хотя бы один партнёр</strong> (физическое или юридическое лицо — соответствующий условиям заявителя).</p>
+        </div>
+        <div class="detail-block">
+          <h4>Что финансирует</h4>
+          <p>Инвестиции в логистику, производство или переработку сельхозпродукции: постройки, оборудование, техника, инфраструктура. Развитие фермерства и логистики, <strong>создание торговых точек и ярмарок</strong>. Только <strong>новые</strong> инвестиции.</p>
+        </div>
+        <div class="detail-block">
+          <h4>Как выплачивается</h4>
+          <p>Три модели финансирования (НДС не покрывается во всех случаях):</p>
+          <ul class="detail-list">
+            <li><strong>Модель 1</strong> — до <strong>150 000 €</strong> без НДС</li>
+            <li><strong>Модель 2</strong> — до <strong>250 000 €</strong> без НДС</li>
+            <li><strong>Модель 3</strong> — до <strong>1 500 000 €</strong> без НДС</li>
+          </ul>
+          <p><strong>Аванс</strong> — может быть запрошен до <strong>40%</strong>.</p>
+        </div>
+        <div class="detail-block">
+          <h4>Интенсивность</h4>
+          <p><strong>60–100%</strong> интенсивность поддержки (зависит от категории заявителя, структуры партнёрства и типа инвестиций). <strong>НДС</strong> не покрывается средствами поддержки.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="service-detail" id="holdings-investment">
+  <div class="container">
+    <div class="service-detail__inner">
+      <aside class="service-detail__aside" data-reveal>
+        <div class="service-detail__num">МЕРА · 08</div>
+        <h2 class="service-detail__title">Инвестиции в сельскохозяйственные хозяйства</h2>
+        <p class="service-detail__summary">Поддержка логистики, производства, переработки сельхозпродукции — постройки, оборудование, техника, инфраструктура. Все сектора.</p>
+        <div class="service-detail__chips">
+          <span class="chip">Грант до 1 000 000 €</span>
+          <span class="chip">40–70% интенсивность</span>
+          <span class="chip">От 30 000 VED</span>
+          <span class="chip">Все сектора</span>
+        </div>
+        <a href="https://calendly.com/projektai/30min" target="_blank" rel="noopener" class="btn btn--primary">Консультация</a>
+      </aside>
+      <div class="service-detail__content" data-stagger>
+        <div class="detail-block">
+          <h4>Для кого</h4>
+          <p>Физическим или юридическим лицам, зарегистрировавшим сельскохозяйственное владение и фермерское хозяйство с действующей деятельностью. Хозяйство и владение должны быть зарегистрированы более <strong>1 года</strong> (физические лица), или по дате регистрации для компаний. От <strong>30 000 VED</strong>. <strong>Все сектора</strong>.</p>
+        </div>
+        <div class="detail-block">
+          <h4>Что финансирует</h4>
+          <p>Инвестиции в логистику, производство или переработку сельхозпродукции: постройки, оборудование, техника, инфраструктура. Только <strong>новые</strong> инвестиции.</p>
+        </div>
+        <div class="detail-block">
+          <h4>Как выплачивается</h4>
+          <p>Грант — до <strong>1 000 000 €</strong> на заявителя (все сектора, кроме растениеводства). Упрощённая версия — <strong>80 000 €</strong> (только растениеводство). Аванс не выплачивается. Варианты выплаты: оплата счетов или компенсация.</p>
+        </div>
+        <div class="detail-block">
+          <h4>Интенсивность</h4>
+          <p><strong>40–70%</strong> интенсивность поддержки (зависит от категории заявителя и типа инвестиций). <strong>НДС</strong> не покрывается средствами поддержки.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="faq" id="faq" aria-labelledby="faq-title">
+  <div class="container container--narrow">
+    <div class="section-head" data-reveal>
+      <span class="eyebrow">ЧЗВ</span>
+      <h2 id="faq-title">Часто задаваемые вопросы о поддержке ЕС</h2>
+      <p class="lead">Короткие, конкретные ответы на главные вопросы о подготовке проектов поддержки ЕС и нашей работе.</p>
+    </div>
+    <div class="faq__list" data-reveal>
+      <div class="faq__item">
+        <button class="faq__trigger" type="button" aria-expanded="false">
+          <span>Сколько стоят ваши услуги?</span>
+          <svg class="faq__icon" viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M5 8l5 5 5-5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </button>
+        <div class="faq__answer">
+          <p>Цена зависит от меры и сложности проекта. Первичная консультация и оценка соответствия — <strong>бесплатные</strong>. Договор подписывается только после подтверждения, что проект соответствует условиям финансирования.</p>
+        </div>
+      </div>
+      <div class="faq__item">
+        <button class="faq__trigger" type="button" aria-expanded="false">
+          <span>За какое время получу ответ о соответствии?</span>
+          <svg class="faq__icon" viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M5 8l5 5 5-5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </button>
+        <div class="faq__answer">
+          <p>В течение <strong>24 часов</strong> после вашего запроса. Заполните мини-анкету или позвоните — мы оценим ситуацию и сообщим, подходите ли вы для поддержки.</p>
+        </div>
+      </div>
+      <div class="faq__item">
+        <button class="faq__trigger" type="button" aria-expanded="false">
+          <span>Сколько времени занимает подготовка заявки?</span>
+          <svg class="faq__icon" viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M5 8l5 5 5-5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </button>
+        <div class="faq__answer">
+          <p>В среднем <strong>4–8 недель</strong> от сбора документов до подачи. Зависит от меры, объёма проекта и необходимых дополнительных документов (бизнес-план, проектирование).</p>
+        </div>
+      </div>
+      <div class="faq__item">
+        <button class="faq__trigger" type="button" aria-expanded="false">
+          <span>Работаете ли с небольшими проектами?</span>
+          <svg class="faq__icon" viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M5 8l5 5 5-5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </button>
+        <div class="faq__answer">
+          <p>Да. Работаем с малыми хозяйствами (от €10K поддержки), очень малыми хозяйствами и с крупными инвестициями (до €1,5M для устойчивых животноводческих проектов).</p>
+        </div>
+      </div>
+      <div class="faq__item">
+        <button class="faq__trigger" type="button" aria-expanded="false">
+          <span>Что делаете, если заявка отклонена?</span>
+          <svg class="faq__icon" viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M5 8l5 5 5-5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </button>
+        <div class="faq__answer">
+          <p>Наш показатель успеха — <strong>90%+</strong>. Если заявка всё же отклонена, помогаем подготовить апелляцию или адаптировать проект под другой конкурс без дополнительной платы.</p>
+        </div>
+      </div>
+      <div class="faq__item">
+        <button class="faq__trigger" type="button" aria-expanded="false">
+          <span>В каких регионах Литвы работаете?</span>
+          <svg class="faq__icon" viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M5 8l5 5 5-5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </button>
+        <div class="faq__answer">
+          <p>По всей Литве — работаем с фермерами и бизнесами в Вильнюсе, Каунасе, Клайпеде, Паневежисе, Шяуляе, Утене, Мариямполе, Алитусе, Таураге и других районных самоуправлениях. Консультации проходят дистанционно (Teams/Zoom, по телефону) или у клиента. Главный офис — Вильнюс.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
 <section class="contacts" id="contact">
   <div class="container">
     <div class="section-head" data-reveal>
@@ -573,15 +768,36 @@ gtag('consent', 'default', {
 <footer class="footer">
   <div class="container">
     <div class="footer__inner">
-      <div class="footer__copy">© <span data-year>2026</span> UAB Subdoma · Все права защищены · Сайт создан <a href="https://empirra.com" class="footer__credit" target="_blank" rel="noopener">Empirra</a></div>
+      <div class="footer__copy">© <span data-year>2026</span> UAB Subdoma · Все права защищены</div>
       <div class="footer__links">
         <a href="/privatumas/" class="footer__link">Политика конфиденциальности</a>
         <a href="/privatumas/#slapukai" class="footer__link">Cookies</a>
         <a href="#contact" class="footer__link">Контакты</a>
       </div>
     </div>
+    <div class="footer__credit-line">
+      Сайт создан <a href="https://empirra.com" class="footer__credit" target="_blank" rel="noopener">Empirra</a>
+    </div>
   </div>
 </footer>
+
+<aside class="action-bar" id="action-bar" aria-label="Быстрое действие">
+  <div class="action-bar__inner">
+    <div class="action-bar__msg">
+      <strong>Хотите узнать, подходите ли вы для поддержки ЕС?</strong>
+      <span>Ответ за 24 ч. — бесплатная консультация.</span>
+    </div>
+    <div class="action-bar__ctas">
+      <a href="tel:+37052089199" class="btn btn--ghost btn--sm" aria-label="Позвонить +370 520 89 199">
+        <svg viewBox="0 0 20 20" fill="none" aria-hidden="true" width="16" height="16"><path d="M5.05 4.58A1.5 1.5 0 016.5 3.5h2a1 1 0 011 1l-.6 3a1 1 0 01-.5.7l-1.4.7c1 2 2.6 3.6 4.6 4.6l.7-1.4a1 1 0 01.7-.5l3-.6a1 1 0 011 1v2a1.5 1.5 0 01-1.08 1.45C9.36 16.97 3.03 10.64 5.05 4.58z" stroke="currentColor" stroke-width="1.4"/></svg>
+        Позвонить
+      </a>
+      <a href="https://calendly.com/projektai/30min" target="_blank" rel="noopener" class="btn btn--primary btn--sm" data-magnetic>
+        Бесплатная консультация
+      </a>
+    </div>
+  </div>
+</aside>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js" defer></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js" defer></script>

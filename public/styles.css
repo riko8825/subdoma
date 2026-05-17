@@ -1455,6 +1455,15 @@ section {
   opacity: 1;
 }
 
+.footer__credit-line {
+  margin-top: var(--s-4);
+  padding-top: var(--s-4);
+  border-top: 1px solid rgba(198, 169, 107, 0.08);
+  text-align: center;
+  font-size: var(--fs-sm);
+  color: var(--text-mute);
+}
+
 /* ---------- 16. COOKIE BAR ---------- */
 /* ---------- FAQ Accordion ---------- */
 .faq__list {
