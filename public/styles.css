@@ -2103,64 +2103,9 @@ section {
   cursor: pointer;
 }
 
-/* MailerLite embedded form — brand-paint override */
-.newsletter__form .ml-form-embedContainer .ml-form-embedWrapper {
-  background-color: transparent !important;
-  border: 0 !important;
-  width: 100% !important;
-  max-width: 100% !important;
-}
-.newsletter__form .ml-form-embedContainer .ml-form-embedBody {
-  padding: var(--space-lg) !important;
-}
-.newsletter__form .ml-form-embedContainer h4,
-.newsletter__form .ml-form-embedContainer .ml-form-embedContent h4 {
-  color: var(--text) !important;
-  font-family: var(--font-display) !important;
-  font-size: 22px !important;
-}
-.newsletter__form .ml-form-embedContainer p,
-.newsletter__form .ml-form-embedContainer .ml-form-embedContent p,
-.newsletter__form .ml-form-embedContainer .description,
-.newsletter__form .ml-form-embedContainer .label-description {
-  color: var(--text-soft) !important;
-  font-family: var(--font-sans, 'Inter', sans-serif) !important;
-}
-.newsletter__form .ml-form-embedContainer input[type="email"],
-.newsletter__form .ml-form-embedContainer input.form-control {
-  background-color: var(--bg-elev-1) !important;
-  color: var(--text) !important;
-  border-color: var(--gold-line) !important;
-  font-family: var(--font-sans, 'Inter', sans-serif) !important;
-}
-.newsletter__form .ml-form-embedContainer input[type="email"]::placeholder {
-  color: var(--text-mute) !important;
-}
-.newsletter__form .ml-form-embedContainer button[type="submit"],
-.newsletter__form .ml-form-embedContainer .ml-form-embedSubmit button {
-  background-color: var(--gold) !important;
-  color: var(--bg) !important;
-  border: 0 !important;
-  font-family: var(--font-sans, 'Inter', sans-serif) !important;
-  font-weight: 600 !important;
-  transition: background-color 0.2s ease !important;
-}
-.newsletter__form .ml-form-embedContainer button[type="submit"]:hover,
-.newsletter__form .ml-form-embedContainer .ml-form-embedSubmit button:hover {
-  background-color: var(--gold-bright) !important;
-}
-.newsletter__form .ml-form-embedContainer .ml-form-checkboxRow label p,
-.newsletter__form .ml-form-embedContainer .ml-form-embedPermissions p {
-  color: var(--text-soft) !important;
-}
-.newsletter__form .ml-form-embedContainer .custom-control-label::before,
-.newsletter__form .ml-form-embedContainer .label-description::before {
-  background-color: var(--bg-elev-1) !important;
-  border-color: var(--gold-line) !important;
-}
-.newsletter__form .ml-form-embedContainer .ml-form-successContent h4 {
-  color: var(--gold) !important;
-}
+/* Note: MailerLite form styling is configured in MailerLite dashboard
+   (form ID 50EEhc, account 1993875) — brand colors baked into the form
+   itself, so no CSS override needed here. */
 
 /* Print */
 @media print {
