@@ -1,8 +1,69 @@
 # SESSION_STATUS — UAB Subdoma
 
-## Paskutinė sesija: 2026-05-17 #05
+## Paskutinė sesija: 2026-05-17 #07
 
 ### Ką padarėme
+
+**Frontend polish (frontend-revizorius audit + 10 fix'ų, 12 failų, +172/-70):**
+- **C-01:** inline `style="margin-inline:auto;text-align:center"` + `style="justify-content:center"` → naujos CSS klasės `.section-head--center`, `.eyebrow--center`, `.eyebrow--mb-lg` (3 HTML × process + quiz sekcijos)
+- **C-02:** `.visually-hidden` CSS klasė pridėta (su focus-visible reveal gold bg), inline `style="position:absolute;left:-9999px"` skip link'e pašalintas (LT)
+- **H-01:** Skip-to-content link pridėtas EN ("Skip to content") + RU ("Перейти к содержимому") — keyboard nav WCAG 2.4.1
+- **H-02:** `serviceFilter()` JS dabar dinamiškai keičia `aria-selected` atributą filter tabs su `role="tab"` (anksčiau lieko `false` ant visų po click)
+- **H-05:** EN/RU footer privacy link papildyta `hreflang="lt" lang="lt" title="..."` — SR ir SEO clarity, kad link veda į LT-only puslapį
+- **M-01:** `<link rel="preload" as="image" href="/public/logo-mark.png" fetchpriority="high">` pridėtas 3 HTML — LCP optimizacija
+- **M-04/M-05:** Perteklinis `role="banner"` (ant `<header>`) ir `role="navigation"` (ant `<nav>`) pašalintas (4 HTML, įsk. privacy) — HTML5 implicit roles užtenka
+- **M-06:** `faqAccordion()` JS dabar runtime'u sukuria `id="faq-answer-N"` + `aria-controls` + `role="region"` ryšį tarp trigger ir answer (vietoj 18 HTML edit'ų — JS lygmens fix)
+- **L-01:** `animations.js?v=4` cache-buster sync'intas EN/RU (anksčiau buvo be `?v=`)
+- **+extra:** `apple-touch-icon.png` reference pridėtas EN/RU; cache-buster bump `styles.css v=16→17`, `main.js v=6→7`; `role="region"` FAQ atsakymams
+
+**Audit klaida (NE problema):** C-03 (`§` simboliai hero h1) — `animations.js:69` `splitHeroTitle()` jau apdoroja per `<span class="accent">`. Praleidau.
+
+**Deploy:**
+- Commit `b9a5c12` push'intas į origin/main, Vercel auto-deploy triggered
+- Verify: curl + grep — inline styles=0, perteklinis role=0, cache-buster sync OK, src==root identiški
+
+### Kas liko / nepatvirtinta
+
+- **Browser QA per `https://subdoma.vercel.app` po #07 deploy NEPATIKRINTAS** (3 sesijų carry-over — #05, #06, #07). Visi sprendimai patikrinti tik per `curl` + `grep`. Šios sesijos polish (skip link Tab key reveal, FAQ aria-controls runtime, filter aria-selected, LCP preload Lighthouse impact) — vizualiai neverifikuoti
+- **EN/RU native review nepadarytas** (#06 carry-over) — priemonės 07/08 terminologija mano rankinis vertimas, hero panel labels taip pat
+- **Schema placeholder reikšmės** (carry-over #02) — `aggregateRating 4.9/100` + `postalCode 08105`. Fake rating = Google policy rizika. Reikia kliento input
+- **og-image.jpg, apple-touch-icon.png, logo.svg fiziškai NĖRA** — `<link>` references rodo į neegzistuojančius failus (HTML 200 OK, bet asset 404)
+- **Favicon senas** (carry-over #04) — gold circle + S, ne hexagon
+- **EN/RU schema.org nepilnas** — LT turi FAQPage + Service + hasOfferCatalog, EN/RU tik Organization + WebSite. SEO desync. Iš audit'o (H-08)
+- **EN/RU privatumo puslapis NĖRA** — footer nuorodos su hreflang=lt veda į LT puslapį (dabar bent SR aiškiai supranta)
+- **`image.png` repo root'e untracked** (carry-over #05) — 666×82 PNG 618B, nepašalintas
+
+### Kitas žingsnis
+
+1. **PRIVALU: Browser QA per `https://subdoma.vercel.app`** (3 sesijų carry-over) — incognito, Lighthouse audit:
+   - Tab key fokusas → skip link reveal'as 3 kalbose (gold bg, top-left)
+   - Filter tabs LT/EN/RU — click → DevTools inspect → `aria-selected="true"` aktyviame
+   - FAQ accordion 3 kalbose — `aria-controls` + answer `id` + `role="region"` runtime sukurti
+   - LCP score (logo-mark preload impact) — turėtų pagerinti
+   - Footer "Sukūrė Empirra" + WhatsApp FAB + Silktide + privacy (#05/#06 carry-over)
+2. **EN/RU native review** — priemonės 07/08 + hero panel labels (#06 carry-over)
+3. **Asset gaps pack** — og-image (1200×630 iš logo.png), apple-touch-icon (180×180), favicon hexagon, logo.svg
+4. **Klientui pateikti:** postalCode patvirtinimas, aggregateRating sprendimas (realūs Google reviews vs pašalinti bloką), GA4 Measurement ID
+
+---
+
+### Istorinė: sesija #06 (2026-05-17) — EN/RU pilna UI sync su LT + footer credit centravimas
+
+**Footer "Sukūrė Empirra" centravimas (8 HTML × LT/EN/RU root+src):**
+- Perkelta į atskirą eilutę `.footer__credit-line` po pagrindiniu `.footer__inner`
+- Gold separator border-top, centered, lokalizuota 3 kalbomis
+
+**EN/RU pilna UI sync su LT (visa LT-only funkcionalumas perkeltas į EN + RU root + src/pages):**
+- Hero panel kortelės (Young farmers €60K, Small farms €25K, Modernisation €200K, Business growth €500K + CTA) — **fix screenshot problem'os, kai dešinė hero pusė buvo tuščia**
+- Filter-bar su 5 mygtukais + data-group atributai 6 esamoms service-cards
+- 2 naujos priemonės: 07 (Short chains / Поддержка коротких цепей) + 08 (Holdings investments / Инвестиции в сельхозхозяйства) — service-card + pilnas service-detail blokas
+- FAQ section (6 klausimai)
+- Sticky action-bar po footer'io
+- Cache-buster: styles.css v=15 → v=16 per 8 HTML failus
+
+**Deploy:** Commit `6184e8e` — +982/-88 eilutės per 10 failų, push'inta į origin/main
+
+### Istorinė: sesija #05 (2026-05-17) — Footer credit, WhatsApp FAB, Silktide consent, privatumo politika
 
 **Footer "Sukūrė Empirra" credit (6 HTML × LT/EN/RU root+src):**
 - Inline su copyright po `· `: LT "Sukūrė Empirra", EN "Made by Empirra", RU "Сайт создан Empirra"
@@ -277,3 +338,5 @@
 | 03 | 2026-05-14 | Feedback OS integracija (client onboard + widget embed 6 HTML) + #02 darbo commit + Vercel deploy fix (outputDirectory) + DB domain mismatch fix + E2E verify (curl) | 8/10 | 60% |
 | 04 | 2026-05-16 | Logo įdiegimas (PNG crop per Python + gold filter) + custom cursor pašalinimas + 2 priemonės (07 Trumposios grandinės + 08 Investicijos į valdas, tik LT) + cross-project bug fix (Empirra Feedback widget screenshot scroll position + E2E test su puppeteer-core) | 7/10 | 63% |
 | 05 | 2026-05-17 | Footer "Sukūrė Empirra" credit (3 lang) + WhatsApp FAB (56×56, gold ring, safe-area-inset-bottom, .is-lifted sync su action-bar) + Silktide Consent Manager (vendor iš empirra.com + LT lokalizuotas init + Google Consent Mode V2 + senos cookie-bar pašalinimas) + privatumo politikos puslapis /privatumas/ (13 BDAR sekcijų, perrašyta nuo nulio su realiais 3rd-party servisais) | 8/10 | 67% |
+| 06 | 2026-05-17 | Footer credit centravimas atskira eilute (8 HTML) + EN/RU pilna UI sync su LT (hero panel kortelės, filter-bar, priemonės 07/08 service-card+detail, FAQ, sticky action-bar) — 10 failų, +982/-88 | 8/10 | 80% |
+| 07 | 2026-05-17 | Frontend polish: frontend-revizorius audit + 10 a11y/LCP/cleanup fix'ų (inline styles → CSS klasės, skip link EN/RU, serviceFilter aria-selected, faqAccordion aria-controls per JS, LCP preload, perteklinis ARIA roles cleanup, cache-buster sync) — 12 failų, +172/-70 | 8/10 | 85% |
