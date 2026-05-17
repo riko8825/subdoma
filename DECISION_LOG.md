@@ -1,5 +1,56 @@
 # DECISION_LOG — UAB Subdoma
 
+## 2026-05-17 — Sesija #05: footer credit, WhatsApp FAB, Silktide consent, privatumo politika
+
+### D-011: Silktide Consent Manager, NE custom cookie banner ar Cookiebot SaaS
+
+**Sprendimas:** Naudoti Silktide Consent Manager v2.0 (MIT OSS) kaip Empirra produkcijos stack'e, ne tęsti seno custom `localStorage` cookie-bar arba pereiti į komercinį Cookiebot/OneTrust SaaS.
+
+**Konteksis:** User'is paprašė "tas pats ką Empirra turi su cookies". Subdoma turėjo savadarbį dviejų mygtukų bar'ą (Sutinku/Atmesti) be Google Consent Mode V2 integracijos — neatitiktų GDPR/EAA Consent Mode V2 reikalavimų, jei klientas vėliau pridės GA4.
+
+**Alternatyvos atmestos:**
+- **Cookiebot/OneTrust SaaS** — €€/mėn, vendor lock-in, neproporcinga Landing track'ui (€200–€800).
+- **Custom rewrite su Consent Mode V2** — papildomas darbas, kuris jau parašytas Silktide. Nebūtų vienodumo su Empirra puslapiu.
+- **Vien tik dabartinis localStorage bar** — neturi kategorijų, neperduoda signalo Google Consent Mode V2, GDPR audit fail.
+
+**Pagrindimas:** Silktide yra production-tested ant empirra.com (su Consent Mode V2 callbacks tiek `gtag('consent', 'update', { analytics_storage })`, tiek advertising group'ėms). MIT licencija = saugu komerciniam naudojimui. Vendor failai self-hosted `public/` (53 KB JS + 12 KB CSS) — jokio external CDN dependency, niekas neegzistuoja kol vartotojas neapsilanko svetainėje.
+
+**Trade-off:** +66 KB JS/CSS overhead virš plonio custom bar'o. Akceptuojama už GDPR atitiktį + būsimą GA4 integraciją.
+
+---
+
+### D-012: Privacy puslapio turinys perrašytas iš nulio, NE imituojant content.json
+
+**Sprendimas:** Naujam `/privatumas/` puslapiui perrašyti turinį nuo nulio su REALIAIS šiandien naudojamais trečiosios šalies servisais. Content.json privacy sekcija liekti pasenusi (nepalikta, nedeprecate'inta — tik dokumentuota Known issues).
+
+**Konteksis:** Sesijos #01 metu WebFetch'intas https://www.subdoma-projektai.lt/privacy → content.json privacy sekcija (484-668 eil.) minėjo Webflow (hosting), MailerLite (naujienlaiškiai), Telegram bot, TikTok, LinkedIn — **bet šiandieninis stack'as** = Vercel + Calendly + Empirra Feedback widget + Silktide + WhatsApp deep link + GSAP cdnjs. Naudoti content.json kaip yra → mintų servisai, kurių svetainė nenaudoja (GDPR audit fail rizika).
+
+**Alternatyvos atmestos:**
+- **Naudoti content.json be modifikacijų** — siūlyta `AskUserQuestion`'e su ⚠️ ženklu, user pasirinko "Perrašyti tiksliai". GDPR rizika per didelė.
+- **Pirma atnaujinti content.json, paskui generate'inti HTML** — content.json yra build'as 3 kalbomis. Užtrūktų ~2x ilgiau, EN/RU vis tiek liks desync su LT (BLOCKER #1). Neproporcinga šios sesijos scope'ui.
+
+**Pagrindimas:** GDPR atitiktis > content.json kanoniškumas. Privacy puslapis perskaitytas auditoriaus arba VDAI privalo aprašyti TIK realiai naudojamus servisus. Naujasis turinys (13 BDAR sekcijų) eksplicitiškai aprašo Vercel + Calendly + Google + WhatsApp/Meta + Cloudflare cdnjs + Empirra + Silktide ir kontretizuoja saugomus cookies (`silktideCookieChoices`, `empf_reporter_v1`).
+
+**Pasekmė:** Content.json privacy sekcija dabar yra **stale**. Jei ateityje kuriamas `/en/privacy/` arba `/ru/privacy/` — NEšiautu iš content.json, perrašyti su realiais servisais. Pridėta Known issues įrašas, kad būsimi dev'ai (ir aš pats) tai matytų.
+
+---
+
+### D-013: WhatsApp FAB pakelimas (.is-lifted) sync per esamą actionBar() listener, ne atskirą MutationObserver
+
+**Sprendimas:** WhatsApp FAB lift state'as (kai action-bar pasirodo) toggle'inamas tiesiogiai iš `actionBar()` scroll listener'io tame pačiame `if (shouldShow !== visible)` bloke, ne per atskirą `MutationObserver`.
+
+**Konteksis:** Reikia, kad WhatsApp FAB (bottom-right, ~90px nuo apačios) nelįstų po sticky action-bar (apatinė juosta, ~60px tall, pasirodo po hero scroll). Du sprendimai: (a) FAB pats stebi action-bar `.is-visible` klasę per MutationObserver, (b) actionBar() funkcija toggle'ina abi klases iš karto.
+
+**Alternatyvos atmestos:**
+- **MutationObserver** — extra observer + node lookup + cleanup. Du atskiri callbacks, kurie keičia state. Decoupled, BET more complexity.
+- **Atskiras scroll listener WhatsApp FAB'e** — duplicate scroll event handler, du atskiri threshold computations, race condition rizika.
+
+**Pagrindimas:** `actionBar()` jau turi single source of truth dėl visibility (`visible` boolean + threshold). Pridedant 1 `if (fab) fab.classList.toggle(...)` eilutę — jokios papildomos sąnaudos, jokio decoupling overhead. Abu elementai keičiasi tame pačiame frame'e — vizualiai sync'rone. Kainos: tightly coupled, bet abu elementai gyvena tame pačiame `main.js` faile ir tarnauja tam pačiam UX tikslui (apatinė overlay zona).
+
+**Trade-off:** Jei kada FAB veikia puslapyje BE action-bar (pvz. privacy puslapis — joks `#action-bar` elementas), `fab` constant'ą gauname, bet `bar` early-return'ina (`if (!bar) return;`) → FAB lieka default'inėje pozicijoje. ✅ Verifikuota privacy puslapyje.
+
+---
+
 ## 2026-05-16 — Sesija #04: logo, cursor, priemonės 07/08, widget bug fix
 
 ### D-008: Logo įdiegimas per PNG + Python crop, ne SVG perpiešimas

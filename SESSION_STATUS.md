@@ -1,8 +1,95 @@
 # SESSION_STATUS — UAB Subdoma
 
-## Paskutinė sesija: 2026-05-16 #04
+## Paskutinė sesija: 2026-05-17 #05
 
 ### Ką padarėme
+
+**Footer "Sukūrė Empirra" credit (6 HTML × LT/EN/RU root+src):**
+- Inline su copyright po `· `: LT "Sukūrė Empirra", EN "Made by Empirra", RU "Сайт создан Empirra"
+- Link į `https://empirra.com`, `target="_blank" rel="noopener"`
+- Nauja `.footer__credit` CSS klasė — gold spalva, 85% opacity, hover'is full opacity + gold underline
+
+**WhatsApp FAB (6 HTML + CSS + JS):**
+- Floating apvalus mygtukas (56×56 desktop / 52×52 mobile) bottom-right
+- Linkas: `https://wa.me/37067508128` (klientas: `+370 675 08 128`), `target="_blank"`
+- Empirra premium style: gradient `#141416→#0B0B0C`, gold border, drop shadow + gold glow on hover
+- Inline SVG WhatsApp ikona (~1KB, vienas path, no external fetch)
+- `bottom: calc(90px + env(safe-area-inset-bottom, 0px))` — iOS safe area + virš Feedback widget
+- `.is-lifted` klasė → `bottom: 160px` (140px mobile) kai action-bar visible (sync'inta su `actionBar()` toggle)
+- CSS-only gold pulse ring (`@keyframes wa-pulse`, 2.6s)
+- Hover: `translateY(-3px) scale(1.06)` + gold glow + border bright
+- `prefers-reduced-motion` — disable animacijos
+- Lokalizuoti aria-labels: LT "Rašykite mums per WhatsApp", EN "Chat with us on WhatsApp", RU "Написать нам в WhatsApp"
+
+**Silktide Consent Manager (PAKEITĖ seną cookie-bar):**
+- Vendor failai kopija iš empirra.com (tas pats stack'as):
+  - `public/silktide-consent-manager.js` (54 KB) — Silktide v2.0, MIT
+  - `public/silktide-consent-manager.css` (12 KB)
+- `public/consent-init.js` (3 KB) — **LT lokalizuota** config, 3 kategorijos:
+  - "Būtini" (required, su silktideCookieChoices + empf_reporter_v1)
+  - "Analitiniai" (optional, gtag analytics_storage callback)
+  - "Rinkodaros" (optional, gtag ad_storage + ad_user_data + ad_personalization)
+- `<head>` per 6 HTML: Google Consent Mode V2 default deny (visi 4 storage) + `wait_for_update: 500` + GA4 placeholder komentaras (`G-XXXXXXXXXX`)
+- `<body>` per 6 HTML: `<script defer src="/public/silktide-consent-manager.js">` + `consent-init.js`
+- **Pašalinta:** senas `<div class="cookie-bar">` markup iš 6 HTML, `cookieBar()` funkcija iš `main.js` (-24 eil), `.cookie-bar` CSS blokas (-39 eil)
+- `@media print` atnaujinta — `.cookie-bar` selektorius pakeistas į `#silktide-wrapper`, `#silktide-cookie-icon-button`, `.wa-fab`
+
+**Privatumo politikos puslapis `/privatumas/` (carry-over #02 BLOCKER išspręstas):**
+- Naujas LT-only puslapis `privatumas/index.html` + `src/pages/privatumas/index.html` (20 KB)
+- **Turinys perrašytas iš nulio** — NE copy iš seno `content.json`. Pašalinti fiktyvūs servisai (Webflow, MailerLite, Telegram bot, TikTok, LinkedIn), pridėti REALŪS šiandien naudojami:
+  - Vercel (hosting), Calendly (booking), Google (Gmail + Fonts), WhatsApp/Meta, Cloudflare cdnjs (GSAP), Empirra (Feedback widget), Silktide (consent)
+- 13 BDAR sekcijų LT: bendra info, valdytojas, duomenys, šaltiniai, tikslai, teisinis pagrindas (BDAR 6 str. a/b/f), saugojimo terminai (3m/10m/12mėn/30d), gavėjai, perdavimas už ES, jūsų teisės, saugumas, slapukai (3 kategorijos kortelėse su konkrečiais cookie pavadinimais), kontaktai + VDAI nuoroda
+- TOC nav viršuje (13 anchor link'ų, 2-col grid → 1-col mobile)
+- "Slapukų nustatymai" mygtukas → atidaro Silktide preferences modal per `[data-open-consent]` hook (3-tier fallback: cookie-icon click → getInstance().toggleModal → createModal)
+- Naršyklės slapukų išvalymo instrukcijų link'ai (Chrome/Firefox/Safari)
+- WhatsApp FAB + Feedback widget + nav lang-switch (LT active) + footer su `is-active` ant privacy link'o
+- Schema.org WebPage JSON-LD su Organization referencija
+- +239 eilutės CSS: `.privacy`, `.privacy__title` (display serif), `.privacy__toc` (gold-line border), `.privacy__list` (gold dot bullet), `.privacy__list--detailed` (rotated square pin), `.privacy__cookies` grid (3 kortelės, hover lift), `code` (gold tinted bg)
+- `main.js` +18 eilutės: `consentReopen()` funkcija
+
+**Footer link sync (6 landing HTML):**
+- `/privatumas/#cookies` → `/privatumas/#slapukai` (LT anchor matching naują puslapį)
+
+**Sitemap:** `/privatumas/` lastmod 2026-05-13 → 2026-05-17
+
+**Cache-buster bumps:**
+- styles.css: v=11 → v=15 (per sesiją 4 bump'ai)
+- main.js: v=3 → v=6 (per sesiją 3 bump'ai; EN/RU pirmą kartą gauna `?v=`)
+
+**Deploy:**
+- Commit `10c3328` — 16 failų, +3875 / -189
+- `git push origin main` — 01988d2..10c3328 → Vercel auto-deploy triggered
+
+### Kas liko / nepatvirtinta
+
+- **Faktinis browser QA per `https://subdoma.vercel.app` po deploy NEPATIKRINTAS.** Visi sprendimai (footer credit, WhatsApp FAB lift logic, Silktide banner pasirodymas, gtag consent update, privacy puslapio scroll-margin-top anchor offset, `[data-open-consent]` mygtukas) patikrinti tik per `curl` + `grep` smoke testus. **Šiuo metu nežinoma ar viskas tikrai veikia naršyklėje.**
+- **Silktide "Slapukų nustatymai" mygtuko fallback grandinė** — `consentReopen()` bandys 3 metodus eilės tvarka. Jei Silktide v2 cookie icon selector skiriasi nuo `.silktide-cookie-icon`/`#silktide-cookie-icon-button`, fallback'as eis į `getInstance().toggleModal(true)`. Reikia live test.
+- **EN/RU desync AUGA** — pridėtas dar 1 LT-only puslapis (`/privatumas/`). Dabar EN/RU atsilieka **6+ funkcijos**: FAQ, sticky CTA bar, service filter, hero panel, SEO meta, priemonės 07/08, logo wordmark, privatumas puslapis. EN/RU footer'iai vis dar veda į LT `/privatumas/` (intencionaliai).
+- **GA4 ID nėra** — `<head>` turi placeholder `G-XXXXXXXXXX` komentare, Consent Mode V2 default'ai įdiegti, bet realaus gtag config nėra. Klientas turės pateikti Measurement ID, kad analytics pradėtų veikti.
+- **EN/RU privatumo politika NĖRA** — content.json turi EN + RU vertimus, bet ir jie su tais pačiais fiktyviais servisais. Reikės perrašyti su realiais servisais EN + RU prieš kuriant `/en/privacy/` + `/ru/privacy/`.
+- **Widget re-test po screenshot fix dar nepadarytas (carry-over #04)** — `empirra-feedback` commit `976e319` deployed prieš sesiją #04, bet faktinis test su nauja widget versija per Subdoma incognito + scroll dar nepadarytas.
+- **`aggregateRating 4.9/100` + `postalCode 08105`** (carry-over #02) — placeholder reikšmės schema.org JSON-LD landing puslapyje. Fake rating = Google policy rizika.
+- **`og-image.jpg` (1200×630) NĖRA** (carry-over #02) — visi 4 HTML rodo į `/public/og-image.jpg`, social 404.
+- **`apple-touch-icon.png` NĖRA** (carry-over #02).
+- **Favicon dar senas** (carry-over #04) — `public/favicon.svg` rodo gold circle + `S`, ne hexagon mark.
+- **Inline `style` atributai** keliose vietose pažeidžia CLAUDE.md NEVER (carry-over #02).
+
+### Kitas žingsnis
+
+1. **PRIVALU: Browser QA per `https://subdoma.vercel.app` po šios sesijos deploy** — incognito naršyklė, patikrinti:
+   - Footer "Sukūrė Empirra" link veikia ir atrodo subtilus
+   - WhatsApp FAB pasirodo bottom-right, click atidaro WhatsApp web/app
+   - Scroll žemyn → sticky action bar pasirodo + FAB pakyla aukščiau (`.is-lifted`)
+   - Silktide cookie banner pasirodo per ~1 sek po load (bottom-left), 3 mygtukai veikia, "Tik būtini" + "Sutinku su visais" + "Nustatymai" lokalizuoti
+   - `/privatumas/` puslapis renderuojasi, TOC anchor'iai skroll'ina į teisingas sekcijas, "Slapukų nustatymai" mygtukas atidaro Silktide modal
+   - DevTools Network: po "Sutinku su visais" → `dataLayer` turi `consent update` su `analytics_storage: 'granted'`
+2. **Sinchronizuoti EN/RU su LT** (BLOCKER #1, 6+ funkcijos atsilieka) — aukščiausias prioritetas
+3. **Favicon atnaujinimas** — perdaryti `public/favicon.svg` su hexagon geometrija (logo style)
+4. **Schema placeholder sprendimas** — klientas patvirtina `postalCode` + `aggregateRating`, arba pašalinti rating bloką
+
+---
+
+### Istorinė: sesija #04 (2026-05-16) — Logo, cursor removal, priemonės 07/08
 
 **Logo integracija (klientų tikras logo):**
 - Klientas atsiuntė PNG (500×500, juodas hexagon mark + "SUBDOMA" wordmark, balta fone)
@@ -189,3 +276,4 @@
 | 02 | 2026-05-14 | 3 auditai (frontend/animations/UX) + spacing fix + sticky CTA bar + FAQ + service filter + hero panel + cursor/lag bug fix + SEO/GEO (21 pakeitimas) — tik LT | 7/10 | 62% |
 | 03 | 2026-05-14 | Feedback OS integracija (client onboard + widget embed 6 HTML) + #02 darbo commit + Vercel deploy fix (outputDirectory) + DB domain mismatch fix + E2E verify (curl) | 8/10 | 60% |
 | 04 | 2026-05-16 | Logo įdiegimas (PNG crop per Python + gold filter) + custom cursor pašalinimas + 2 priemonės (07 Trumposios grandinės + 08 Investicijos į valdas, tik LT) + cross-project bug fix (Empirra Feedback widget screenshot scroll position + E2E test su puppeteer-core) | 7/10 | 63% |
+| 05 | 2026-05-17 | Footer "Sukūrė Empirra" credit (3 lang) + WhatsApp FAB (56×56, gold ring, safe-area-inset-bottom, .is-lifted sync su action-bar) + Silktide Consent Manager (vendor iš empirra.com + LT lokalizuotas init + Google Consent Mode V2 + senos cookie-bar pašalinimas) + privatumo politikos puslapis /privatumas/ (13 BDAR sekcijų, perrašyta nuo nulio su realiais 3rd-party servisais) | 8/10 | 67% |
