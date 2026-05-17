@@ -1,8 +1,49 @@
 # SESSION_STATUS — UAB Subdoma
 
-## Paskutinė sesija: 2026-05-17 #07
+## Paskutinė sesija: 2026-05-17 #08
 
 ### Ką padarėme
+
+**Socialinių tinklų schema.org `sameAs` įdiegimas (6 HTML, +36/-8):**
+
+Klientas pateikė 4 socialinių tinklų URL:
+- LinkedIn: `https://www.linkedin.com/in/subdoma`
+- TikTok: `https://www.tiktok.com/@subdoma`
+- Instagram: `https://www.instagram.com/_es_projektu_rengimas_/` (jau buvo)
+- YouTube: `https://www.youtube.com/@subdoma` (jau buvo)
+
+**Pakeitimai:**
+- **LT root + LT src:** `sameAs` papildyta nuo 2 iki 4 URL (LinkedIn + TikTok pridėti)
+- **EN root + EN src:** naujas `sameAs` blokas pridėtas į `Organization` (anksčiau neturėjo)
+- **RU root + RU src:** naujas `sameAs` blokas pridėtas į `Organization` (anksčiau neturėjo)
+
+**Tracking parametrai pašalinti:** `?igsh=...&utm_source=qr&_t=...&_r=1` — Google parser jų nereikia, švarus canonical URL.
+
+**Linter side-effect:** cache-buster `styles.css ?v=17 → v=18` visuose 8 HTML (4 root + 4 src) — sync OK.
+
+**Deploy:** Commit `1feb587` push'intas į `origin/main` (`a47c8e8..1feb587`), Vercel auto-deploy triggered.
+
+**Verify:** `grep` "linkedin|tiktok|youtube|instagram" — 6 failai × 4 URL = 24 matches (visi sync).
+
+### Kas liko / nepatvirtinta
+
+- **Google Rich Results Test po deploy NEPATIKRINTAS** — schema.org sameAs validacija per `https://search.google.com/test/rich-results`
+- **LinkedIn URL klausimas** — naudotas `/in/subdoma` (personal profile slug). Jei klientas turi LinkedIn Company Page (`/company/subdoma`), reikės pakeisti — neklausiau patvirtinimo
+- **Footer/UI socialinės ikonos NĖRA** — `sameAs` tik schema.org SEO sluoksniui. Vartotojas pasirinko tik schema (ne footer ikonos)
+- **Visi #07 carry-over likę** — žr. žemiau sesijos #07 sekcijoje
+
+### Kitas žingsnis
+
+1. **Verify schema per Google Rich Results Test** (~2 min po Vercel deploy) — `https://subdoma.vercel.app` + `/en/` + `/ru/`, tikrinti `Organization.sameAs` masyvą
+2. **Klientui patvirtinti LinkedIn URL** — `/in/subdoma` (personal) ar `/company/subdoma` (company page)?
+3. **PRIVALU: Browser QA per `https://subdoma.vercel.app`** (4 sesijų carry-over — #05, #06, #07, #08): Tab skip link, filter aria-selected, FAQ aria-controls, LCP score, footer/FAB/Silktide/privacy
+4. **EN/RU schema.org pilnumas** (carry-over #07) — pridėti `FAQPage` + `Service` + `hasOfferCatalog` (LT turi, EN/RU ne)
+5. **Asset gaps pack** — og-image (1200×630), apple-touch-icon (180×180), favicon hexagon redesign
+6. **Klientui pateikti:** postalCode patvirtinimas, aggregateRating sprendimas, GA4 Measurement ID
+
+---
+
+### Istorinė: sesija #07 (2026-05-17) — Frontend polish (a11y + LCP + cleanup)
 
 **Frontend polish (frontend-revizorius audit + 10 fix'ų, 12 failų, +172/-70):**
 - **C-01:** inline `style="margin-inline:auto;text-align:center"` + `style="justify-content:center"` → naujos CSS klasės `.section-head--center`, `.eyebrow--center`, `.eyebrow--mb-lg` (3 HTML × process + quiz sekcijos)
@@ -340,3 +381,4 @@
 | 05 | 2026-05-17 | Footer "Sukūrė Empirra" credit (3 lang) + WhatsApp FAB (56×56, gold ring, safe-area-inset-bottom, .is-lifted sync su action-bar) + Silktide Consent Manager (vendor iš empirra.com + LT lokalizuotas init + Google Consent Mode V2 + senos cookie-bar pašalinimas) + privatumo politikos puslapis /privatumas/ (13 BDAR sekcijų, perrašyta nuo nulio su realiais 3rd-party servisais) | 8/10 | 67% |
 | 06 | 2026-05-17 | Footer credit centravimas atskira eilute (8 HTML) + EN/RU pilna UI sync su LT (hero panel kortelės, filter-bar, priemonės 07/08 service-card+detail, FAQ, sticky action-bar) — 10 failų, +982/-88 | 8/10 | 80% |
 | 07 | 2026-05-17 | Frontend polish: frontend-revizorius audit + 10 a11y/LCP/cleanup fix'ų (inline styles → CSS klasės, skip link EN/RU, serviceFilter aria-selected, faqAccordion aria-controls per JS, LCP preload, perteklinis ARIA roles cleanup, cache-buster sync) — 12 failų, +172/-70 | 8/10 | 85% |
+| 08 | 2026-05-17 | Socialinių tinklų schema.org `sameAs` įdiegimas (LinkedIn + TikTok + Instagram + YouTube): LT papildyta 2→4 URL, EN/RU pridėtas naujas sameAs blokas Organization — 6 HTML, +36/-8. Linter sync cache-buster styles.css v=17→v=18 (8 HTML). | 8/10 | 76% |

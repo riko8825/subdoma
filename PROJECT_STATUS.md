@@ -1,17 +1,17 @@
 # PROJECT_STATUS — UAB Subdoma
 
-> **Track:** Landing (€200–€800) · **Generated:** 2026-05-13 · **Premium tier rebuild:** 2026-05-13 · **UX + SEO/GEO iteracija:** 2026-05-14 · **Feedback OS + Vercel deploy:** 2026-05-14 · **Logo + cursor removal + priemonės 07/08:** 2026-05-16 · **Footer credit + WhatsApp FAB + Silktide consent + privatumo politika:** 2026-05-17 · **EN/RU pilna UI sync + footer centravimas (#06):** 2026-05-17 · **Frontend polish a11y/LCP (#07):** 2026-05-17
+> **Track:** Landing (€200–€800) · **Generated:** 2026-05-13 · **Premium tier rebuild:** 2026-05-13 · **UX + SEO/GEO iteracija:** 2026-05-14 · **Feedback OS + Vercel deploy:** 2026-05-14 · **Logo + cursor removal + priemonės 07/08:** 2026-05-16 · **Footer credit + WhatsApp FAB + Silktide consent + privatumo politika:** 2026-05-17 · **EN/RU pilna UI sync + footer centravimas (#06):** 2026-05-17 · **Frontend polish a11y/LCP (#07):** 2026-05-17 · **Social sameAs schema.org (#08):** 2026-05-17
 
 ## Modulių matrica
 
 | # | Modulis | Statusas | Detalės |
 |---|---------|----------|---------|
 | 01 | LT pagrindinis puslapis | ✅ Production | 14 sekcijų (+ FAQ), sticky CTA bar, service filter, hero panel, GSAP, schema, **8 priemonės** (06→08), tikras logo, **be custom cursor**, **footer "Sukūrė Empirra" credit (#05)**, **WhatsApp FAB (#05)**, **a11y polish (#07): skip link CSS klasė, faqAccordion aria-controls, serviceFilter aria-selected, LCP preload** |
-| 02 | EN puslapis | ✅ Production | `/en/` UI-paritetiškas su LT po **#06 sync** (hero panel, filter, FAQ, sticky action-bar, priemonės 07/08). **#07 polish:** skip-to-content link "Skip to content", LCP preload, perteklinis ARIA cleanup, footer privacy link su hreflang=lt. **Schema.org nepilnas** (LT turi FAQPage/Service/hasOfferCatalog, EN ne) — SEO desync |
-| 03 | RU puslapis | ✅ Production | `/ru/` UI-paritetiškas su LT po **#06 sync**. **#07 polish:** skip-to-content link "Перейти к содержимому", LCP preload, perteklinis ARIA cleanup, footer privacy link su hreflang=lt. **Schema.org nepilnas** (analogiška EN) |
+| 02 | EN puslapis | ✅ Production | `/en/` UI-paritetiškas su LT po **#06 sync** (hero panel, filter, FAQ, sticky action-bar, priemonės 07/08). **#07 polish:** skip-to-content link "Skip to content", LCP preload, perteklinis ARIA cleanup, footer privacy link su hreflang=lt. **#08:** schema.org `sameAs` 4 URL (LinkedIn/TikTok/IG/YT). **Schema.org dar nepilnas** (LT turi FAQPage/Service/hasOfferCatalog, EN ne) — SEO desync |
+| 03 | RU puslapis | ✅ Production | `/ru/` UI-paritetiškas su LT po **#06 sync**. **#07 polish:** skip-to-content link "Перейти к содержимому", LCP preload, perteklinis ARIA cleanup, footer privacy link su hreflang=lt. **#08:** schema.org `sameAs` 4 URL. **Schema.org dar nepilnas** (analogiška EN) |
 | 04 | Premium CSS design system | ✅ Production | Gold + black, fluid typography, spacing optimizuotas (#02), filter/FAQ/action-bar stiliai, `.detail-list` nauja (#04), `.footer__credit` + `.wa-fab` + `.privacy` 239 eil (#05), **`.section-head--center` + `.eyebrow--center` + `.eyebrow--mb-lg` + `.visually-hidden` (#07)** — inline styles 0 |
 | 05 | GSAP animacijos | ✅ Production | Trukmės sumažintos (#02), `transition: all` pašalintas, **custom cursor pašalintas (#04)** |
-| 06 | Schema.org JSON-LD | ✅ Production | ProfessionalService + GeoCoordinates + areaServed + FAQPage + hasOfferCatalog (8 offers po #04). Privacy puslapyje — WebPage schema (#05) |
+| 06 | Schema.org JSON-LD | ✅ Production | ProfessionalService + GeoCoordinates + areaServed + FAQPage + hasOfferCatalog (8 offers po #04). Privacy puslapyje — WebPage schema (#05). **#08: `sameAs` masyvas su 4 socialiniais tinklais (LinkedIn, TikTok, Instagram, YouTube) per LT/EN/RU root+src.** EN/RU vis dar trūksta FAQPage/Service/hasOfferCatalog (desync su LT) |
 | 07 | sitemap.xml + robots.txt | ✅ Production | hreflang alternates, allow all, `/privatumas/` lastmod 2026-05-17 (#05) |
 | 08 | content.json (3 lang) | ✅ Production | 714 lines, full LT/EN/RU (priemonės 07/08 dar nepridėtos į content.json). **Pastaba: privacy turinys content.json'e — pasenęs (fiktyvūs servisai); naujasis /privatumas/ puslapis perrašytas neproasidžiojant nuo content.json** |
 | 09 | SEO/GEO on-page | ✅ Production | Title/meta/H2 keyword-optimized (#02), 3 primary + 8 secondary + 12 long-tail |
