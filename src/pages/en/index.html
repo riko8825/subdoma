@@ -45,7 +45,7 @@
 
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet"/>
 
-<link rel="stylesheet" href="/public/styles.css?v=17"/>
+<link rel="stylesheet" href="/public/styles.css?v=18"/>
 
 <!-- Silktide Consent Manager CSS (preloaded, non-blocking) -->
 <link rel="preload" href="/public/silktide-consent-manager.css" as="style" onload="this.onload=null;this.rel='stylesheet'"/>
@@ -725,6 +725,26 @@ gtag('consent', 'default', {
   </div>
 </section>
 
+<!-- ==================== NEWSLETTER (MailerLite, consent-gated) ==================== -->
+<section class="newsletter" id="newsletter" aria-labelledby="newsletter-title">
+  <div class="container">
+    <div class="newsletter__grid">
+      <div class="newsletter__copy" data-reveal>
+        <span class="eyebrow">Newsletter</span>
+        <h2 id="newsletter-title">EU funding updates — straight to your inbox</h2>
+        <p>Subscribe to receive announcements about new EU funding calls for farms and businesses. No ads — just what matters.</p>
+      </div>
+      <div class="newsletter__form" data-reveal="scale">
+        <div class="ml-embedded" data-form="50EEhc"></div>
+        <div class="newsletter__fallback">
+          The newsletter form requires <strong>marketing</strong> cookie consent.<br>
+          <a data-open-consent role="button" tabindex="0">Open cookie settings</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
 <section class="contacts" id="contact">
   <div class="container">
     <div class="section-head" data-reveal>
@@ -814,7 +834,7 @@ gtag('consent', 'default', {
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js" defer></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js" defer></script>
 <script src="/public/animations.js?v=4" defer></script>
-<script src="/public/main.js?v=7" defer></script>
+<script src="/public/main.js?v=8" defer></script>
 
 <!-- Silktide Consent Manager -->
 <script defer src="/public/silktide-consent-manager.js"></script>

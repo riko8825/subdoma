@@ -67,6 +67,9 @@ window.silktideConsentManager.init({
             ad_personalization: "granted"
           });
         }
+        if (typeof window.loadMailerLite === "function") {
+          window.loadMailerLite();
+        }
       },
       onReject: function () {
         if (typeof gtag === "function") {

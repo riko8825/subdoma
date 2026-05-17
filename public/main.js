@@ -209,4 +209,28 @@
     init();
   }
 
+  /* MailerLite — consent-gated loader.
+     Called from consent-init.js on "advertising" accept.
+     Idempotent: safe to call multiple times. */
+  window.loadMailerLite = function () {
+    if (window.__mlLoaded) return;
+    window.__mlLoaded = true;
+
+    window.ml = window.ml || function () {
+      (window.ml.q = window.ml.q || []).push(arguments);
+    };
+
+    var s = document.createElement('script');
+    s.async = true;
+    s.src = 'https://assets.mailerlite.com/js/universal.js';
+    var first = document.getElementsByTagName('script')[0];
+    first.parentNode.insertBefore(s, first);
+
+    window.ml('account', '1993875');
+
+    document.querySelectorAll('.newsletter__fallback').forEach(function (el) {
+      el.style.display = 'none';
+    });
+  };
+
 })();
