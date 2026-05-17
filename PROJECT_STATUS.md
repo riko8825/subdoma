@@ -1,6 +1,6 @@
 # PROJECT_STATUS — UAB Subdoma
 
-> **Track:** Landing (€200–€800) · **Generated:** 2026-05-13 · **Premium tier rebuild:** 2026-05-13 · **UX + SEO/GEO iteracija:** 2026-05-14 · **Feedback OS + Vercel deploy:** 2026-05-14 · **Logo + cursor removal + priemonės 07/08:** 2026-05-16 · **Footer credit + WhatsApp FAB + Silktide consent + privatumo politika:** 2026-05-17 · **EN/RU pilna UI sync + footer centravimas (#06):** 2026-05-17 · **Frontend polish a11y/LCP (#07):** 2026-05-17 · **Social sameAs schema.org (#08):** 2026-05-17
+> **Track:** Landing (€200–€800) · **Generated:** 2026-05-13 · **Premium tier rebuild:** 2026-05-13 · **UX + SEO/GEO iteracija:** 2026-05-14 · **Feedback OS + Vercel deploy:** 2026-05-14 · **Logo + cursor removal + priemonės 07/08:** 2026-05-16 · **Footer credit + WhatsApp FAB + Silktide consent + privatumo politika:** 2026-05-17 · **EN/RU pilna UI sync + footer centravimas (#06):** 2026-05-17 · **Frontend polish a11y/LCP (#07):** 2026-05-17 · **Social sameAs schema.org (#08):** 2026-05-17 · **MailerLite + social icons + custom domain + nav refinements (#09):** 2026-05-17
 
 ## Modulių matrica
 
@@ -18,19 +18,22 @@
 | 10 | Sticky action bar + FAQ + filter | ✅ Production | LT + **EN/RU po #06 sync**. WhatsApp FAB sync'ina `.is-lifted` su `.action-bar.is-visible` (#05). **#07: serviceFilter aria-selected dinamiškas, faqAccordion aria-controls + role=region runtime** |
 | 11 | Calendly embed | ⚙️ Tested | Inline embed, lazy-loaded, live URL nepatikrintas |
 | 12 | ~~Cookie bar~~ Senas cookie-bar PAŠALINTAS (#05) | — | Pakeistas Silktide Consent Manager (žr. #23) |
-| 13 | Vercel live deploy | ✅ Production | `https://subdoma.vercel.app` — LT/EN/RU + assets HTTP 200. `vercel.json` outputDirectory: "." fix. **Commit `10c3328` push'inta (#05) — Vercel auto-deploy triggered, browser QA dar nepatikrintas** |
+| 13 | Vercel live deploy | ✅ Production | **#09: Custom domain `www.subdoma-projektai.lt` LIVE.** DNS via Hostinger (A `@` → 216.198.79.1, CNAME `www` → 8982ba0e0037c787.vercel-dns-017.com). Apex 307 → www. SSL auto. Old `subdoma.vercel.app` palieka kaip alternative. 126 canonical/sitemap/schema URL atnaujinti |
 | 14 | `/privatumas/` puslapis | ✅ Production | **Sukurtas (#05)** — `privatumas/index.html` + `src/pages/privatumas/index.html`, 20 KB, 13 BDAR sekcijų LT. Perrašyta su realiais 3rd-party servisais (Vercel, Calendly, Google, WhatsApp/Meta, Cloudflare cdnjs, Empirra, Silktide). TOC nav, `[data-open-consent]` mygtukas reopen Silktide modal, VDAI nuoroda. EN/RU privacy — NĖRA |
 | 15 | og-image.jpg | ⬜ Planned | HTML reference yra, failas nesukurtas. **Galimas šaltinis:** klientas atsiuntė logo.png (#04) |
 | 16 | apple-touch-icon.png | ⬜ Planned | HTML reference yra, failas nesukurtas |
-| 17 | Custom domain DNS | ⬜ Planned | Klientas neapsisprendė: Vercel subdomain vs custom |
+| 17 | Custom domain DNS | ✅ Production | **#09: `www.subdoma-projektai.lt` LIVE.** Hostinger DNS Zone: A @ 216.198.79.1 + CNAME www → 8982ba0e0037c787.vercel-dns-017.com. Senų Webflow records pašalinta. SSL auto-provisioned. Klientas domeną turi iki 2027-12-24 |
 | 18 | EN/RU native review | ⬜ Planned | Vertimai mano rankiniai, reikia native LT→EN, LT→RU review |
-| 19 | Empirra Feedback OS integracija | ✅ Production | Widget embed 6 HTML + privacy puslapis (#05), client_id `31f5d3de-...`. **Widget screenshot scroll position bug ištaisytas (#04)** — `empirra-feedback` commit `976e319`, deployed |
+| 19 | ~~Empirra Feedback OS integracija~~ | — | **#09: PAŠALINTAS** — visi 8 HTML failai išvalyti, widget nebereikalingas (klientas pristatė) |
 | 20 | Logo (klientų brand mark) | ✅ Production | `public/logo.png` (originalas) + `public/logo-mark.png` (transparent hexagon ekstraktas via `scripts/process_logo.py`). Nav 3 lang × src + root + privacy, CSS gold filter. Wordmark "UAB" → "Subdoma" |
 | 21 | Priemonės 07 + 08 | ✅ Production | LT: service-card + service-detail + Schema Offer. **EN/RU: service-card + service-detail įdiegti po #06 sync** (terminologija mano rankinis vertimas, native review pending) |
 | 22 | Favicon | ⚠️ Senas | `public/favicon.svg` — gold circle + `S` raidė. Reikia perdaryti su nauja hexagon geometrija (logo style) |
 | 23 | Silktide Consent Manager | ✅ Production | **Naujas (#05)** — vendor `silktide-consent-manager.js` (54 KB) + `.css` (12 KB) iš empirra.com + `consent-init.js` LT lokalizuotas (3 kategorijos: Būtini/Analitiniai/Rinkodaros). Google Consent Mode V2 default deny + GA4 placeholder. 6 HTML + privacy. Senas cookie-bar (#12) pašalintas |
 | 24 | Footer "Sukūrė Empirra" credit | ✅ Production | **Naujas (#05)** — 6 HTML, lokalizuota 3 kalbomis (LT/EN/RU), `.footer__credit` gold link → empirra.com |
-| 25 | WhatsApp FAB | ✅ Production | **Naujas (#05)** — 6 HTML + privacy. `https://wa.me/37067508128`. 56×56 (52×52 mobile), gold ring, env(safe-area-inset-bottom), `.is-lifted` sync su action-bar, CSS-only gold pulse |
+| 25 | WhatsApp FAB | ✅ Production | **Naujas (#05)** — 6 HTML + privacy. `https://wa.me/37067508128`. 56×56 (52×52 mobile), gold ring, env(safe-area-inset-bottom), `.is-lifted` sync su action-bar, CSS-only gold pulse. **#09: pozicija nuleista — desktop 90→60px, mobile 80→50px, lifted 160→130 / 140→110** |
+| 26 | MailerLite newsletter | ✅ Production | **Naujas (#09)** — embed forma ID `50EEhc`, account 1993875 ("ES paramos naujienlaiškis"). Brand-styled MailerLite dashboard'e (gold mygtukas, dark card, Cormorant heading). Consent-gated — `window.loadMailerLite()` kraunamas tik per Silktide `advertising.onAccept`. Fallback UI kai consent denied. 6 HTML × 3 lang × root+src. Realus subscribe nepatestuotas |
+| 27 | Social ikonos footer | ✅ Production | **Naujas (#09)** — 4 inline SVG (LinkedIn, TikTok, Instagram, YouTube) monochrome gold, 36px apvalūs, hover glow. Localized aria-label per kalbą. Mobile <600px centered. Tas pats 4 URL kaip schema.org `sameAs` (#08) |
+| 28 | Newsletter navigation | ✅ Production | **Naujas (#09)** — top nav link tarp Results ir Contact (LT/EN/RU). Sticky action bar — 3-ias ghost mygtukas (envelope ikona) tarp Skambinti ir Konsultacija. Mobile <480px paslepia action-bar__msg vietos 3 CTAs |
 
 ## Statuso reikšmės
 
@@ -43,12 +46,14 @@
 
 ## Blockers
 
-1. **Browser QA carry-over 3 sesijų** (#05, #06, #07) — visi sprendimai patikrinti tik per `curl` + `grep` smoke testus. Faktinis vizualinis verify per `https://subdoma.vercel.app` nepadarytas. Šiuo metu nežinoma ar viskas tikrai veikia naršyklėje (Tab key skip link reveal, filter aria-selected, FAQ aria-controls runtime, LCP preload impact).
+1. **Browser QA carry-over 5 sesijų** (#05, #06, #07, #08, #09) — visi sprendimai patikrinti tik per `curl` + `grep` smoke testus. Faktinis vizualinis verify per `https://www.subdoma-projektai.lt/` nepadarytas. **#09 specifiškai:** MailerLite forma po consent (atrodo brand-aligned?), 3 CTAs sticky bar mobile (iPhone SE 375px viewport telpa?), WhatsApp FAB 60px nepersidengia su bar, newsletter scroll-to-section.
 2. **~~EN/RU desync~~** ✅ **IŠSPRĘSTA (#06)** — UI-paritetinis su LT. **Lieka:** schema.org desync (LT turi FAQPage/Service/hasOfferCatalog, EN/RU ne), native review (terminologija mano rankinė), EN/RU privatumas puslapio NĖRA (hreflang=lt nuoroda į LT).
 3. **Schema placeholder reikšmės** (carry-over #02) — `aggregateRating 4.9/100` + `postalCode 08105`. Fake rating = Google structured data policy rizika. Reikia kliento input.
 4. **~~`/privatumas/` 404~~** ✅ **IŠSPRĘSTA (#05)** — naujas LT puslapis sukurtas su 13 BDAR sekcijų.
 5. **og-image.jpg 404** (carry-over #02) — social share preview fail. Klientas atsiuntė `public/logo.png` (#04) — galimas šaltinis perscale + tekstas
 6. **GA4 Measurement ID NĖRA** (naujas #05) — Consent Mode V2 default'ai įdiegti, bet realaus gtag config nėra. Klientas turės pateikti ID, kad analytics pradėtų veikti. Placeholder `G-XXXXXXXXXX` komentare visuose 6 HTML + privacy.
+7. **MailerLite subscribe test nepatestuotas** (naujas #09) — niekas neįvedė test email, MailerLite dashboard'e nepatvirtinta ar formos submit veikia per consent-gated flow
+8. **WhatsApp FAB `is-lifted` thresholds** (naujas #09) — 130px desktop / 110px mobile parinkti spėjimu, neišmatuoti su naujo 3-mygtukių action bar height. Gali persidengti certain scroll positions
 
 ## Known issues
 

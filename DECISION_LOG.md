@@ -1,5 +1,78 @@
 # DECISION_LOG — UAB Subdoma
 
+## 2026-05-17 — Sesija #09: MailerLite, social icons, custom domain, nav refinements
+
+### D-019: MailerLite Universal kraunamas TIK po Silktide `advertising` consent
+
+**Sprendimas:** `assets.mailerlite.com/js/universal.js` NĖRA `<head>` arba `<body>` HTML statiškai. Vietoj to — `window.loadMailerLite()` funkcija `public/main.js`, kuri `consent-init.js` `advertising.onAccept` callback'e dinamiškai injectuoja `<script>` į DOM.
+
+**Kontekstas:** MailerLite Universal nustato 1st-party + 3rd-party cookies tracking'ui (subscriber attribution, form analytics). GDPR LT/EU rinkoje toks tracking reikalauja **explicit opt-in** prieš krovinant script'ą. Default Silktide consent state — `advertising: false` (Consent Mode V2 default deny).
+
+**Alternatyvos atmestos:**
+- **Statiškai `<head>`** — pažeistų GDPR. Cookiebot scan'as flagintų kaip violation. Klientas (LT ūkininkų rinkoje) atsidurtų rizikoje gauti VDAI patikrą.
+- **Tik per `defer` su consent check po DOMContentLoaded** — script'as vis tiek nukristų į HTML, vartotojas matytų request'us iki click'o. Nepilna privacy compliance.
+- **Per Google Tag Manager** — papildomas GTM dependency, overhead. Klientas neturi GTM container'io.
+
+**Pagrindimas:** Idempotent loader (`window.__mlLoaded` guard) — safe call multiple times. Forma iki consent'o rodo aiškų fallback su `<a data-open-consent>` link'u į Silktide preferences modal — vartotojas mato KODĖL formos nėra ir kaip ją įjungti. Po consent — `loadMailerLite()` pašalina `.newsletter__fallback` ir Embed div'as render'inasi.
+
+**Trade-off:** Vartotojai, kurie atmetė marketing cookies, NEMATO formos UI (tik fallback). Trade-off už GDPR compliance + Cookiebot scan clean rating.
+
+---
+
+### D-020: MailerLite styling — MailerLite dashboard editor, NE CSS override svetainėje
+
+**Sprendimas:** Branding (gold #C6A96B mygtukas, dark #1A1A1F card, Cormorant heading, Open Sans body) sukonfigūruotas MailerLite Forms editor'iuje (Form ID 50EEhc settings). Svetainės CSS pridėjau tik 5 wrapper taisykles (`.newsletter__grid`, `.newsletter__form`, `.newsletter__fallback`). Inicialiai parašiau 60+ eilučių `.newsletter__form .ml-form-embedContainer ... !important` override — pašalinau po editor styling.
+
+**Kontekstas:** MailerLite default form (Open Sans / juodas tekstas / pilkas mygtukas) NESUDERINTAS su Subdoma brandinga (Cormorant serif / off-white / gold). Reikėjo pasirinkti: stilizuoti per CSS override `!important` arba per native editor.
+
+**Alternatyvos atmestos:**
+- **CSS override `!important`** (60 eilučių) — atrodė gerai svetainėje, bet:
+  - MailerLite preview link'as (`preview.mailerlite.io/...`) rodė default styling
+  - Jei klientas vėliau įjungs MailerLite pop-up'us, jie atrodytų default — desync
+  - `!important` paskolina specificity wars
+  - Sunkiau debug'inti, jei MailerLite pakeis class names
+- **Iframe (su sandbox styling)** — MailerLite nepalaiko iframe embed'o native'iškai
+
+**Pagrindimas:** Single source of truth — MailerLite dashboard. Vienas style across embed, pop-up, preview URLs. CSS svetainėje liko švarus (~30 eilučių `.newsletter*` klasės) — tik wrapper'io spacing/layout, ne form internals.
+
+**Trade-off:** Klientas (Gintarė) turi MailerLite paskyrą. Jei kažkas pakeis form ID arba sukurs naują formą, reikės dar kartą sukonfigūruoti styling editor'iuje (~10 min). Ne developer task.
+
+---
+
+### D-021: Custom domain — `www.subdoma-projektai.lt` production + apex 307 redirect, NE atvirkščiai
+
+**Sprendimas:** Vercel projekte `www.subdoma-projektai.lt` pažymėtas kaip **production**, apex `subdoma-projektai.lt` daro **307 Temporary Redirect → www**. DNS Hostinger'yje: `A @ → 216.198.79.1` + `CNAME www → 8982ba0e0037c787.vercel-dns-017.com`.
+
+**Kontekstas:** Klientė turi Hostinger'yje registruotą `subdoma-projektai.lt` (galioja iki 2027-12-24). DNS dar rodė į senus Webflow records (A 198.202.211.1, CNAME cdn.webflow.com). Reikėjo pasirinkti — apex vs www kaip production canonical.
+
+**Alternatyvos atmestos:**
+- **Apex `subdoma-projektai.lt` production, www → apex redirect** — DNS lygmenyje apex domeną sunkiau scale'inti (negali padaryti CNAME ant apex per RFC, tik ALIAS/ANAME jei provider'is palaiko). Vercel rekomenduoja www production būtent dėl šito.
+- **Be redirect'o, abu live** — duplicate content SEO penalty. Google indeksuotų abu URLs atskirai.
+- **301 Permanent Redirect (vietoj 307)** — Vercel default 307. 301 būtų aggressive caching browser'iuose. 307 leidžia keisti production'į ateity be cache invalidation skausmo.
+
+**Pagrindimas:** `www` subdomenas tradiciškai stabilesnis (CNAME flexible, lengviau migruoti DNS provider'ius), Vercel native recommendation, didžiosios LT svetainės (delfi.lt, vz.lt) naudoja tą patį patterną.
+
+**Trade-off:** Vartotojai įvedę `subdoma-projektai.lt` browser'yje gauna 307 redirect (1 round-trip). Akceptuojama už ilgalaikę DNS stabilumą.
+
+---
+
+### D-022: Empirra Feedback widget pašalintas (NE deprecate)
+
+**Sprendimas:** `<script src="https://empirra-feedback.vercel.app/widget.js" data-client="31f5d3de-...">` pilnai pašalintas iš visų 8 HTML failų. Klientė `clients.json` lieka (žr. `~/.claude/skills/feedback/clients.json`) — galima reaktyvuoti, bet HTML kode niekur neminima.
+
+**Kontekstas:** Klientas (Gintarė) confirmavo svetainę galutinai. Feedback collection tool (skirtas dev-to-client communication) nebereikalingas production'e. Widget'as **showed** "Feedback" mygtuką su geltonu taško indicator'iumi apačioje kairėje — vizualus šiukšlinimas finished svetainei.
+
+**Alternatyvos atmestos:**
+- **Palikti widget'ą su `display: none`** — script vis tiek užkrautų (CSS nesvarbus), HTTP request'as išliktų. Performance hit be vertės.
+- **Deprecate per data attribute (`data-disabled="true"`)** — widget'as šitokio flag nepalaiko, reikėtų widget code fork.
+- **Conditional load based on env** — pridėtinis sudėtingumas paprastame statiniame projekte.
+
+**Pagrindimas:** Static site = static deliverable. Klientui pristatant svetainę — viskas turi būti production-clean, jokio internal tooling matomai vietai.
+
+**Trade-off:** Jei klientas vėliau pranešti naują problemą — niekur nebėra greito kanalo. Mitigation: klientas turi mūsų email/WhatsApp, ne urgent.
+
+---
+
 ## 2026-05-17 — Sesija #05: footer credit, WhatsApp FAB, Silktide consent, privatumo politika
 
 ### D-011: Silktide Consent Manager, NE custom cookie banner ar Cookiebot SaaS

@@ -1,6 +1,91 @@
 # SESSION_STATUS — UAB Subdoma
 
-## Paskutinė sesija: 2026-05-17 #08
+## Paskutinė sesija: 2026-05-17 #09
+
+### Ką padarėme
+
+**7 commits push'inti, 7 production deploy'ai į Vercel:**
+
+**1. MailerLite newsletter integration (consent-gated)** — `9881aa4` + `b16518c` (~~ +401 / -142 ~~ )
+- `<section class="newsletter">` tarp FAQ ir Contacts visuose 6 HTML (LT/EN/RU × root+src)
+- Embed div `<div class="ml-embedded" data-form="50EEhc">` (form "ES paramos naujienlaiškis", 1993875 account)
+- `window.loadMailerLite()` loader `public/main.js`
+- Silktide `advertising.onAccept` hook → kraunamas MailerLite Universal script
+- Fallback UI kai consent denied (link → Silktide preferences modal)
+- Brand styling perkeltas į MailerLite dashboard (gold #C6A96B mygtukas, dark card #1A1A1F, Cormorant Garamond heading)
+- CSS override (60+ eilučių) pašalintas po editor design — švaresnis kodas
+
+**2. Social ikonos footer'yje** — `7be2d14` (+166 / -8)
+- Inline SVG monochrome gold (LinkedIn, TikTok, Instagram, YouTube)
+- 36px apvalūs mygtukai, gold border, hover glow background
+- Localized aria-label per kalbą (LT/EN/RU)
+- Mobile <600px centered
+
+**3. Custom domain migration** — `6417b27` (+121 / -121)
+- DNS: A `@` → `216.198.79.1`, CNAME `www` → `8982ba0e0037c787.vercel-dns-017.com` (Hostinger DNS Zone)
+- Senų Webflow records pašalinta (A + CNAME + TXT verification)
+- Vercel: `www.subdoma-projektai.lt` production + apex 307 → www, SSL auto-provisioned
+- 126 nuorodų atnaujinta 14 failuose (canonical, sitemap, og:url, schema.org @id/url/image, hreflang)
+- **Kritinis SEO fix:** prieš tai canonical rodė į `uab-subdoma-330c.vercel.app` (DEPLOYMENT_NOT_FOUND) — Google būtų deindeksavęs
+
+**4. Empirra Feedback widget removed** — `8d1759f` (+8 / -40)
+- Visi 8 HTML failai išvalyti nuo `<script src="https://empirra-feedback.vercel.app/widget.js">`
+- Klientas pristatė svetainę, feedback collection nebereikalingas
+
+**5. Newsletter navigation links** — `6c046fb` + `93b5894` (+52 / -16)
+- Top nav: "Naujienlaiškis" / "Newsletter" / "Рассылка" tarp Results ir Contact
+- Sticky action bar: pridėtas 3-ias mygtukas (envelope ikona) tarp Skambinti ir Nemokama konsultacija
+- WhatsApp FAB nuleistas: desktop 90px→60px, mobile 80px→50px (lifted 160→130, 140→110)
+- Mobile <480px: paslėpta `.action-bar__msg` (vietos 3 CTAs)
+
+**Cache-busters bumpinti:** `styles.css v17→v21`, `main.js v6/v7→v9`
+
+### Kas liko / nepatvirtinta
+
+- **Browser manual QA — 4 sesijų carry-over (#05, #06, #07, #08, #09)** — NIEKAS nepadarė vizualinio test'o naršyklėje:
+  - MailerLite forma render'inasi po `advertising` consent? Gold mygtukas, dark card?
+  - WhatsApp FAB 60px nepersidengia su action bar?
+  - Mobile <480px: 3 ghost CTAs telpa į iPhone SE 375px viewport?
+  - Newsletter sekcijos `data-reveal="scale"` — jei consent denied, ar fallback UI atrodo intentional?
+- **MailerLite realus subscribe test'as** — niekas neįvedė test email
+- **GA4 Measurement ID** — neįdiegtas (`G-XXXXXXXXXX` placeholder visuose 8 HTML)
+- **Asset gaps** — og-image.jpg (1200×630), apple-touch-icon, favicon hexagon — vis dar placeholderiai
+- **Schema.org `aggregateRating`** — fake data, niekas neperžiūrėjo
+- **LinkedIn URL** (#08 carry-over) — naudota `/in/subdoma` (personal); klientas nepatvirtino ar reikia `/company/subdoma`
+- **EN/RU schema.org pilnumas** (#07 carry-over) — `FAQPage`, `Service`, `hasOfferCatalog` trūksta EN/RU
+- **WhatsApp FAB `is-lifted` thresholds** (130/110px) parinkti spėjimu — neišmatuota su 3-mygtukių bar height
+- **`image.png`** — sesijos pradžioje pateko į workspace (random screenshot), liko untracked. Nesvarbu, bet warto ištrinti
+
+### Kitas žingsnis
+
+1. **PRIVALU: Browser QA naršyklėje** — atidaryti `https://www.subdoma-projektai.lt/` ir patikrinti:
+   - MailerLite forma po Cookie accept (marketing) → atrodo brand-aligned
+   - Mobile responsive (iPhone SE viewport) — 3 ghost CTAs telpa, FAB neuždengia
+   - Newsletter nav link smooth scroll'ina į sekciją
+   - Visi 4 social ikonos footer'yje hover/click veikia
+2. **MailerLite subscribe test'as** — įvesti test email, patikrinti MailerLite dashboard'e ar atsiranda subscriber
+3. **Klientui paklausti:**
+   - LinkedIn `/in/subdoma` vs `/company/subdoma`?
+   - GA4 Measurement ID?
+   - aggregateRating: ar yra realių klientų atsiliepimų ar šalinti schema.org?
+4. **Asset finalize:** og-image, apple-touch-icon, favicon (žr. #07 carry-over)
+5. **EN/RU schema.org carry-over** — FAQPage + Service + hasOfferCatalog (#07 task)
+
+### Sesijos #09 commits
+
+| Commit | Aprašymas | +/- |
+|---|---|---|
+| `9881aa4` | MailerLite integration (consent-gated) | +387/-18 |
+| `b16518c` | CSS override cleanup (MailerLite styled in dashboard) | +14/-124 |
+| `7be2d14` | Social icons footer (4 inline SVG) | +166/-8 |
+| `6417b27` | Domain migration (URLs → www.subdoma-projektai.lt) | +121/-121 |
+| `8d1759f` | Remove Empirra Feedback widget | +8/-40 |
+| `6c046fb` | Newsletter top nav link | +6/-0 |
+| `93b5894` | Newsletter CTA in action bar + WhatsApp FAB lower | +46/-16 |
+
+---
+
+## Istorinė: sesija #08 (2026-05-17)
 
 ### Ką padarėme
 
